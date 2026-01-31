@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bestwing.me/tags/index.html</loc>
+    
+    <lastmod>2026-01-31</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bestwing.me/How-to-patch-a-linux-kernel-bug-zh.html</loc>
     
     <lastmod>2026-01-31</lastmod>
@@ -1032,13 +1039,6 @@
   
   <url>
     <loc>https://bestwing.me/CTF-Misc-and-Crypto-Tools.html</loc>
-    
-    <lastmod>2019-09-24</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://bestwing.me/tags/index.html</loc>
     
     <lastmod>2019-09-24</lastmod>
     
