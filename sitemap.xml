@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bestwing.me/about/index.html</loc>
+    
+    <lastmod>2026-02-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bestwing.me/pickling-the-mailbox-cve-2025-20393-cn.html</loc>
     
     <lastmod>2026-02-07</lastmod>
@@ -1104,13 +1111,6 @@
     <loc>https://bestwing.me/link/index.html</loc>
     
     <lastmod>2026-02-06</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://bestwing.me/about/index.html</loc>
-    
-    <lastmod>2026-02-04</lastmod>
     
   </url>
   
