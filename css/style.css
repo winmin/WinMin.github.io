@@ -797,12 +797,24 @@ th {
   padding-top: 30px;
   border-top: 1px solid #3d3f41;
 }
+.post-categories,
 .post-tags {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 10px;
+  margin-bottom: 20px;
 }
-.post-tags .tag {
+.post-categories:last-child,
+.post-tags:last-child {
+  margin-bottom: 0;
+}
+.meta-label {
+  font-size: 13px;
+  color: #6e6e6e;
+}
+.category,
+.tag {
   font-size: 13px;
   color: #908d8d;
   background: #232628;
@@ -810,11 +822,12 @@ th {
   border-radius: 4px;
   transition: color 0.15s ease, background 0.15s ease;
 }
-.post-tags .tag:hover {
+.category:hover,
+.tag:hover {
   color: #d480aa;
   background: #2e3134;
 }
-.post-tags .tag::before {
+.tag::before {
   content: "#";
   margin-right: 2px;
 }
@@ -1068,6 +1081,66 @@ th {
   color: #c9cacc;
 }
 .category-post-item .post-link:hover {
+  color: #d480aa;
+}
+.tags-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.tags-page .page-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+.tags-posts {
+  margin-top: 40px;
+}
+.tag-section {
+  margin-bottom: 40px;
+}
+.tag-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2bbc8a;
+  margin-bottom: 20px;
+}
+.tag-name a {
+  color: #2bbc8a;
+}
+.tag-name a:hover {
+  color: #d480aa;
+}
+.tag-name .count {
+  font-size: 13px;
+  font-weight: normal;
+  color: #908d8d;
+  margin-left: 10px;
+}
+.tag-post-list {
+  list-style: none;
+}
+.tag-post-item {
+  display: flex;
+  align-items: baseline;
+  padding: 10px 0;
+  gap: 20px;
+  border-bottom: 1px dashed #313234;
+}
+.tag-post-item:last-child {
+  border-bottom: none;
+}
+.tag-post-item .post-date {
+  width: 90px;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-family: "SF Mono", "Fira Code", "Monaco", "Menlo", "Consolas", monospace;
+  color: #908d8d;
+}
+.tag-post-item .post-link {
+  flex: 1;
+  color: #c9cacc;
+}
+.tag-post-item .post-link:hover {
   color: #d480aa;
 }
 .page {

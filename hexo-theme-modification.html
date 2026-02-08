@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>记一次Hexo主题修改 | Swing&#39;Blog 浮生若梦</title>
+
+
+<meta name="description" content="因为前两天重新安装了电脑系统，又因为之前博客是放在C盘的，所以我得重新安装Hexo，然而这一次用**SPFK**这个主题出了点小问题">
+
+
+<meta name="author" content="Swing">
+
+
+
+<!-- Canonical -->
+<link rel="canonical" href="/hexo-theme-modification.html">
+
+<!-- Favicon -->
+<link rel="icon" href="/images/favicon.ico">
+
+<!-- RSS -->
+
+<link rel="alternate" type="application/rss+xml" title="Swing&#39;Blog 浮生若梦" href="/atom.xml">
+
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次Hexo主题修改">
+<meta property="og:url" content="/hexo-theme-modification.html">
+<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
+
+<meta property="og:description" content="因为前两天重新安装了电脑系统，又因为之前博客是放在C盘的，所以我得重新安装Hexo，然而这一次用**SPFK**这个主题出了点小问题">
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="记一次Hexo主题修改">
+
+<meta name="twitter:description" content="因为前两天重新安装了电脑系统，又因为之前博客是放在C盘的，所以我得重新安装Hexo，然而这一次用**SPFK**这个主题出了点小问题">
+
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#1d1f21">
+<meta name="msapplication-TileColor" content="#1d1f21">
+
+<!-- Stylesheets -->
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Custom Layout Variables -->
+
+<style>
+:root {
+  --page-width: 60rem;
+  --content-width: 1200px;
+  --mobile-padding: 12px;
+}
+</style>
+
+<!-- Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-133464311-1');
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="theme-dark">
+  <div class="container">
+    <header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      
+        <a href="/" class="logo">
+          <img src="/images/logo.png"
+               width="50"
+               height="50"
+               alt="Swing&#39;Blog 浮生若梦">
+        </a>
+      
+      <a href="/" class="site-title">
+        Swing&#39;Blog 浮生若梦
+      </a>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        
+          
+          
+            
+            <li class="nav-item">
+              <a href="/"
+                 class="nav-link"
+                 >
+                Home
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/about/"
+                 class="nav-link"
+                 >
+                About
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/archives/"
+                 class="nav-link"
+                 >
+                Articles
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/atom.xml"
+                 class="nav-link"
+                 >
+                RSS
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/categories/"
+                 class="nav-link"
+                 >
+                Categories
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/link"
+                 class="nav-link"
+                 >
+                Links
+              </a>
+            </li>
+            
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main class="main">
+      
+        <div class="page-layout">
+          <article class="post">
+  <header class="post-header">
+  <h1 class="post-title">记一次Hexo主题修改</h1>
+
+  <div class="post-meta">
+    <span class="meta-item">
+      <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+      <time datetime="2016-07-29">
+        2016-07-29
+      </time>
+    </span>
+
+    
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12z"/></svg>
+        <time datetime="2026-02-07">
+          Updated on 2026-02-07
+        </time>
+      </span>
+    
+
+    
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+        
+          <a href="/categories/Blog/">Blog</a>
+        
+      </span>
+    
+  </div>
+</header>
+
+
+  
+    <nav class="toc">
+  <h3 class="toc-title">Table of Contents</h3>
+  <div class="toc-list">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-text">过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%90%8E-%E5%93%97%E5%95%A6%E5%95%A6%E5%A5%BD%E5%95%A6"><span class="toc-text">最后 哗啦啦好啦</span></a></li></ol>
+  </div>
+</nav>
+
+  
+
+  <div class="post-content">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>遇到了一个炒鸡难看的问题，对只是难看~</p>
+<p><a href="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-theme1.png" class="gallery-item"><img src="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-theme1.png"></a></p>
+<p>像这样~<br>还有这样</p>
+<p><a href="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-theme2.png" class="gallery-item"><img src="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-theme2.png"></a></p>
+<p>是不是特别丑  因为正常是只有外面那个滚轮的 那怎么解决呢 ~   我请教了一下一个朋友就带我用<code>F12开发者工具</code>调试了一波~   </p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>检查了一下 发现是<code>highlight </code>CSS中<code>Pre</code>的问题</p>
+<p><a href="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-theme3.png" class="gallery-item"><img src="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-theme3.png"></a></p>
+<p>如图当把这个去掉之后  滚轮就没了<br><a href="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-3.png" class="gallery-item"><img src="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-3.png"></a>解决办法 </p>
+<p>我有两个解决办法 暂时不知道有没有其他BUG  反正能解决这个问题就够了<br>首先 打开</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\themes\spfk\source\css\_partial</span><br></pre></td></tr></table></figure>
+<p>路径下的这个文件   <code>highlight.styl</code></p>
+<ol>
+<li>方法一<br>应该是210 +左右的这个代码去掉 (或者你改大点) 这个参数限制了高度  所以造成了代码内还有一层上下都滚轮<br><a href="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-6.png" class="gallery-item"><img src="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-6.png"></a></li>
+<li>方法二<br>这方法比较粗暴 不建议<br>我将pre 的<code>padding:0</code>都删了 如图<br><a href="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-7.png" class="gallery-item"><img src="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-7.png"></a><h1 id="最后-哗啦啦好啦"><a href="#最后-哗啦啦好啦" class="headerlink" title="最后 哗啦啦好啦"></a>最后 哗啦啦好啦</h1><a href="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-9.png" class="gallery-item"><img src="https://blog-1252049492.cos.ap-hongkong.myqcloud.com/img/change-hexo-9.png"></a></li>
+</ol>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+</div>
+
+
+  <footer class="post-footer">
+  
+    <div class="post-categories">
+      <span class="meta-label">Categories: </span>
+      
+        <a href="/categories/Blog/" class="category">Blog</a>
+      
+    </div>
+  
+  
+    <div class="post-tags">
+      <span class="meta-label">Tags: </span>
+      
+        <a href="/tags/hexo/" class="tag">hexo</a>
+      
+    </div>
+  
+</footer>
+
+
+  
+<nav class="post-nav">
+  
+    <div class="post-nav-item prev">
+      <span class="post-nav-label">&larr; Prev</span>
+      <a href="/penetration-testing.html" class="post-nav-title">
+        这是一波 ichunqiu在线挑战攻略 -(一)
+      </a>
+    </div>
+  
+
+  
+    <div class="post-nav-item next">
+      <span class="post-nav-label">Next &rarr;</span>
+      <a href="/ctf-misc-and-crypto-tools.html" class="post-nav-title">
+        工具以及脚本的整理
+      </a>
+    </div>
+  
+</nav>
+
+
+
+  
+    <section class="comments-section">
+  <h3 class="comments-title">Comments</h3>
+
+  
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://bestwing.me/hexo-theme-modification.html';
+        this.page.identifier = 'hexo-theme-modification.html';
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://swing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+  
+
+  
+
+  
+</section>
+
+  
+</article>
+
+        </div>
+      
+    </main>
+
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      
+      <span class="copyright">
+        &copy; 2015 - 2026 Swing
+      </span>
+    </div>
+
+    <div class="footer-right">
+      
+        <span class="powered">
+          Powered by Hexo <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+        </span>
+      
+      
+        <span class="theme-info">
+          Theme <a href="https://github.com/WinMin/hexo-theme-Bloom" target="_blank" rel="noopener">Bloom</a>
+        </span>
+      
+    </div>
+  </div>
+
+  
+    <div class="footer-social">
+      
+        <a href="https://github.com/WinMin" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+      
+      
+        <a href="https://twitter.com/bestswngs" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      
+      
+      
+        <a href="mailto:ask@mail.exp.sh" class="social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      
+      
+        <a href="/atom.xml" class="social-link" aria-label="RSS">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+        </a>
+      
+    </div>
+  
+</footer>
+
+  </div>
+
+  <!-- Main Script -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Search -->
+
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- Baidu Analytics -->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</body>
+</html>

