@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://bestwing.me/pickling-the-mailbox-cve-2025-20393-cn.html</loc>
+    <lastmod>2026-02-12</lastmod>
+  </url>
+  <url>
     <loc>https://bestwing.me//Windows-Kernel-Exploit-Study-1.html</loc>
     <lastmod>2026-02-11</lastmod>
   </url>
@@ -383,10 +387,6 @@
   <url>
     <loc>https://bestwing.me//2016-Hackers-Western-Conference.html</loc>
     <lastmod>2026-02-11</lastmod>
-  </url>
-  <url>
-    <loc>https://bestwing.me/pickling-the-mailbox-cve-2025-20393-cn.html</loc>
-    <lastmod>2026-02-09</lastmod>
   </url>
   <url>
     <loc>https://bestwing.me/compile-attribute-properties.html</loc>
