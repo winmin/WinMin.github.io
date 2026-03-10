@@ -315,7 +315,8 @@
 </ul>
 </li>
 </ol>
-<p>因此正常的 adb shell 应该也是访问不到这个Binder的，接着分析 <code>MQSNative Binde</code></p>
+<p><del>因此正常的 adb shell 应该也是访问不到这个Binder的</del>，</p>
+<p>adb shell 是能访问到这个BInder的， 但是普通App权限应该不能（所以大概率不会被某XX利用） 接着分析 <code>MQSNative Binde</code></p>
 <p>在 <code>./system_ext_extracted/etc/init/hypsys_system.rc</code> init 的配置文件中可以看到,  MQSNative Binder 服务以 root 权限 运行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ cat ./system_ext_extracted/etc/init/hypsys_system.rc |grep hypsys_system -A 10</span><br><span class="line">service hypsys_system /system_ext/bin/hypsys_system</span><br><span class="line">    user root</span><br><span class="line">    group system root cache <span class="built_in">log</span> everybody product_hyperengine</span><br><span class="line">    disabled</span><br><span class="line">    socket mqsasd stream 0660 system system</span><br><span class="line">    socket mqsasd_pr dgram 0666 system system</span><br></pre></td></tr></table></figure>
 
