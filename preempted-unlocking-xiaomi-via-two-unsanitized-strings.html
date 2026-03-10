@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<title>Qualcomm ABL Cmdline Injection: When Fastboot OEM Commands Don&#39;t Filter Space | Swing&#39;Blog 浮生若梦</title>
+<title>Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi | Swing&#39;Blog 浮生若梦</title>
 
 
 <meta name="description" content="Know it then hack it!">
@@ -16,7 +16,7 @@
 
 
 <!-- Canonical -->
-<link rel="canonical" href="/preempted-xiaomi-abl-cmdline-injection.html">
+<link rel="canonical" href="/preempted-unlocking-xiaomi-via-two-unsanitized-strings.html">
 
 <!-- Favicon -->
 <link rel="icon" href="/images/favicon.ico">
@@ -28,8 +28,8 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="article">
-<meta property="og:title" content="Qualcomm ABL Cmdline Injection: When Fastboot OEM Commands Don&#39;t Filter Space">
-<meta property="og:url" content="/preempted-xiaomi-abl-cmdline-injection.html">
+<meta property="og:title" content="Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi">
+<meta property="og:url" content="/preempted-unlocking-xiaomi-via-two-unsanitized-strings.html">
 <meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
 
 <meta property="og:description" content="Know it then hack it!">
@@ -37,7 +37,7 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Qualcomm ABL Cmdline Injection: When Fastboot OEM Commands Don&#39;t Filter Space">
+<meta name="twitter:title" content="Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi">
 
 <meta name="twitter:description" content="Know it then hack it!">
 
@@ -184,7 +184,7 @@
         <div class="page-layout">
           <article class="post">
   <header class="post-header">
-  <h1 class="post-title">Qualcomm ABL Cmdline Injection: When Fastboot OEM Commands Don&#39;t Filter Space</h1>
+  <h1 class="post-title">Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi</h1>
 
   <div class="post-meta">
     <span class="meta-item">
@@ -219,14 +219,14 @@
     <nav class="toc">
   <h3 class="toc-title">Table of Contents</h3>
   <div class="toc-list">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E4%B8%80%E4%B8%AA%E7%A9%BA%E6%A0%BC%E5%88%B0-SELinux-Permissive-%E2%80%94%E2%80%94-%E5%B0%8F%E7%B1%B3%E4%B8%89%E5%85%AB%E8%A7%A3%E9%94%81%E8%8A%82%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="toc-text">从一个空格到 SELinux Permissive —— 小米三八解锁节漏洞分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-text">TL; DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fastboot-OEM-cmdline-%E6%B3%A8%E5%85%A5"><span class="toc-text">Fastboot OEM cmdline 注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#USB-gt-Fastboot-%E5%8D%8F%E8%AE%AE"><span class="toc-text">USB -&gt; Fastboot 协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CmdOemSetGpuPreemptionValue-%E6%89%A7%E8%A1%8C"><span class="toc-text">CmdOemSetGpuPreemptionValue 执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kernel-%E8%A7%A3%E6%9E%90-cmdline"><span class="toc-text">Kernel 解析 cmdline</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MIUI-MQSNative-Binder-Privilege-Escalation"><span class="toc-text">MIUI MQSNative Binder Privilege Escalation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MQSNative-Binder-%E6%B3%A8%E5%86%8C"><span class="toc-text">MQSNative Binder 注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#onTransact-%E5%88%86%E6%B4%BE"><span class="toc-text">onTransact 分派</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-link"><span class="toc-text">Reference link</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MQSNative-%E6%8F%90%E6%9D%83-ABL-Cmdline-%E6%B3%A8%E5%85%A5-%E2%80%94%E2%80%94-%E5%B0%8F%E7%B1%B3%E4%B8%89%E5%85%AB%E8%A7%A3%E9%94%81%E8%8A%82%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="toc-text">MQSNative 提权 + ABL Cmdline 注入 —— 小米三八解锁节漏洞分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TL-DR"><span class="toc-text">TL; DR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fastboot-OEM-cmdline-%E6%B3%A8%E5%85%A5"><span class="toc-text">Fastboot OEM cmdline 注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#USB-gt-Fastboot-%E5%8D%8F%E8%AE%AE"><span class="toc-text">USB -&gt; Fastboot 协议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CmdOemSetGpuPreemptionValue-%E6%89%A7%E8%A1%8C"><span class="toc-text">CmdOemSetGpuPreemptionValue 执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kernel-%E8%A7%A3%E6%9E%90-cmdline"><span class="toc-text">Kernel 解析 cmdline</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MIUI-MQSNative-Binder-Privilege-Escalation"><span class="toc-text">MIUI MQSNative Binder Privilege Escalation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MQSNative-Binder-%E6%B3%A8%E5%86%8C"><span class="toc-text">MQSNative Binder 注册</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#onTransact-%E5%88%86%E6%B4%BE"><span class="toc-text">onTransact 分派</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-link"><span class="toc-text">Reference link</span></a></li></ol>
   </div>
 </nav>
 
   
 
   <div class="post-content">
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h1 id="Preempted-Qualcomm-ABL-Kernel-Cmdline-Injection-via-Fastboot-OEM-Commands"><a href="#Preempted-Qualcomm-ABL-Kernel-Cmdline-Injection-via-Fastboot-OEM-Commands" class="headerlink" title="Preempted Qualcomm ABL Kernel Cmdline Injection via Fastboot OEM Commands"></a>Preempted Qualcomm ABL Kernel Cmdline Injection via Fastboot OEM Commands</h1><h2 id="从一个空格到-SELinux-Permissive-——-小米三八解锁节漏洞分析"><a href="#从一个空格到-SELinux-Permissive-——-小米三八解锁节漏洞分析" class="headerlink" title="从一个空格到 SELinux Permissive —— 小米三八解锁节漏洞分析"></a>从一个空格到 SELinux Permissive —— 小米三八解锁节漏洞分析</h2><h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL; DR"></a>TL; DR</h2><p>3月9号，也就是今天似乎已经热更新完了，我没有验证。为了避免白下，于是挑了一个看起来比较老的 ROM <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://bn.d.miui.com/OS3.0.9.0.WPAMIXM/nezha_global_images_OS3.0.9.0.WPAMIXM_20260210.0000.00_16.0_global_e160067725.tgz
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h1 id="Preempted-From-ADB-Service-Call-to-Bootloader-Unlock-on-Xiaomi"><a href="#Preempted-From-ADB-Service-Call-to-Bootloader-Unlock-on-Xiaomi" class="headerlink" title="Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi"></a>Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi</h1><h2 id="MQSNative-提权-ABL-Cmdline-注入-——-小米三八解锁节漏洞分析"><a href="#MQSNative-提权-ABL-Cmdline-注入-——-小米三八解锁节漏洞分析" class="headerlink" title="MQSNative 提权 + ABL Cmdline 注入 —— 小米三八解锁节漏洞分析"></a>MQSNative 提权 + ABL Cmdline 注入 —— 小米三八解锁节漏洞分析</h2><h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL; DR"></a>TL; DR</h2><p>3月9号，也就是今天似乎已经热更新完了，我没有验证。为了避免白下，于是挑了一个看起来比较老的 ROM <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://bn.d.miui.com/OS3.0.9.0.WPAMIXM/nezha_global_images_OS3.0.9.0.WPAMIXM_20260210.0000.00_16.0_global_e160067725.tgz
 ">[1]</span></a></sup> ，解包过程不赘述了。直接开始分析涉及到的其中两个漏洞</p>
 <ol>
 <li>Fastboot OEM Inject 可以注入cmdline 启动参数，将 sexlinux 设置为宽容模式</li>
@@ -402,12 +402,19 @@
   
 <nav class="post-nav">
   
+    <div class="post-nav-item prev">
+      <span class="post-nav-label">&larr; Prev</span>
+      <a href="/pickling-the-mailbox-cve-2025-20393-cn.html" class="post-nav-title">
+        Pickling the Mailbox: A Deep Dive into CVE-2025-20393
+      </a>
+    </div>
+  
 
   
     <div class="post-nav-item next">
       <span class="post-nav-label">Next &rarr;</span>
-      <a href="/pickling-the-mailbox-cve-2025-20393-cn.html" class="post-nav-title">
-        Pickling the Mailbox: A Deep Dive into CVE-2025-20393
+      <a href="/How-to-patch-a-linux-kernel-bug-zh.html" class="post-nav-title">
+        如何给 Linux 内核提交补丁：一次真实的踩坑记录
       </a>
     </div>
   
@@ -423,8 +430,8 @@
     <div id="disqus_thread"></div>
     <script>
       var disqus_config = function () {
-        this.page.url = 'https://bestwing.me/preempted-xiaomi-abl-cmdline-injection.html';
-        this.page.identifier = 'preempted-xiaomi-abl-cmdline-injection.html';
+        this.page.url = 'https://bestwing.me/preempted-unlocking-xiaomi-via-two-unsanitized-strings.html';
+        this.page.identifier = 'preempted-unlocking-xiaomi-via-two-unsanitized-strings.html';
       };
       (function() {
         var d = document, s = d.createElement('script');
