@@ -229,8 +229,8 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h1 id="Preempted-From-ADB-Service-Call-to-Bootloader-Unlock-on-Xiaomi"><a href="#Preempted-From-ADB-Service-Call-to-Bootloader-Unlock-on-Xiaomi" class="headerlink" title="Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi"></a>Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi</h1><h2 id="MQSNative-提权-ABL-Cmdline-注入-——-小米三八解锁节漏洞分析"><a href="#MQSNative-提权-ABL-Cmdline-注入-——-小米三八解锁节漏洞分析" class="headerlink" title="MQSNative 提权 + ABL Cmdline 注入 —— 小米三八解锁节漏洞分析"></a>MQSNative 提权 + ABL Cmdline 注入 —— 小米三八解锁节漏洞分析</h2><h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL; DR"></a>TL; DR</h2><p>3月9号，也就是今天似乎已经热更新完了，我没有验证。为了避免白下，于是挑了一个看起来比较老的 ROM <sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://bn.d.miui.com/OS3.0.9.0.WPAMIXM/nezha_global_images_OS3.0.9.0.WPAMIXM_20260210.0000.00_16.0_global_e160067725.tgz
 ">[1]</span></a></sup> ，解包过程不赘述了。直接开始分析涉及到的其中两个漏洞</p>
 <ol>
-<li>Fastboot OEM Inject 可以注入cmdline 启动参数，将 sexlinux 设置为宽容模式</li>
-<li>MIUI MQSNative Binder 提权漏洞，也是一个命令注入，可以通过adb获取高权限，前提 sexlinux 已经设置为宽容模式</li>
+<li>Fastboot OEM Inject 可以注入cmdline 启动参数，将 selinux 设置为宽容模式</li>
+<li>MIUI MQSNative Binder 提权漏洞，也是一个命令注入，可以通过adb获取高权限，前提 selinux 已经设置为宽容模式</li>
 </ol>
 <h2 id="Fastboot-OEM-cmdline-注入"><a href="#Fastboot-OEM-cmdline-注入" class="headerlink" title="Fastboot OEM cmdline 注入"></a>Fastboot OEM cmdline 注入</h2><p>这个漏洞是 ABL 的漏洞，二进制文件在 <code>nezha_global_images_OS3.0.9.0.WPAMIXM_16.0/images/abl.elf</code> </p>
 <p>通过 <code>binwalk</code> 层层解压，最后用 7z 解压一个 <code>decompressed.bin.7z</code> 得到一个 <code>LinuxLoader.efi</code> </p>
@@ -294,7 +294,7 @@
 <li><code>./system_ext_extracted/bin/hypsys_system</code></li>
 <li><code>./system_ext_extracted/lib64/miui.mqsas.native-cpp.so</code> </li>
 </ul>
-<p>另外 grep 到一个 <code>sexlinux</code> 的配置</p>
+<p>另外 grep 到一个 <code>selinux</code> 的配置</p>
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./system_ext_extracted/etc/selinux/system_ext_service_contexts:14:miui.mqsas.IMQSNative u:object_r:mqsasd_service:s0</span><br></pre></td></tr></table></figure>
 
 <p>进一步查找可以知道访问该服务的核心域 (Domains)有如下，</p>
@@ -381,7 +381,7 @@
   <footer class="post-footer">
   
     <div class="post-categories">
-      <span class="meta-label">分类: </span>
+      <span class="meta-label">Categories: </span>
       
         <a href="/categories/SecurityResearch/" class="category">SecurityResearch</a>
       
@@ -389,7 +389,7 @@
   
   
     <div class="post-tags">
-      <span class="meta-label">标签: </span>
+      <span class="meta-label">Tags: </span>
       
         <a href="/tags/security/" class="tag">security</a>
       
