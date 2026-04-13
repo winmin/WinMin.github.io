@@ -216,15 +216,16 @@
 
 <h2 id="个人信息"><a href="#个人信息" class="headerlink" title=" 个人信息"></a><a href="assets/info-circle-solid.svg" class="gallery-item"><img src="assets/info-circle-solid.svg" width="30px"></a> 个人信息</h2><ul>
 <li>男，1996 年出生</li>
-<li>求职意向：安全研究工程师</li>
+<li>求职意向：系统安全研究工程师 / AI Agent 运行时安全</li>
 <li>工作经验：7 年</li>
 <li>CTF 战队：FlappyPig / r3kapig</li>
 <li>出版物：《CTF特训营：技术详解、解题方法与竞赛技巧》作者之一 / 《硬件系统模糊测试技术解密与案例分析》译者之一</li>
+<li>研究方向：Linux 内核安全、eBPF 子系统审计、容器逃逸与运行时隔离、代码执行/沙箱安全</li>
 </ul>
 <h2 id="工作经历"><a href="#工作经历" class="headerlink" title=" 工作经历"></a><a href="assets/briefcase-solid.svg" class="gallery-item"><img src="assets/briefcase-solid.svg" width="30px"></a> 工作经历</h2><ul>
 <li><p><strong>STAR Labs SG，安全研究员，2025.11~至今</strong></p>
 <ul>
-<li>专注于漏洞挖掘与利用研究</li>
+<li>专注于 Linux 内核与运行时安全方向的漏洞挖掘与利用研究</li>
 <li>Linux eBPF Audit Project：针对 Linux eBPF 子系统进行系统性安全审计与漏洞挖掘</li>
 </ul>
 </li>
@@ -236,6 +237,7 @@
 <li>跟进 1day 漏洞分析与复现，支撑公司应急响应工作</li>
 <li>参与安服项目，包括代码审计、客户端安全测试、IoT 设备渗透测试等</li>
 <li>跟进安全前沿技术，开展 Fuzzing、内核安全等创新性研究项目</li>
+<li>持续跟踪 Docker/runc 容器逃逸、Linux 本地提权、代码执行与沙箱安全等运行时攻击面，并结合公开文章与赛事进行技术输出</li>
 <li>参与漏洞赛事（天府杯、天网杯、GeekPwn 等）的漏洞挖掘与利用编写</li>
 <li>参与筹备 CTF 赛事出题工作，包括 RWCTF 第三至六届及公司内部赛事</li>
 </ul>
@@ -246,7 +248,13 @@
 </ul>
 </li>
 </ul>
-<h2 id="项目经历"><a href="#项目经历" class="headerlink" title=" 项目经历"></a><a href="assets/project-diagram-solid.svg" class="gallery-item"><img src="assets/project-diagram-solid.svg" width="30px"></a> 项目经历</h2><h3 id="漏洞挖掘"><a href="#漏洞挖掘" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h3><p>累计在 Cisco、ASUS、HUAWEI、QNAP、Netgear、D-Link、ZYXEL、DrayTek、小米、Synology、OPPO 等 10+ 厂商的 IoT 设备及安全产品中发现漏洞，同时在 Linux Kernel、FreeBSD 等系统层面也有漏洞产出，获得 50+ CVE/CNVD 编号。</p>
+<h2 id="项目经历"><a href="#项目经历" class="headerlink" title=" 项目经历"></a><a href="assets/project-diagram-solid.svg" class="gallery-item"><img src="assets/project-diagram-solid.svg" width="30px"></a> 项目经历</h2><h3 id="与-JD-相关的研究经历"><a href="#与-JD-相关的研究经历" class="headerlink" title="与 JD 相关的研究经历"></a>与 JD 相关的研究经历</h3><ul>
+<li><strong>Linux eBPF 审计：</strong> 在 STAR Labs 参与 Linux eBPF Audit Project，围绕 eBPF 子系统开展系统性安全审计与漏洞挖掘，关注内核攻击面与特权边界问题</li>
+<li><strong>容器与运行时隔离：</strong> 公开分析 CVE-2019-5736、CVE-2019-14271、CVE-2024-21626 等 Docker/runc 容器逃逸漏洞，覆盖 RunC、PID Namespace、chroot、fd 泄漏、cgroup、O_CLOEXEC、verifyCwd 等关键机制</li>
+<li><strong>沙箱与代码执行安全：</strong> 公开整理 Python 沙箱逃逸技术，长期关注代码执行、权限边界绕过、提权与沙箱安全问题</li>
+<li><strong>内核调试与漏洞分析：</strong> 可基于 GDB/QEMU/VMware 搭建 Linux 内核调试环境，用于 Root Cause 分析、漏洞复现与利用研究</li>
+</ul>
+<h3 id="漏洞挖掘"><a href="#漏洞挖掘" class="headerlink" title="漏洞挖掘"></a>漏洞挖掘</h3><p>累计在 Cisco、ASUS、HUAWEI、QNAP、Netgear、D-Link、ZYXEL、DrayTek、小米、Synology、OPPO 等 10+ 厂商的 IoT 设备及安全产品中发现漏洞，同时在 Linux Kernel、FreeBSD 等系统层面也有漏洞产出，获得 50+ CVE/CNVD 编号。</p>
 <p><strong>CVE 编号（部分）：</strong></p>
 <ul>
 <li><strong>Linux Kernel：</strong> CVE-2021-4001, CVE-2025-38477, CVE-2025-40083, CVE-2025-68325, CVE-2026-22977, CVE-2026-23276, CVE-2026-23277</li>
@@ -326,13 +334,12 @@
 </ul>
 <h3 id="CTF-出题"><a href="#CTF-出题" class="headerlink" title="CTF 出题"></a>CTF 出题</h3><p>RWCTF 第三届、第四届、第五届、第六届出题人</p>
 <h2 id="技能清单"><a href="#技能清单" class="headerlink" title=" 技能清单"></a><a href="assets/tools-solid.svg" class="gallery-item"><img src="assets/tools-solid.svg" width="30px"></a> 技能清单</h2><ul>
-<li>精通物联网设备固件逆向与漏洞挖掘，熟悉 x86/ARM/MIPS 等主流架构汇编指令集</li>
-<li>熟悉 Linux 及嵌入式系统下各类漏洞类型，能独立完成漏洞挖掘及利用开发工作</li>
-<li>能完成 Linux/macOS/Windows 多平台软件的逆向分析工作</li>
-<li>熟练使用 Python、C 语言进行安全工具开发与漏洞利用编写</li>
-<li>逆向/调试：IDA Pro、Ghidra、GDB；固件分析：Binwalk、QEMU；Fuzzing：AFL、syzkaller</li>
-<li>积极探索 AI 辅助安全研究工作流，使用 Claude Agent、IDA Headless MCP 等工具提升漏洞挖掘与逆向分析效率</li>
-<li>在先知社区、安全客等安全社区有多篇技术文章投稿</li>
+<li>精通物联网设备固件逆向与漏洞挖掘，熟悉 x86/ARM/MIPS 等主流架构汇编指令集，能完成 Linux/macOS/Windows 多平台软件的逆向分析工作</li>
+<li>熟悉 Linux 内核、系统调用、进程/文件/Namespace 等机制，具备 Linux Kernel 与 eBPF 子系统的漏洞分析、调试与审计经验</li>
+<li>熟悉容器安全与运行时隔离，公开分析多起 Docker/runc 容器逃逸漏洞，理解 Namespace、cgroup、chroot、fd 继承等关键机制</li>
+<li>熟练使用 Python、C 语言进行安全工具开发、PoC/Exploit 编写与自动化分析；固件分析与调试工具包括 Binwalk、QEMU、GDB、IDA Pro、Ghidra，Fuzzing 工具包括 AFL、syzkaller</li>
+<li>理解代码执行、沙箱逃逸、Prompt Injection 等典型攻击面，积极探索 AI 辅助安全研究工作流与 Agent / Tool Use 安全场景</li>
+<li>在个人博客、GitHub、先知社区、安全客等平台持续公开输出系统安全、容器逃逸与漏洞分析内容</li>
 </ul>
 <h2 id="教育经历"><a href="#教育经历" class="headerlink" title=" 教育经历"></a><a href="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2025-03-12-9fd44636044a485b424f8c0e1167e82c-8a8065.svg" class="gallery-item"><img src="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2025-03-12-9fd44636044a485b424f8c0e1167e82c-8a8065.svg" width="30px"></a> 教育经历</h2><p>2015.9 - 2019.7　　西安科技大学　　本科</p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
