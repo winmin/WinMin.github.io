@@ -1518,6 +1518,28 @@ article .content .caption {
 .lang-block.active {
   display: block;
 }
+.links-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+}
+.link-item a {
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid #666;
+  border-radius: 3px;
+  color: #c9cacc;
+  font-size: 0.9em;
+  text-decoration: none;
+  background: none;
+  transition: all 0.2s ease;
+}
+.link-item a:hover {
+  color: #1d1f21;
+  background: #c9cacc;
+  border-color: #c9cacc;
+}
 .highlight {
   background: #474949;
   color: #d1d9e1;
