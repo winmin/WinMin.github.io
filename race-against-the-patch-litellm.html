@@ -103,7 +103,7 @@
       <div><span>PUBLISHED</span><time datetime="2026-05-28T16:00:00.000Z">2026.05.29</time></div>
       
       <div><span>READ_TIME</span><strong>4 MIN</strong></div>
-      <div><span>PAYLOAD</span><strong>1,828 CHAR</strong></div>
+      <div><span>PAYLOAD</span><strong>1,860 CHAR</strong></div>
       
         <div><span>CHANNEL</span><a href="/categories/VulnerabilityAnalysis/">VulnerabilityAnalysis</a></div>
       
@@ -160,7 +160,7 @@
 <p>文章重点不仅是单个漏洞，也包括补丁变化如何影响攻击链，以及研究人员如何根据新的代码路径持续调整利用策略。</p>
 <h2 id="阅读原文"><a href="#阅读原文" class="headerlink" title="阅读原文"></a>阅读原文</h2><p>完整的技术分析、代码片段、利用过程与补丁时间线请阅读 STAR Labs 原文：</p>
 <p><a href="https://starlabs.sg/blog/2026/05-race-against-the-patch-the-evolution-of-four-exploit-chains-in-litellm/">Race Against The Patch: The Evolution of Four Exploit Chains in LiteLLM ↗</a></p>
-<h2 id="2026-07-28-更新"><a href="#2026-07-28-更新" class="headerlink" title="2026/07/28 更新"></a>2026/07/28 更新</h2><p>今天整理笔记的时候发现之前的 4 chain 文章遗漏了一个攻击点，场景是是不需要任何user key， 但是需要服务器上有可利用的 MCP server。</p>
+<h2 id="2026-07-28-更新"><a href="#2026-07-28-更新" class="headerlink" title="2026/07/28 更新"></a>2026/07/28 更新</h2><p>今天整理笔记的时候发现之前的 4 chain 文章遗漏了之前挖到的一个漏洞，场景是是不需要任何user key， 但是需要服务器上有可利用的 MCP server。（ 因为p2o 不允许提前安装 MCP 这个方案后面就被放弃了）</p>
 <p>这里简单补充一下</p>
 <h4 id="Bug-1：一个出现在查询串里的-well-known"><a href="#Bug-1：一个出现在查询串里的-well-known" class="headerlink" title="Bug 1：一个出现在查询串里的 .well-known"></a>Bug 1：一个出现在查询串里的 <code>.well-known</code></h4><p>LiteLLM 需要公开 OAuth 元数据发现端点，因此旧代码加入了下面的放行条件：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">&quot;.well-known&quot;</span> <span class="keyword">in</span> <span class="built_in">str</span>(request.url):</span><br><span class="line">    validated_user_api_key_auth = UserAPIKeyAuth()</span><br></pre></td></tr></table></figure>
