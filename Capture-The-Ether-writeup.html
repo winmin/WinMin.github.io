@@ -1,188 +1,134 @@
-<!DOCTYPE html>
-<html lang=EN>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Capture The Ether Writeup">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<meta name="color-scheme" content="dark">
+<title>Capture The Ether Writeup // Swing&#39;Blog 浮生若梦</title>
+<meta name="description" content="Know it then hack it!">
+<meta name="author" content="Swing">
+<link rel="canonical" href="https://bestwing.me/Capture-The-Ether-writeup.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Capture The Ether Writeup // Swing&#39;Blog 浮生若梦">
+<meta property="og:description" content="Know it then hack it!">
 <meta property="og:url" content="https://bestwing.me/Capture-The-Ether-writeup.html">
 <meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
-<meta property="og:locale">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-04-19-d8ab7eb4741c491ecc1eff595c57683a-f7da6b.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-04-19-550eea2a0bea461439192544c34f6771-5ebe66.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-04-19-f4a985f504ea256b93d83a333dd60b8f-4b452a.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-04-19-8793ce48ab30802bd5763d0217f0041d-4251d5.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-04-19-21fdb0e204edd8a0f6cd58478bfe25c0-66ee4f.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-04-19-62eea18b0be641282b2ff4dec27694cd-22b2a1.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-04-19-67a2ecc8954a228373b96eb021fe2d8a-8abc44.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-02-e6f7fb79074a3e22eb0581838edd3f66-efab90.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-03-56e0b6532a1b9189dca92827361b4251-6a4de7.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-03-d1dcf575fc9218b0e5e3c8830d9072f1-2cf778.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-04-6f26b26a462d04d333633fe40ca5cc26-aaa1a0.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-04-4b66ff4cca9faf1eecd042aeeb118525-f7a3f0.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-04-bb55f7096b52bade3eecbfba467eb62d-51245c.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-04-bf6122e01097faa518bcbc945c25ace2-3c0763.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-04-aedbc263cf9014b44bfa488ac580a3a2-7b7f6a.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-04-ffbd247b5cf6e84c2bda2bc3403eecd9-6e886e.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-05-07-546f74bc3fe57882d2e2fc01a33c86dc-ee8770.png">
-<meta property="article:published_time" content="2022-05-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-02-11T09:23:12.182Z">
-<meta property="article:author" content="Swing">
-<meta property="article:tag" content="ethereum">
-<meta property="article:tag" content="contracts">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/2022-04-19-d8ab7eb4741c491ecc1eff595c57683a-f7da6b.png">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>Capture The Ether Writeup</title>
-    <!-- styles -->
-    
+<meta name="twitter:title" content="Capture The Ether Writeup // Swing&#39;Blog 浮生若梦">
+<meta name="twitter:description" content="Know it then hack it!">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml">
+
+<script>document.documentElement.className += ' has-js';</script>
+
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
 
-    
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml" />
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/PSV-2020-0437-Buffer-Overflow-on-Some-Netgear-outers.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/pwning-cisco-rv340-cve-analysis.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bestwing.me/Capture-The-Ether-writeup.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bestwing.me/Capture-The-Ether-writeup.html&text=Capture The Ether Writeup"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bestwing.me/Capture-The-Ether-writeup.html&is_video=false&description=Capture The Ether Writeup"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Capture The Ether Writeup&body=Check out this article: https://bestwing.me/Capture-The-Ether-writeup.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bestwing.me/Capture-The-Ether-writeup.html&name=Capture The Ether Writeup&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://bestwing.me/Capture-The-Ether-writeup.html&t=Capture The Ether Writeup"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E5%8F%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">1.</span> <span class="toc-text">平台地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Warmup"><span class="toc-number">2.</span> <span class="toc-text">Warmup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Deploy-a-contract"><span class="toc-number">2.1.</span> <span class="toc-text">1. Deploy a contract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-callme"><span class="toc-number">2.2.</span> <span class="toc-text">2. callme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Choose-a-nickname"><span class="toc-number">2.3.</span> <span class="toc-text">3. Choose a nickname</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lotteries"><span class="toc-number">3.</span> <span class="toc-text">Lotteries</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Guesst-the-number"><span class="toc-number">3.1.</span> <span class="toc-text">1. Guesst the number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Guess-the-secret-number"><span class="toc-number">3.2.</span> <span class="toc-text">2.  Guess the secret number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Guess-the-random-number"><span class="toc-number">3.3.</span> <span class="toc-text">3.   Guess the random number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Guess-the-new-number"><span class="toc-number">3.4.</span> <span class="toc-text">4. Guess the new number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Predict-the-future"><span class="toc-number">3.5.</span> <span class="toc-text">5.  Predict the future</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Predict-the-block-hash"><span class="toc-number">3.6.</span> <span class="toc-text">6.   Predict the block hash</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math"><span class="toc-number">4.</span> <span class="toc-text">Math</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Token-sale"><span class="toc-number">4.1.</span> <span class="toc-text">1. Token sale</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Token-whale"><span class="toc-number">4.2.</span> <span class="toc-text">2. Token whale</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Retirement-fund"><span class="toc-number">4.3.</span> <span class="toc-text">3. Retirement fund</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Mapping"><span class="toc-number">4.4.</span> <span class="toc-text">4. Mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Donation"><span class="toc-number">4.5.</span> <span class="toc-text">5. Donation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Fifty-years"><span class="toc-number">4.6.</span> <span class="toc-text">6. Fifty years</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Account"><span class="toc-number">5.</span> <span class="toc-text">Account</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Fuzzy-identity"><span class="toc-number">5.1.</span> <span class="toc-text">1. Fuzzy identity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Public-Key"><span class="toc-number">5.2.</span> <span class="toc-text">2. Public Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Account-Takeover"><span class="toc-number">5.3.</span> <span class="toc-text">3. Account Takeover</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Miscellaneous"><span class="toc-number">6.</span> <span class="toc-text">Miscellaneous</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Assume-ownership"><span class="toc-number">6.1.</span> <span class="toc-text">1. Assume ownership</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Token-bank"><span class="toc-number">6.2.</span> <span class="toc-text">2. Token bank</span></a></li></ol></li></ol>
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index py4 ">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        Capture The Ether Writeup
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Swing</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2022-05-06T16:00:00.000Z" itemprop="datePublished">2022-05-07</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/Writeup/">Writeup</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/contracts/" rel="tag">contracts</a>, <a class="tag-link-link" href="/tags/ethereum/" rel="tag">ethereum</a>
-    </div>
-
-
-    </div>
-  </header>
+  <meta name="generator" content="Hexo 5.4.2"></head>
   
+  <body id="top" class="page-type-post title-style-clean is-article">
+    <a class="skip-link" href="#main-content">SKIP_TO_CONTENT</a>
+    <div class="site-noise" aria-hidden="true"></div>
+    
+      <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+    
 
-  <div class="content" itemprop="articleBody">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>Capture the ether 是一个适合用来入门合约的 wargame 平台。我最近一直到五一花了点时间做了下一下。 另外这里感谢 @0x9k @pikachu @xhyumiracle @iczc 给我提供的帮助。</p>
+    <div class="site-frame">
+      <header class="site-header">
+  <div class="window-bar">
+    <div class="window-lights" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <a class="window-title" href="/" aria-label="Swing&#39;Blog 浮生若梦 — 首页">
+      <span class="window-title__system">SECURITY RESEARCH LOG</span>
+      <span class="window-title__divider">·</span>
+      <span class="window-title__name">Swing&#39;Blog 浮生若梦</span>
+    </a>
+    <div class="window-status">
+      <span class="status-led" aria-hidden="true"></span>
+      <span>BESTWING.ME</span>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <a class="site-mark" href="/">
+      <span class="site-mark__bracket">[</span><span>SWING</span><span class="site-mark__slash">/</span><span class="site-mark__bracket">]</span>
+    </a>
+
+    <button class="nav-toggle terminal-button" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle__label">MENU</span>
+      <span class="nav-toggle__glyph" aria-hidden="true">[+]</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
+      
+        <a href="/" data-nav-link><span class="nav-prompt">./</span>INDEX</a>
+      
+        <a href="/archives/" data-nav-link><span class="nav-prompt">./</span>ARCHIVE</a>
+      
+        <a href="/categories/" data-nav-link><span class="nav-prompt">./</span>CATEGORIES</a>
+      
+        <a href="/tags/" data-nav-link><span class="nav-prompt">./</span>TAGS</a>
+      
+        <a href="/about/" data-nav-link><span class="nav-prompt">./</span>ABOUT</a>
+      
+        <a href="/link/" data-nav-link><span class="nav-prompt">./</span>LINKS</a>
+      
+    </nav>
+
+    
+      <button class="search-trigger terminal-button" type="button" data-search-open aria-label="打开搜索">
+        <span class="search-trigger__key">⌘K</span>
+        <span>SEARCH</span>
+      </button>
+    
+  </div>
+</header>
+
+
+      <main id="main-content" class="site-main" tabindex="-1">
+        
+<article class="article-page">
+  <header class="article-header">
+    <div class="article-header__protocol">
+      <span>// RESEARCH_TRANSMISSION</span>
+      <span>ID: CAPTURE_THE_ETHER_WRITEUP</span>
+    </div>
+    <h1>Capture The Ether Writeup</h1>
+    
+    <div class="article-meta">
+      <div><span>PUBLISHED</span><time datetime="2022-05-06T16:00:00.000Z">2022.05.07</time></div>
+      
+      <div><span>READ_TIME</span><strong>97 MIN</strong></div>
+      <div><span>PAYLOAD</span><strong>48,384 CHAR</strong></div>
+      
+        <div><span>CHANNEL</span><a href="/categories/Writeup/">Writeup</a></div>
+      
+    </div>
+    
+      <div class="article-tags">
+        <span class="article-tags__label">// INDICATORS</span>
+        <a class="chip" href="/tags/ethereum/">ethereum</a><a class="chip" href="/tags/contracts/">contracts</a>
+      </div>
+    
+  </header>
+
+  <div class="article-layout">
+    
+      <aside class="article-sidebar">
+        <div class="toc-panel">
+          <p class="toc-panel__title"><span>//</span> CONTENT_MAP</p>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E5%8F%B0%E5%9C%B0%E5%9D%80"><span class="toc-text">平台地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Warmup"><span class="toc-text">Warmup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Deploy-a-contract"><span class="toc-text">1. Deploy a contract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-callme"><span class="toc-text">2. callme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Choose-a-nickname"><span class="toc-text">3. Choose a nickname</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lotteries"><span class="toc-text">Lotteries</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Guesst-the-number"><span class="toc-text">1. Guesst the number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Guess-the-secret-number"><span class="toc-text">2.  Guess the secret number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Guess-the-random-number"><span class="toc-text">3.   Guess the random number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Guess-the-new-number"><span class="toc-text">4. Guess the new number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Predict-the-future"><span class="toc-text">5.  Predict the future</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Predict-the-block-hash"><span class="toc-text">6.   Predict the block hash</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math"><span class="toc-text">Math</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Token-sale"><span class="toc-text">1. Token sale</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Token-whale"><span class="toc-text">2. Token whale</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Retirement-fund"><span class="toc-text">3. Retirement fund</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Mapping"><span class="toc-text">4. Mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Donation"><span class="toc-text">5. Donation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Fifty-years"><span class="toc-text">6. Fifty years</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Account"><span class="toc-text">Account</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Fuzzy-identity"><span class="toc-text">1. Fuzzy identity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Public-Key"><span class="toc-text">2. Public Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Account-Takeover"><span class="toc-text">3. Account Takeover</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Miscellaneous"><span class="toc-text">Miscellaneous</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Assume-ownership"><span class="toc-text">1. Assume ownership</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Token-bank"><span class="toc-text">2. Token bank</span></a></li></ol></li></ol>
+          <a class="toc-panel__top" href="#main-content">↑ RETURN_TO_HEADER</a>
+        </div>
+      </aside>
+    
+    <div class="article-content" data-article-content>
+      <div class="article-content__start"><span>BEGIN_PAYLOAD</span><span>20220507</span></div>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>Capture the ether 是一个适合用来入门合约的 wargame 平台。我最近一直到五一花了点时间做了下一下。 另外这里感谢 @0x9k @pikachu @xhyumiracle @iczc 给我提供的帮助。</p>
 <h2 id="平台地址"><a href="#平台地址" class="headerlink" title="平台地址"></a>平台地址</h2><p><a href="https://capturetheether.com/challenges/">Capture the Ether - Challenges</a></p>
 <h2 id="Warmup"><a href="#Warmup" class="headerlink" title="Warmup"></a>Warmup</h2><h3 id="1-Deploy-a-contract"><a href="#1-Deploy-a-contract" class="headerlink" title="1. Deploy a contract"></a>1. Deploy a contract</h3><p><strong>题目描述：</strong></p>
 <p>To complete this challenge, you need to:</p>
@@ -589,190 +535,134 @@
         };
         lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
         }</script>
+      <div class="article-content__end"><span>EOF</span><span>CHECKSUM_OK</span></div>
+    </div>
   </div>
+
+  <nav class="article-neighbors" aria-label="Adjacent posts">
+    
+      <a href="/PSV-2020-0437-Buffer-Overflow-on-Some-Netgear-outers.html" rel="prev">
+        <span>← PREVIOUS_LOG</span>
+        <strong>PSV-2020-0437 Buffer Overflow on Some Netgear Routers</strong>
+      </a>
+    
+    
+      <a href="/pwning-cisco-rv340-cve-analysis.html" rel="next">
+        <span>NEXT_LOG →</span>
+        <strong>Pwning a Cisco RV340  漏洞分析（CVE-2022-20705 和 CVE-2022-20707</strong>
+      </a>
+    
+  </nav>
+
+  
+    <section class="comments-section" aria-labelledby="comments-title">
+      <p class="section-kicker">// EXTERNAL_CHANNEL</p>
+      <h2 id="comments-title">讨论与补充</h2>
+      <div id="disqus_thread"></div>
+      <script>
+        (function () {
+          if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) {
+            document.getElementById('disqus_thread').textContent = 'LOCAL_PREVIEW // COMMENTS_NOT_LOADED';
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          s.src = 'https://swing.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', String(+new Date()));
+          (d.head || d.body).appendChild(s);
+        }());
+      </script>
+      <noscript>请启用 JavaScript 查看评论。</noscript>
+    </section>
+  
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>Please enable JavaScript to view the comments.</noscript>
-        </div>
+      </main>
+      
+<footer class="site-footer">
+  <section class="footer-signal" aria-labelledby="footer-signal-title">
+    <div class="footer-signal__copy">
+      <p class="terminal-command"><span class="prompt">$</span> contact --channel secure</p>
+      <h2 id="footer-signal-title">关于漏洞、系统与攻防，欢迎交流。</h2>
+      <p>// RESPONSE_TIME: WHEN_THE_SIGNAL_IS_CLEAR</p>
     </div>
+    <a class="footer-email" href="mailto:ask@mail.exp.sh">
+      <span>ask@mail.exp.sh</span><span aria-hidden="true">↗</span>
+    </a>
+  </section>
 
-
-
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
+  <div class="footer-meta">
+    <p>© 2016—2026 Swing · BUILT_WITH_HEXO · SIGNAL_THEME</p>
+    <div class="footer-links">
+      
+        <a href="https://github.com/WinMin" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      
+        <a href="https://twitter.com/bestswngs" target="_blank" rel="noopener noreferrer">X</a>
+      
+        <a href="mailto:ask@mail.exp.sh">MAIL</a>
+      
+      <a href="/atom.xml">RSS</a>
     </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B9%B3%E5%8F%B0%E5%9C%B0%E5%9D%80"><span class="toc-number">1.</span> <span class="toc-text">平台地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Warmup"><span class="toc-number">2.</span> <span class="toc-text">Warmup</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Deploy-a-contract"><span class="toc-number">2.1.</span> <span class="toc-text">1. Deploy a contract</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-callme"><span class="toc-number">2.2.</span> <span class="toc-text">2. callme</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Choose-a-nickname"><span class="toc-number">2.3.</span> <span class="toc-text">3. Choose a nickname</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lotteries"><span class="toc-number">3.</span> <span class="toc-text">Lotteries</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Guesst-the-number"><span class="toc-number">3.1.</span> <span class="toc-text">1. Guesst the number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Guess-the-secret-number"><span class="toc-number">3.2.</span> <span class="toc-text">2.  Guess the secret number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Guess-the-random-number"><span class="toc-number">3.3.</span> <span class="toc-text">3.   Guess the random number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Guess-the-new-number"><span class="toc-number">3.4.</span> <span class="toc-text">4. Guess the new number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Predict-the-future"><span class="toc-number">3.5.</span> <span class="toc-text">5.  Predict the future</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Predict-the-block-hash"><span class="toc-number">3.6.</span> <span class="toc-text">6.   Predict the block hash</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Math"><span class="toc-number">4.</span> <span class="toc-text">Math</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Token-sale"><span class="toc-number">4.1.</span> <span class="toc-text">1. Token sale</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Token-whale"><span class="toc-number">4.2.</span> <span class="toc-text">2. Token whale</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Retirement-fund"><span class="toc-number">4.3.</span> <span class="toc-text">3. Retirement fund</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Mapping"><span class="toc-number">4.4.</span> <span class="toc-text">4. Mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Donation"><span class="toc-number">4.5.</span> <span class="toc-text">5. Donation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Fifty-years"><span class="toc-number">4.6.</span> <span class="toc-text">6. Fifty years</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Account"><span class="toc-number">5.</span> <span class="toc-text">Account</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Fuzzy-identity"><span class="toc-number">5.1.</span> <span class="toc-text">1. Fuzzy identity</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Public-Key"><span class="toc-number">5.2.</span> <span class="toc-text">2. Public Key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Account-Takeover"><span class="toc-number">5.3.</span> <span class="toc-text">3. Account Takeover</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Miscellaneous"><span class="toc-number">6.</span> <span class="toc-text">Miscellaneous</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Assume-ownership"><span class="toc-number">6.1.</span> <span class="toc-text">1. Assume ownership</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Token-bank"><span class="toc-number">6.2.</span> <span class="toc-text">2. Token bank</span></a></li></ol></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bestwing.me/Capture-The-Ether-writeup.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bestwing.me/Capture-The-Ether-writeup.html&text=Capture The Ether Writeup"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bestwing.me/Capture-The-Ether-writeup.html&is_video=false&description=Capture The Ether Writeup"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Capture The Ether Writeup&body=Check out this article: https://bestwing.me/Capture-The-Ether-writeup.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bestwing.me/Capture-The-Ether-writeup.html&title=Capture The Ether Writeup"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bestwing.me/Capture-The-Ether-writeup.html&name=Capture The Ether Writeup&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://bestwing.me/Capture-The-Ether-writeup.html&t=Capture The Ether Writeup"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2026
-    Swing
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
-    </nav>
+    <a class="back-to-top" href="#top" aria-label="回到顶部">↑ TOP</a>
   </div>
 </footer>
 
     </div>
-    <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-<!-- clipboard -->
-
-  
-<script src="/lib/clipboard/clipboard.min.js"></script>
-
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
-      e.clearSelection();
-    })
-  })
-  </script>
+    
+      <section id="search-panel" class="search-panel" data-search-panel hidden aria-hidden="true">
+  <button class="search-panel__backdrop" type="button" data-search-close tabindex="-1" aria-label="关闭搜索"></button>
+  <div class="search-terminal" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title">
+    <header class="search-terminal__bar">
+      <div class="window-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="search-dialog-title">SEARCH_PROTOCOL // LOCAL_INDEX</p>
+      <button type="button" data-search-close aria-label="关闭搜索">[ESC]</button>
+    </header>
+    <div class="search-terminal__body">
+      <label class="search-label" for="search-input"><span class="prompt">$</span> query --all-posts</label>
+      <div class="search-input-row">
+        <span aria-hidden="true">&gt;</span>
+        <input id="search-input" data-search-input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="输入标题、标签或关键词…" aria-describedby="search-status">
+        <span class="search-caret" aria-hidden="true"></span>
+      </div>
+      <p id="search-status" class="search-status" data-search-status aria-live="polite">TYPE_TO_SCAN_THE_ARCHIVE</p>
+      <div id="search-results" class="search-results" data-search-results></div>
+    </div>
+  </div>
+</section>
 
 
+    
+
+    
 <script src="/js/main.js"></script>
 
-<!-- lang switch -->
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-133464311-1');
-    </script>
-
-<!-- Baidu Analytics -->
-
-  <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-
-<!-- Umami Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'swing';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
+    
+<script>
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-133464311-1';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'UA-133464311-1');
+  }());
+</script>
 
 
-</body>
+<script>
+  window._hmt = window._hmt || [];
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(hm, first);
+  }());
+</script>
+
+
+  </body>
 </html>

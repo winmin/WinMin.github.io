@@ -1,229 +1,225 @@
-<!DOCTYPE html>
-<html lang=EN>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Know it then hack it!">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<meta name="color-scheme" content="dark">
+<title>Swing&#39;Blog 浮生若梦</title>
+<meta name="description" content="Know it then hack it!">
+<meta name="author" content="Swing">
+<link rel="canonical" href="https://bestwing.me/tags/pwntools/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Swing&#39;Blog 浮生若梦">
-<meta property="og:url" content="https://bestwing.me/tags/pwntools/index.html">
-<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
 <meta property="og:description" content="Know it then hack it!">
-<meta property="og:locale">
-<meta property="article:author" content="Swing">
+<meta property="og:url" content="https://bestwing.me/tags/pwntools/">
+<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
 <meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>Tag: pwntools</title>
-    <!-- styles -->
-    
+<meta name="twitter:title" content="Swing&#39;Blog 浮生若梦">
+<meta name="twitter:description" content="Know it then hack it!">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml">
+
+<script>document.documentElement.className += ' has-js';</script>
+
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
 
+  <meta name="generator" content="Hexo 5.4.2"></head>
+  
+  <body id="top" class="page-type-page title-style-clean">
+    <a class="skip-link" href="#main-content">SKIP_TO_CONTENT</a>
+    <div class="site-noise" aria-hidden="true"></div>
     
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml" />
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index py4 ">
-        
-          <header id="header">
-  <a href="/">
-  
-    
-      <div id="logo" style="background-image: url(/images/logo.png);"></div>
-    
-  
-    <div id="title">
-      <h1>Swing&#39;Blog 浮生若梦</h1>
+    <div class="site-frame">
+      <header class="site-header">
+  <div class="window-bar">
+    <div class="window-lights" aria-hidden="true">
+      <span></span><span></span><span></span>
     </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
-      </li>
-       
-        <li><a href="/">Home</a></li>
-       
-        <li><a href="/about/">About</a></li>
-       
-        <li><a href="/archives/">Articles</a></li>
-       
-        <li><a href="/search">Search</a></li>
-       
-        <li><a href="/atom.xml">RSS</a></li>
-       
-        <li><a href="/categories/">Categories</a></li>
-       
-        <li><a href="/link">Links</a></li>
+    <a class="window-title" href="/" aria-label="Swing&#39;Blog 浮生若梦 — 首页">
+      <span class="window-title__system">SECURITY RESEARCH LOG</span>
+      <span class="window-title__divider">·</span>
+      <span class="window-title__name">Swing&#39;Blog 浮生若梦</span>
+    </a>
+    <div class="window-status">
+      <span class="status-led" aria-hidden="true"></span>
+      <span>BESTWING.ME</span>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <a class="site-mark" href="/">
+      <span class="site-mark__bracket">[</span><span>SWING</span><span class="site-mark__slash">/</span><span class="site-mark__bracket">]</span>
+    </a>
+
+    <button class="nav-toggle terminal-button" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle__label">MENU</span>
+      <span class="nav-toggle__glyph" aria-hidden="true">[+]</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
       
-    </ul>
+        <a href="/" data-nav-link><span class="nav-prompt">./</span>INDEX</a>
+      
+        <a href="/archives/" data-nav-link><span class="nav-prompt">./</span>ARCHIVE</a>
+      
+        <a href="/categories/" data-nav-link><span class="nav-prompt">./</span>CATEGORIES</a>
+      
+        <a href="/tags/" data-nav-link><span class="nav-prompt">./</span>TAGS</a>
+      
+        <a href="/about/" data-nav-link><span class="nav-prompt">./</span>ABOUT</a>
+      
+        <a href="/link/" data-nav-link><span class="nav-prompt">./</span>LINKS</a>
+      
+    </nav>
+
+    
+      <button class="search-trigger terminal-button" type="button" data-search-open aria-label="打开搜索">
+        <span class="search-trigger__key">⌘K</span>
+        <span>SEARCH</span>
+      </button>
+    
   </div>
 </header>
 
+
+      <main id="main-content" class="site-main" tabindex="-1">
         
-        <div id="archive">
-  <ul class="post-list">
+<section class="taxonomy-page">
+  <header class="taxonomy-header">
+    <div>
+      <p class="section-kicker">// INDICATOR_STREAM</p>
+      <h1><span class="accent">+</span> pwntools<span class="cursor-block" aria-hidden="true"></span></h1>
+    </div>
+    <div class="taxonomy-header__count"><strong>1</strong><span>MATCHING_LOGS</span></div>
+  </header>
+  <div class="post-grid post-grid--taxonomy">
     
-    
-    
-    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_01</span>
+    <time datetime="2017-04-22T16:00:00.000Z">2017.04.23</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/after-upgrade-gdb-wont-attach-to-process.log</p>
+    <h3><a href="/after-upgrade-gdb-wont-attach-to-process.html">解决升级pwntools  gdb.attach不能弹起gdb</a></h3>
+    <p class="post-card__excerpt">RT</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Setup/" class="chip chip--accent">Setup</a>
       
       
-      
-      
-        <h2>2017</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2017-04-22T16:00:00.000Z" itemprop="datePublished">2017-04-23</time>
-        
+        <a href="/tags/pwntools/" class="chip">pwntools</a>
       
     </div>
+    <a class="post-card__read" href="/after-upgrade-gdb-wont-attach-to-process.html" aria-label="阅读：解决升级pwntools  gdb.attach不能弹起gdb">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
 
 
-        <span>
     
-        <a class="" href="/after-upgrade-gdb-wont-attach-to-process.html">解决升级pwntools  gdb.attach不能弹起gdb</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
+  </div>
   
 
-</div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2026
-    Swing
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
-    </nav>
+</section>
+
+
+      </main>
+      
+<footer class="site-footer">
+  <section class="footer-signal" aria-labelledby="footer-signal-title">
+    <div class="footer-signal__copy">
+      <p class="terminal-command"><span class="prompt">$</span> contact --channel secure</p>
+      <h2 id="footer-signal-title">关于漏洞、系统与攻防，欢迎交流。</h2>
+      <p>// RESPONSE_TIME: WHEN_THE_SIGNAL_IS_CLEAR</p>
+    </div>
+    <a class="footer-email" href="mailto:ask@mail.exp.sh">
+      <span>ask@mail.exp.sh</span><span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <div class="footer-meta">
+    <p>© 2016—2026 Swing · BUILT_WITH_HEXO · SIGNAL_THEME</p>
+    <div class="footer-links">
+      
+        <a href="https://github.com/WinMin" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      
+        <a href="https://twitter.com/bestswngs" target="_blank" rel="noopener noreferrer">X</a>
+      
+        <a href="mailto:ask@mail.exp.sh">MAIL</a>
+      
+      <a href="/atom.xml">RSS</a>
+    </div>
+    <a class="back-to-top" href="#top" aria-label="回到顶部">↑ TOP</a>
   </div>
 </footer>
 
     </div>
-    <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    
+      <section id="search-panel" class="search-panel" data-search-panel hidden aria-hidden="true">
+  <button class="search-panel__backdrop" type="button" data-search-close tabindex="-1" aria-label="关闭搜索"></button>
+  <div class="search-terminal" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title">
+    <header class="search-terminal__bar">
+      <div class="window-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="search-dialog-title">SEARCH_PROTOCOL // LOCAL_INDEX</p>
+      <button type="button" data-search-close aria-label="关闭搜索">[ESC]</button>
+    </header>
+    <div class="search-terminal__body">
+      <label class="search-label" for="search-input"><span class="prompt">$</span> query --all-posts</label>
+      <div class="search-input-row">
+        <span aria-hidden="true">&gt;</span>
+        <input id="search-input" data-search-input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="输入标题、标签或关键词…" aria-describedby="search-status">
+        <span class="search-caret" aria-hidden="true"></span>
+      </div>
+      <p id="search-status" class="search-status" data-search-status aria-live="polite">TYPE_TO_SCAN_THE_ARCHIVE</p>
+      <div id="search-results" class="search-results" data-search-results></div>
+    </div>
+  </div>
+</section>
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+    
 
-
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-<!-- clipboard -->
-
-
+    
 <script src="/js/main.js"></script>
 
-<!-- lang switch -->
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-133464311-1');
-    </script>
-
-<!-- Baidu Analytics -->
-
-  <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-
-<!-- Umami Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'swing';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
+    
+<script>
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-133464311-1';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'UA-133464311-1');
+  }());
+</script>
 
 
-</body>
+<script>
+  window._hmt = window._hmt || [];
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(hm, first);
+  }());
+</script>
+
+
+  </body>
 </html>

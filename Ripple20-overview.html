@@ -1,180 +1,134 @@
-<!DOCTYPE html>
-<html lang=EN>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="article">
-<meta property="og:title" content="关于 CVE-2020-11896和CVE-2020-11898 的学习笔记">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<meta name="color-scheme" content="dark">
+<title>关于 CVE-2020-11896和CVE-2020-11898 的学习笔记 // Swing&#39;Blog 浮生若梦</title>
+<meta name="description" content="Know it then hack it!">
+<meta name="author" content="Swing">
+<link rel="canonical" href="https://bestwing.me/Ripple20-overview.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 CVE-2020-11896和CVE-2020-11898 的学习笔记 // Swing&#39;Blog 浮生若梦">
+<meta property="og:description" content="Know it then hack it!">
 <meta property="og:url" content="https://bestwing.me/Ripple20-overview.html">
 <meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
-<meta property="og:locale">
-<meta property="og:image" content="https://lh4.googleusercontent.com/hELEgQOjkR6bZJsVt5BABrxheHT47maZrgrlrQQ_et0IyFebfxL1JhnUHtdEE-0TWN92dxV5i4AYbKqUru0fVz12lAyXlf0V-5fvHLepAWkJQSt8T-pO79BdoW6UZ821xxMUOpA">
-<meta property="og:image" content="https://lh5.googleusercontent.com/xX_OIWoDTddPFXkKXpjKXd5tROmOlFf7V-xipWAHODKoI1Ke_dk23YSytZYHTHZ50I67C4hCKqbHbQzaGBKXi5u24BTDy_ulnsLTbgHyKxXtKB0UfS8Yec-Jz01QcISgvik_I5Y">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/20200630192657.png">
-<meta property="og:image" content="https://lh3.googleusercontent.com/1AvUvDvuhRYsbIROhXpYD1sVtZA7VL1PV5I11ZHdDiIBT2-K2PpJfq4ousnjqaHhyr7DeSL-dhpQnA1b1SvBsYCjkeTTuCAhT-b5k65-71DlHm-RxGUSaoeeMnZXQdkbnk3mrU8">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/20200630213503.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/20200630215750.webp">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/20200702112743.png">
-<meta property="og:image" content="https://sw-blog.oss-cn-hongkong.aliyuncs.com/img/20200702214200.png">
-<meta property="article:published_time" content="2020-06-29T16:00:00.000Z">
-<meta property="article:modified_time" content="2026-02-11T09:23:12.200Z">
-<meta property="article:author" content="Swing">
-<meta property="article:tag" content="cve-2020-11896">
-<meta property="article:tag" content="cve-2020-11898">
-<meta property="article:tag" content="treck">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lh4.googleusercontent.com/hELEgQOjkR6bZJsVt5BABrxheHT47maZrgrlrQQ_et0IyFebfxL1JhnUHtdEE-0TWN92dxV5i4AYbKqUru0fVz12lAyXlf0V-5fvHLepAWkJQSt8T-pO79BdoW6UZ821xxMUOpA">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>关于 CVE-2020-11896和CVE-2020-11898 的学习笔记</title>
-    <!-- styles -->
-    
+<meta name="twitter:title" content="关于 CVE-2020-11896和CVE-2020-11898 的学习笔记 // Swing&#39;Blog 浮生若梦">
+<meta name="twitter:description" content="Know it then hack it!">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml">
+
+<script>document.documentElement.className += ' has-js';</script>
+
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
 
-    
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml" />
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/codeql.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="/CVE-2019-14271-docker-escape.html"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bestwing.me/Ripple20-overview.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bestwing.me/Ripple20-overview.html&text=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bestwing.me/Ripple20-overview.html&is_video=false&description=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记&body=Check out this article: https://bestwing.me/Ripple20-overview.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bestwing.me/Ripple20-overview.html&name=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://bestwing.me/Ripple20-overview.html&t=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2020-11896"><span class="toc-number">1.</span> <span class="toc-text">CVE-2020-11896</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv4-%E5%88%86%E7%89%87"><span class="toc-number">1.1.</span> <span class="toc-text">IPv4 分片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-%E9%9A%A7%E9%81%93"><span class="toc-number">1.2.</span> <span class="toc-text">IP 隧道</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IP-in-IP"><span class="toc-number">1.2.1.</span> <span class="toc-text">IP-in-IP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Treck-TCP-IP"><span class="toc-number">1.3.</span> <span class="toc-text">Treck TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.4.</span> <span class="toc-text">漏洞原因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8IP%E5%B1%82%E5%A4%84%E7%90%86%E5%88%86%E6%AE%B5%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="toc-number">1.4.1.</span> <span class="toc-text">在IP层处理分段数据包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8UDP%E5%AE%9E%E7%8E%B0%E5%A0%86%E6%BA%A2%E5%87%BA"><span class="toc-number">1.4.2.</span> <span class="toc-text">利用UDP实现堆溢出</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2020-11898"><span class="toc-number">2.</span> <span class="toc-text">CVE-2020-11898</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-treck-%E5%8D%8F%E8%AE%AE%E6%A0%88%E6%89%AB%E6%8F%8F"><span class="toc-number">3.</span> <span class="toc-text">关于 treck 协议栈扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">参考链接</span></a></li></ol>
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index py4 ">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        关于 CVE-2020-11896和CVE-2020-11898 的学习笔记
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Swing</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2020-06-29T16:00:00.000Z" itemprop="datePublished">2020-06-30</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/VulnerabilityAnalysis/">VulnerabilityAnalysis</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/cve-2020-11896/" rel="tag">cve-2020-11896</a>, <a class="tag-link-link" href="/tags/cve-2020-11898/" rel="tag">cve-2020-11898</a>, <a class="tag-link-link" href="/tags/treck/" rel="tag">treck</a>
-    </div>
-
-
-    </div>
-  </header>
+  <meta name="generator" content="Hexo 5.4.2"></head>
   
+  <body id="top" class="page-type-post title-style-clean is-article">
+    <a class="skip-link" href="#main-content">SKIP_TO_CONTENT</a>
+    <div class="site-noise" aria-hidden="true"></div>
+    
+      <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+    
 
-  <div class="content" itemprop="articleBody">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>学习了一下这 ripper 20的两个洞</p>
+    <div class="site-frame">
+      <header class="site-header">
+  <div class="window-bar">
+    <div class="window-lights" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <a class="window-title" href="/" aria-label="Swing&#39;Blog 浮生若梦 — 首页">
+      <span class="window-title__system">SECURITY RESEARCH LOG</span>
+      <span class="window-title__divider">·</span>
+      <span class="window-title__name">Swing&#39;Blog 浮生若梦</span>
+    </a>
+    <div class="window-status">
+      <span class="status-led" aria-hidden="true"></span>
+      <span>BESTWING.ME</span>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <a class="site-mark" href="/">
+      <span class="site-mark__bracket">[</span><span>SWING</span><span class="site-mark__slash">/</span><span class="site-mark__bracket">]</span>
+    </a>
+
+    <button class="nav-toggle terminal-button" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle__label">MENU</span>
+      <span class="nav-toggle__glyph" aria-hidden="true">[+]</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
+      
+        <a href="/" data-nav-link><span class="nav-prompt">./</span>INDEX</a>
+      
+        <a href="/archives/" data-nav-link><span class="nav-prompt">./</span>ARCHIVE</a>
+      
+        <a href="/categories/" data-nav-link><span class="nav-prompt">./</span>CATEGORIES</a>
+      
+        <a href="/tags/" data-nav-link><span class="nav-prompt">./</span>TAGS</a>
+      
+        <a href="/about/" data-nav-link><span class="nav-prompt">./</span>ABOUT</a>
+      
+        <a href="/link/" data-nav-link><span class="nav-prompt">./</span>LINKS</a>
+      
+    </nav>
+
+    
+      <button class="search-trigger terminal-button" type="button" data-search-open aria-label="打开搜索">
+        <span class="search-trigger__key">⌘K</span>
+        <span>SEARCH</span>
+      </button>
+    
+  </div>
+</header>
+
+
+      <main id="main-content" class="site-main" tabindex="-1">
+        
+<article class="article-page">
+  <header class="article-header">
+    <div class="article-header__protocol">
+      <span>// RESEARCH_TRANSMISSION</span>
+      <span>ID: RIPPLE20_OVERVIEW</span>
+    </div>
+    <h1>关于 CVE-2020-11896和CVE-2020-11898 的学习笔记</h1>
+    
+    <div class="article-meta">
+      <div><span>PUBLISHED</span><time datetime="2020-06-29T16:00:00.000Z">2020.06.30</time></div>
+      
+      <div><span>READ_TIME</span><strong>23 MIN</strong></div>
+      <div><span>PAYLOAD</span><strong>11,017 CHAR</strong></div>
+      
+        <div><span>CHANNEL</span><a href="/categories/VulnerabilityAnalysis/">VulnerabilityAnalysis</a></div>
+      
+    </div>
+    
+      <div class="article-tags">
+        <span class="article-tags__label">// INDICATORS</span>
+        <a class="chip" href="/tags/cve-2020-11896/">cve-2020-11896</a><a class="chip" href="/tags/cve-2020-11898/">cve-2020-11898</a><a class="chip" href="/tags/treck/">treck</a>
+      </div>
+    
+  </header>
+
+  <div class="article-layout">
+    
+      <aside class="article-sidebar">
+        <div class="toc-panel">
+          <p class="toc-panel__title"><span>//</span> CONTENT_MAP</p>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2020-11896"><span class="toc-text">CVE-2020-11896</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv4-%E5%88%86%E7%89%87"><span class="toc-text">IPv4 分片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-%E9%9A%A7%E9%81%93"><span class="toc-text">IP 隧道</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Treck-TCP-IP"><span class="toc-text">Treck TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E5%9B%A0"><span class="toc-text">漏洞原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2020-11898"><span class="toc-text">CVE-2020-11898</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-treck-%E5%8D%8F%E8%AE%AE%E6%A0%88%E6%89%AB%E6%8F%8F"><span class="toc-text">关于 treck 协议栈扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-text">参考链接</span></a></li></ol>
+          <a class="toc-panel__top" href="#main-content">↑ RETURN_TO_HEADER</a>
+        </div>
+      </aside>
+    
+    <div class="article-content" data-article-content>
+      <div class="article-content__start"><span>BEGIN_PAYLOAD</span><span>20200630</span></div>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>学习了一下这 ripper 20的两个洞</p>
 <h2 id="CVE-2020-11896"><a href="#CVE-2020-11896" class="headerlink" title="CVE-2020-11896"></a>CVE-2020-11896</h2><h3 id="IPv4-分片"><a href="#IPv4-分片" class="headerlink" title="IPv4 分片"></a>IPv4 分片</h3><p>IP分片使得即使在IP分组的大小大于网络的特定链路中允许的最大大小的情况下，也可以在网络中发送IP分组。IP分段是一种将分组分成几个较小部分(“片段”)以支持在这些链路和网络上传输的技术。该协议支持TH分组的分段然后重组。</p>
 <p>使用IP报头中的标识字段将不同的片段分组。该标识字段描述片段属于哪个分组。这允许不同的数据包在网络中分段传输，并在另一端正确重组。最后一个片段的MF(更多片段)位标志设置为0，而所有其他片段的MF=1。</p>
 <p>网络堆栈负责对大型数据包进行分段，并通过网络发送多个分段。请求发送大型数据报的UDP应用程序就是一个例子。网络堆栈还负责在接收到分段的数据包时对其进行重组。</p>
@@ -273,190 +227,134 @@
         };
         lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
         }</script>
+      <div class="article-content__end"><span>EOF</span><span>CHECKSUM_OK</span></div>
+    </div>
   </div>
+
+  <nav class="article-neighbors" aria-label="Adjacent posts">
+    
+      <a href="/codeql.html" rel="prev">
+        <span>← PREVIOUS_LOG</span>
+        <strong>CodeQL 的学习以及尝试漏洞挖掘</strong>
+      </a>
+    
+    
+      <a href="/CVE-2019-14271-docker-escape.html" rel="next">
+        <span>NEXT_LOG →</span>
+        <strong>CVE-2019-14271 docker escape</strong>
+      </a>
+    
+  </nav>
+
+  
+    <section class="comments-section" aria-labelledby="comments-title">
+      <p class="section-kicker">// EXTERNAL_CHANNEL</p>
+      <h2 id="comments-title">讨论与补充</h2>
+      <div id="disqus_thread"></div>
+      <script>
+        (function () {
+          if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) {
+            document.getElementById('disqus_thread').textContent = 'LOCAL_PREVIEW // COMMENTS_NOT_LOADED';
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          s.src = 'https://swing.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', String(+new Date()));
+          (d.head || d.body).appendChild(s);
+        }());
+      </script>
+      <noscript>请启用 JavaScript 查看评论。</noscript>
+    </section>
+  
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>Please enable JavaScript to view the comments.</noscript>
-        </div>
+      </main>
+      
+<footer class="site-footer">
+  <section class="footer-signal" aria-labelledby="footer-signal-title">
+    <div class="footer-signal__copy">
+      <p class="terminal-command"><span class="prompt">$</span> contact --channel secure</p>
+      <h2 id="footer-signal-title">关于漏洞、系统与攻防，欢迎交流。</h2>
+      <p>// RESPONSE_TIME: WHEN_THE_SIGNAL_IS_CLEAR</p>
     </div>
+    <a class="footer-email" href="mailto:ask@mail.exp.sh">
+      <span>ask@mail.exp.sh</span><span aria-hidden="true">↗</span>
+    </a>
+  </section>
 
-
-
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
+  <div class="footer-meta">
+    <p>© 2016—2026 Swing · BUILT_WITH_HEXO · SIGNAL_THEME</p>
+    <div class="footer-links">
+      
+        <a href="https://github.com/WinMin" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      
+        <a href="https://twitter.com/bestswngs" target="_blank" rel="noopener noreferrer">X</a>
+      
+        <a href="mailto:ask@mail.exp.sh">MAIL</a>
+      
+      <a href="/atom.xml">RSS</a>
     </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2020-11896"><span class="toc-number">1.</span> <span class="toc-text">CVE-2020-11896</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IPv4-%E5%88%86%E7%89%87"><span class="toc-number">1.1.</span> <span class="toc-text">IPv4 分片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IP-%E9%9A%A7%E9%81%93"><span class="toc-number">1.2.</span> <span class="toc-text">IP 隧道</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IP-in-IP"><span class="toc-number">1.2.1.</span> <span class="toc-text">IP-in-IP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Treck-TCP-IP"><span class="toc-number">1.3.</span> <span class="toc-text">Treck TCP&#x2F;IP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.4.</span> <span class="toc-text">漏洞原因</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8IP%E5%B1%82%E5%A4%84%E7%90%86%E5%88%86%E6%AE%B5%E6%95%B0%E6%8D%AE%E5%8C%85"><span class="toc-number">1.4.1.</span> <span class="toc-text">在IP层处理分段数据包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8UDP%E5%AE%9E%E7%8E%B0%E5%A0%86%E6%BA%A2%E5%87%BA"><span class="toc-number">1.4.2.</span> <span class="toc-text">利用UDP实现堆溢出</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2020-11898"><span class="toc-number">2.</span> <span class="toc-text">CVE-2020-11898</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E-treck-%E5%8D%8F%E8%AE%AE%E6%A0%88%E6%89%AB%E6%8F%8F"><span class="toc-number">3.</span> <span class="toc-text">关于 treck 协议栈扫描</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">4.</span> <span class="toc-text">参考链接</span></a></li></ol>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bestwing.me/Ripple20-overview.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bestwing.me/Ripple20-overview.html&text=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bestwing.me/Ripple20-overview.html&is_video=false&description=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记&body=Check out this article: https://bestwing.me/Ripple20-overview.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bestwing.me/Ripple20-overview.html&title=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bestwing.me/Ripple20-overview.html&name=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://bestwing.me/Ripple20-overview.html&t=关于 CVE-2020-11896和CVE-2020-11898 的学习笔记"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2026
-    Swing
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
-    </nav>
+    <a class="back-to-top" href="#top" aria-label="回到顶部">↑ TOP</a>
   </div>
 </footer>
 
     </div>
-    <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-<!-- clipboard -->
-
-  
-<script src="/lib/clipboard/clipboard.min.js"></script>
-
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
-      e.clearSelection();
-    })
-  })
-  </script>
+    
+      <section id="search-panel" class="search-panel" data-search-panel hidden aria-hidden="true">
+  <button class="search-panel__backdrop" type="button" data-search-close tabindex="-1" aria-label="关闭搜索"></button>
+  <div class="search-terminal" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title">
+    <header class="search-terminal__bar">
+      <div class="window-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="search-dialog-title">SEARCH_PROTOCOL // LOCAL_INDEX</p>
+      <button type="button" data-search-close aria-label="关闭搜索">[ESC]</button>
+    </header>
+    <div class="search-terminal__body">
+      <label class="search-label" for="search-input"><span class="prompt">$</span> query --all-posts</label>
+      <div class="search-input-row">
+        <span aria-hidden="true">&gt;</span>
+        <input id="search-input" data-search-input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="输入标题、标签或关键词…" aria-describedby="search-status">
+        <span class="search-caret" aria-hidden="true"></span>
+      </div>
+      <p id="search-status" class="search-status" data-search-status aria-live="polite">TYPE_TO_SCAN_THE_ARCHIVE</p>
+      <div id="search-results" class="search-results" data-search-results></div>
+    </div>
+  </div>
+</section>
 
 
+    
+
+    
 <script src="/js/main.js"></script>
 
-<!-- lang switch -->
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-133464311-1');
-    </script>
-
-<!-- Baidu Analytics -->
-
-  <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-
-<!-- Umami Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'swing';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
+    
+<script>
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-133464311-1';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'UA-133464311-1');
+  }());
+</script>
 
 
-</body>
+<script>
+  window._hmt = window._hmt || [];
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(hm, first);
+  }());
+</script>
+
+
+  </body>
 </html>

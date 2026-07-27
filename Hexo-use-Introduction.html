@@ -1,167 +1,134 @@
-<!DOCTYPE html>
-<html lang=EN>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo的使用介绍">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<meta name="color-scheme" content="dark">
+<title>Hexo的使用介绍 // Swing&#39;Blog 浮生若梦</title>
+<meta name="description" content="Know it then hack it!">
+<meta name="author" content="Swing">
+<link rel="canonical" href="https://bestwing.me/Hexo-use-Introduction.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo的使用介绍 // Swing&#39;Blog 浮生若梦">
+<meta property="og:description" content="Know it then hack it!">
 <meta property="og:url" content="https://bestwing.me/Hexo-use-Introduction.html">
 <meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
-<meta property="og:locale">
-<meta property="article:published_time" content="2015-12-27T10:29:00.000Z">
-<meta property="article:modified_time" content="2026-02-11T09:23:12.193Z">
-<meta property="article:author" content="Swing">
-<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>Hexo的使用介绍</title>
-    <!-- styles -->
-    
+<meta name="twitter:title" content="Hexo的使用介绍 // Swing&#39;Blog 浮生若梦">
+<meta name="twitter:description" content="Know it then hack it!">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml">
+
+<script>document.documentElement.className += ' has-js';</script>
+
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
 
-    
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml" />
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
-
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" href="/Hexo-Theme.html"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bestwing.me/Hexo-use-Introduction.html"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bestwing.me/Hexo-use-Introduction.html&text=Hexo的使用介绍"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bestwing.me/Hexo-use-Introduction.html&is_video=false&description=Hexo的使用介绍"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Hexo的使用介绍&body=Check out this article: https://bestwing.me/Hexo-use-Introduction.html"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bestwing.me/Hexo-use-Introduction.html&name=Hexo的使用介绍&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://bestwing.me/Hexo-use-Introduction.html&t=Hexo的使用介绍"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%96%87%E7%AB%A0"><span class="toc-number">1.</span> <span class="toc-text">写文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%A4%9A%E7%A7%8D%E6%96%87%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">写多种文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2"><span class="toc-number">3.</span> <span class="toc-text">自定义页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E9%A1%B5%E9%9D%A2%EF%BC%88404%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">写页面（404）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9"><span class="toc-number">5.</span> <span class="toc-text">发布博客内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E7%9A%84%E6%9B%B4%E6%94%B9"><span class="toc-number">6.</span> <span class="toc-text">主题的更改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84"><span class="toc-number">7.</span> <span class="toc-text">文章图片路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD"><span class="toc-number">8.</span> <span class="toc-text">Hexo文件备份</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">参考资料：</span></a>
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index py4 ">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        Hexo的使用介绍
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">Swing</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2015-12-27T10:29:00.000Z" itemprop="datePublished">2015-12-27</time>
-        
-      
-    </div>
-
-
-      
-    <div class="article-category">
-        <i class="fas fa-archive"></i>
-        <a class="category-link" href="/categories/Blog/">Blog</a>
-    </div>
-
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/hexo/" rel="tag">hexo</a>
-    </div>
-
-
-    </div>
-  </header>
+  <meta name="generator" content="Hexo 5.4.2"></head>
   
+  <body id="top" class="page-type-post title-style-clean is-article">
+    <a class="skip-link" href="#main-content">SKIP_TO_CONTENT</a>
+    <div class="site-noise" aria-hidden="true"></div>
+    
+      <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+    
 
-  <div class="content" itemprop="articleBody">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>　　<strong>自用笔记：</strong>本文属于自用笔记，不做详解，仅供参考。在此记录自己已理解并开始遵循的前端代码规范。What How Why<br>　　最近，使用Hexo遇到了很多问题，在设立进行整理。</p>
+    <div class="site-frame">
+      <header class="site-header">
+  <div class="window-bar">
+    <div class="window-lights" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <a class="window-title" href="/" aria-label="Swing&#39;Blog 浮生若梦 — 首页">
+      <span class="window-title__system">SECURITY RESEARCH LOG</span>
+      <span class="window-title__divider">·</span>
+      <span class="window-title__name">Swing&#39;Blog 浮生若梦</span>
+    </a>
+    <div class="window-status">
+      <span class="status-led" aria-hidden="true"></span>
+      <span>BESTWING.ME</span>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <a class="site-mark" href="/">
+      <span class="site-mark__bracket">[</span><span>SWING</span><span class="site-mark__slash">/</span><span class="site-mark__bracket">]</span>
+    </a>
+
+    <button class="nav-toggle terminal-button" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle__label">MENU</span>
+      <span class="nav-toggle__glyph" aria-hidden="true">[+]</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
+      
+        <a href="/" data-nav-link><span class="nav-prompt">./</span>INDEX</a>
+      
+        <a href="/archives/" data-nav-link><span class="nav-prompt">./</span>ARCHIVE</a>
+      
+        <a href="/categories/" data-nav-link><span class="nav-prompt">./</span>CATEGORIES</a>
+      
+        <a href="/tags/" data-nav-link><span class="nav-prompt">./</span>TAGS</a>
+      
+        <a href="/about/" data-nav-link><span class="nav-prompt">./</span>ABOUT</a>
+      
+        <a href="/link/" data-nav-link><span class="nav-prompt">./</span>LINKS</a>
+      
+    </nav>
+
+    
+      <button class="search-trigger terminal-button" type="button" data-search-open aria-label="打开搜索">
+        <span class="search-trigger__key">⌘K</span>
+        <span>SEARCH</span>
+      </button>
+    
+  </div>
+</header>
+
+
+      <main id="main-content" class="site-main" tabindex="-1">
+        
+<article class="article-page">
+  <header class="article-header">
+    <div class="article-header__protocol">
+      <span>// RESEARCH_TRANSMISSION</span>
+      <span>ID: HEXO_USE_INTRODUCTION</span>
+    </div>
+    <h1>Hexo的使用介绍</h1>
+    
+    <div class="article-meta">
+      <div><span>PUBLISHED</span><time datetime="2015-12-27T10:29:00.000Z">2015.12.27</time></div>
+      
+      <div><span>READ_TIME</span><strong>11 MIN</strong></div>
+      <div><span>PAYLOAD</span><strong>5,104 CHAR</strong></div>
+      
+        <div><span>CHANNEL</span><a href="/categories/Blog/">Blog</a></div>
+      
+    </div>
+    
+      <div class="article-tags">
+        <span class="article-tags__label">// INDICATORS</span>
+        <a class="chip" href="/tags/hexo/">hexo</a>
+      </div>
+    
+  </header>
+
+  <div class="article-layout">
+    
+      <aside class="article-sidebar">
+        <div class="toc-panel">
+          <p class="toc-panel__title"><span>//</span> CONTENT_MAP</p>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%96%87%E7%AB%A0"><span class="toc-text">写文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%A4%9A%E7%A7%8D%E6%96%87%E7%AB%A0"><span class="toc-text">写多种文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2"><span class="toc-text">自定义页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E9%A1%B5%E9%9D%A2%EF%BC%88404%EF%BC%89"><span class="toc-text">写页面（404）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9"><span class="toc-text">发布博客内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E7%9A%84%E6%9B%B4%E6%94%B9"><span class="toc-text">主题的更改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84"><span class="toc-text">文章图片路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD"><span class="toc-text">Hexo文件备份</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%EF%BC%9A"><span class="toc-text">参考资料：</span></a>
+          <a class="toc-panel__top" href="#main-content">↑ RETURN_TO_HEADER</a>
+        </div>
+      </aside>
+    
+    <div class="article-content" data-article-content>
+      <div class="article-content__start"><span>BEGIN_PAYLOAD</span><span>20151227</span></div>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>　　<strong>自用笔记：</strong>本文属于自用笔记，不做详解，仅供参考。在此记录自己已理解并开始遵循的前端代码规范。What How Why<br>　　最近，使用Hexo遇到了很多问题，在设立进行整理。</p>
 <h3 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">$ hexo n #写文章 </span><br><span class="line"></span><br><span class="line">    其中my new post为文章标题，执行命令后。</span><br><span class="line">    会在项目\source_posts中生成my new post.md文件，用编辑器打开编写即可。</span><br><span class="line"></span><br><span class="line">    当然，也可以直接在\source_posts中新建一个md文件，我就是这么做的。</span><br><span class="line"></span><br><span class="line">    文章开头语法：</span><br><span class="line"></span><br><span class="line">title: name #文章标题</span><br><span class="line">date: 2015-12-25 18:29:00  #写作时间</span><br><span class="line">description: #文章描述</span><br><span class="line">categories: #文章分类</span><br><span class="line">- 建站</span><br><span class="line">tags: #文章标签</span><br><span class="line">- 博客</span><br><span class="line">- 建站</span><br><span class="line">- Hexo</span><br><span class="line">toc: true # 生成目录</span><br><span class="line">author:</span><br><span class="line">comments:</span><br><span class="line">original:</span><br><span class="line">permalink: #指定链接</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">    以上是摘要</span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">    以下是余下全文</span><br></pre></td></tr></table></figure>
 <h3 id="写多种文章"><a href="#写多种文章" class="headerlink" title="写多种文章"></a>写多种文章</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &quot;postName&quot; #新建文章</span><br><span class="line"></span><br><span class="line">    [layout]：其中layout是可选参数，默认值为post。</span><br><span class="line">    有哪些layout呢，请到 scaffolds 目录下查看，这些文件名称就是layout名称。</span><br><span class="line">    当然你可以添加自己的layout，方法就是添加一个文件即可。</span><br><span class="line">    同时你也可以编辑现有的layout，比如post的layout默认是 hexo\scaffolds\post.md</span><br><span class="line"></span><br><span class="line">    关于hexo\scaffolds\photo.md配置文件的介绍：</span><br><span class="line"></span><br><span class="line">layout: &#123; &#123; layout &#125; &#125; #layout名称</span><br><span class="line">title: &#123; &#123; title &#125; &#125; #文章标题</span><br><span class="line">date: &#123; &#123; date &#125; &#125; #文章生成时间</span><br><span class="line">ategories: #文章分类目录</span><br><span class="line">tags:  #文章标签</span><br><span class="line">-  #</span><br><span class="line">photos:  #</span><br><span class="line">-  #</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">layout: photo</span><br><span class="line">title: 我的阅历</span><br><span class="line">date: 2085-01-16 07:33:44</span><br><span class="line">tags: [hexo]</span><br><span class="line">photos:</span><br><span class="line">- http:&#x2F;&#x2F;bruce.u.qiniudn.com&#x2F;2013&#x2F;11&#x2F;27&#x2F;reading&#x2F;photos-0.jpg</span><br><span class="line">- http:&#x2F;&#x2F;bruce.u.qiniudn.com&#x2F;2013&#x2F;11&#x2F;27&#x2F;reading&#x2F;photos-1.jpg</span><br></pre></td></tr></table></figure>
 
@@ -188,190 +155,134 @@
         };
         lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
         }</script>
+      <div class="article-content__end"><span>EOF</span><span>CHECKSUM_OK</span></div>
+    </div>
   </div>
+
+  <nav class="article-neighbors" aria-label="Adjacent posts">
+    
+      <a href="/Hexo-Use.html" rel="prev">
+        <span>← PREVIOUS_LOG</span>
+        <strong>Hexo 使用</strong>
+      </a>
+    
+    
+      <a href="/Hexo-Theme.html" rel="next">
+        <span>NEXT_LOG →</span>
+        <strong>Hexo 主题：SPFK</strong>
+      </a>
+    
+  </nav>
+
+  
+    <section class="comments-section" aria-labelledby="comments-title">
+      <p class="section-kicker">// EXTERNAL_CHANNEL</p>
+      <h2 id="comments-title">讨论与补充</h2>
+      <div id="disqus_thread"></div>
+      <script>
+        (function () {
+          if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) {
+            document.getElementById('disqus_thread').textContent = 'LOCAL_PREVIEW // COMMENTS_NOT_LOADED';
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          s.src = 'https://swing.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', String(+new Date()));
+          (d.head || d.body).appendChild(s);
+        }());
+      </script>
+      <noscript>请启用 JavaScript 查看评论。</noscript>
+    </section>
+  
 </article>
 
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-            <noscript>Please enable JavaScript to view the comments.</noscript>
-        </div>
+      </main>
+      
+<footer class="site-footer">
+  <section class="footer-signal" aria-labelledby="footer-signal-title">
+    <div class="footer-signal__copy">
+      <p class="terminal-command"><span class="prompt">$</span> contact --channel secure</p>
+      <h2 id="footer-signal-title">关于漏洞、系统与攻防，欢迎交流。</h2>
+      <p>// RESPONSE_TIME: WHEN_THE_SIGNAL_IS_CLEAR</p>
     </div>
+    <a class="footer-email" href="mailto:ask@mail.exp.sh">
+      <span>ask@mail.exp.sh</span><span aria-hidden="true">↗</span>
+    </a>
+  </section>
 
-
-
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
-
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
+  <div class="footer-meta">
+    <p>© 2016—2026 Swing · BUILT_WITH_HEXO · SIGNAL_THEME</p>
+    <div class="footer-links">
+      
+        <a href="https://github.com/WinMin" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      
+        <a href="https://twitter.com/bestswngs" target="_blank" rel="noopener noreferrer">X</a>
+      
+        <a href="mailto:ask@mail.exp.sh">MAIL</a>
+      
+      <a href="/atom.xml">RSS</a>
     </div>
-
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%96%87%E7%AB%A0"><span class="toc-number">1.</span> <span class="toc-text">写文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%A4%9A%E7%A7%8D%E6%96%87%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">写多种文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2"><span class="toc-number">3.</span> <span class="toc-text">自定义页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E9%A1%B5%E9%9D%A2%EF%BC%88404%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">写页面（404）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%8D%9A%E5%AE%A2%E5%86%85%E5%AE%B9"><span class="toc-number">5.</span> <span class="toc-text">发布博客内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E9%A2%98%E7%9A%84%E6%9B%B4%E6%94%B9"><span class="toc-number">6.</span> <span class="toc-text">主题的更改</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84"><span class="toc-number">7.</span> <span class="toc-text">文章图片路径</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo%E6%96%87%E4%BB%B6%E5%A4%87%E4%BB%BD"><span class="toc-number">8.</span> <span class="toc-text">Hexo文件备份</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%EF%BC%9A"><span class="toc-number"></span> <span class="toc-text">参考资料：</span></a>
-    </div>
-
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://bestwing.me/Hexo-use-Introduction.html"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=https://bestwing.me/Hexo-use-Introduction.html&text=Hexo的使用介绍"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://bestwing.me/Hexo-use-Introduction.html&is_video=false&description=Hexo的使用介绍"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Hexo的使用介绍&body=Check out this article: https://bestwing.me/Hexo-use-Introduction.html"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=https://bestwing.me/Hexo-use-Introduction.html&title=Hexo的使用介绍"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://bestwing.me/Hexo-use-Introduction.html&name=Hexo的使用介绍&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=https://bestwing.me/Hexo-use-Introduction.html&t=Hexo的使用介绍"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
-
-    </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
-    </div>
-
-  </div>
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2026
-    Swing
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
-    </nav>
+    <a class="back-to-top" href="#top" aria-label="回到顶部">↑ TOP</a>
   </div>
 </footer>
 
     </div>
-    <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
-
-
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-<!-- clipboard -->
-
-  
-<script src="/lib/clipboard/clipboard.min.js"></script>
-
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "Copied!");
-      e.clearSelection();
-    })
-  })
-  </script>
+    
+      <section id="search-panel" class="search-panel" data-search-panel hidden aria-hidden="true">
+  <button class="search-panel__backdrop" type="button" data-search-close tabindex="-1" aria-label="关闭搜索"></button>
+  <div class="search-terminal" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title">
+    <header class="search-terminal__bar">
+      <div class="window-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="search-dialog-title">SEARCH_PROTOCOL // LOCAL_INDEX</p>
+      <button type="button" data-search-close aria-label="关闭搜索">[ESC]</button>
+    </header>
+    <div class="search-terminal__body">
+      <label class="search-label" for="search-input"><span class="prompt">$</span> query --all-posts</label>
+      <div class="search-input-row">
+        <span aria-hidden="true">&gt;</span>
+        <input id="search-input" data-search-input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="输入标题、标签或关键词…" aria-describedby="search-status">
+        <span class="search-caret" aria-hidden="true"></span>
+      </div>
+      <p id="search-status" class="search-status" data-search-status aria-live="polite">TYPE_TO_SCAN_THE_ARCHIVE</p>
+      <div id="search-results" class="search-results" data-search-results></div>
+    </div>
+  </div>
+</section>
 
 
+    
+
+    
 <script src="/js/main.js"></script>
 
-<!-- lang switch -->
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-133464311-1');
-    </script>
-
-<!-- Baidu Analytics -->
-
-  <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-
-<!-- Umami Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'swing';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
+    
+<script>
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-133464311-1';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'UA-133464311-1');
+  }());
+</script>
 
 
-</body>
+<script>
+  window._hmt = window._hmt || [];
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(hm, first);
+  }());
+</script>
+
+
+  </body>
 </html>

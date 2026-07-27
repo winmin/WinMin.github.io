@@ -1,462 +1,501 @@
-<!DOCTYPE html>
-<html lang=EN>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Know it then hack it!">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<meta name="color-scheme" content="dark">
+<title>Swing&#39;Blog 浮生若梦</title>
+<meta name="description" content="Know it then hack it!">
+<meta name="author" content="Swing">
+<link rel="canonical" href="https://bestwing.me/categories/Writeup/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Swing&#39;Blog 浮生若梦">
-<meta property="og:url" content="https://bestwing.me/categories/Writeup/index.html">
-<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
 <meta property="og:description" content="Know it then hack it!">
-<meta property="og:locale">
-<meta property="article:author" content="Swing">
+<meta property="og:url" content="https://bestwing.me/categories/Writeup/">
+<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
 <meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>Category: Writeup</title>
-    <!-- styles -->
-    
+<meta name="twitter:title" content="Swing&#39;Blog 浮生若梦">
+<meta name="twitter:description" content="Know it then hack it!">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml">
+
+<script>document.documentElement.className += ' has-js';</script>
+
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
 
+  <meta name="generator" content="Hexo 5.4.2"></head>
+  
+  <body id="top" class="page-type-page title-style-clean">
+    <a class="skip-link" href="#main-content">SKIP_TO_CONTENT</a>
+    <div class="site-noise" aria-hidden="true"></div>
     
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml" />
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index py4 ">
-        
-          <header id="header">
-  <a href="/">
-  
-    
-      <div id="logo" style="background-image: url(/images/logo.png);"></div>
-    
-  
-    <div id="title">
-      <h1>Swing&#39;Blog 浮生若梦</h1>
+    <div class="site-frame">
+      <header class="site-header">
+  <div class="window-bar">
+    <div class="window-lights" aria-hidden="true">
+      <span></span><span></span><span></span>
     </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
-      </li>
-       
-        <li><a href="/">Home</a></li>
-       
-        <li><a href="/about/">About</a></li>
-       
-        <li><a href="/archives/">Articles</a></li>
-       
-        <li><a href="/search">Search</a></li>
-       
-        <li><a href="/atom.xml">RSS</a></li>
-       
-        <li><a href="/categories/">Categories</a></li>
-       
-        <li><a href="/link">Links</a></li>
+    <a class="window-title" href="/" aria-label="Swing&#39;Blog 浮生若梦 — 首页">
+      <span class="window-title__system">SECURITY RESEARCH LOG</span>
+      <span class="window-title__divider">·</span>
+      <span class="window-title__name">Swing&#39;Blog 浮生若梦</span>
+    </a>
+    <div class="window-status">
+      <span class="status-led" aria-hidden="true"></span>
+      <span>BESTWING.ME</span>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <a class="site-mark" href="/">
+      <span class="site-mark__bracket">[</span><span>SWING</span><span class="site-mark__slash">/</span><span class="site-mark__bracket">]</span>
+    </a>
+
+    <button class="nav-toggle terminal-button" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle__label">MENU</span>
+      <span class="nav-toggle__glyph" aria-hidden="true">[+]</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
       
-    </ul>
+        <a href="/" data-nav-link><span class="nav-prompt">./</span>INDEX</a>
+      
+        <a href="/archives/" data-nav-link><span class="nav-prompt">./</span>ARCHIVE</a>
+      
+        <a href="/categories/" data-nav-link><span class="nav-prompt">./</span>CATEGORIES</a>
+      
+        <a href="/tags/" data-nav-link><span class="nav-prompt">./</span>TAGS</a>
+      
+        <a href="/about/" data-nav-link><span class="nav-prompt">./</span>ABOUT</a>
+      
+        <a href="/link/" data-nav-link><span class="nav-prompt">./</span>LINKS</a>
+      
+    </nav>
+
+    
+      <button class="search-trigger terminal-button" type="button" data-search-open aria-label="打开搜索">
+        <span class="search-trigger__key">⌘K</span>
+        <span>SEARCH</span>
+      </button>
+    
   </div>
 </header>
 
+
+      <main id="main-content" class="site-main" tabindex="-1">
         
-        <div id="archive">
-  <ul class="post-list">
-    
-    
-    
-    
-      
-      
-      
-      
-        <h2>2025</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-05-18T16:00:00.000Z" itemprop="datePublished">2025-05-19</time>
-        
-      
+<section class="taxonomy-page">
+  <header class="taxonomy-header">
+    <div>
+      <p class="section-kicker">// CATEGORY_CHANNEL</p>
+      <h1><span class="accent">#</span> Writeup<span class="cursor-block" aria-hidden="true"></span></h1>
     </div>
-
-
-        <span>
-    
-        <a class="" href="/offbyone-conference-when-asus-iot-devices-play-hide-and-seek-with-security.html">议题分享： When ASUS IoT Devices Play Hide-and-Seek with Security</a>
-    
-
-
-</span>
-      </li>
+    <div class="taxonomy-header__count"><strong>6</strong><span>LOGS_FOUND</span></div>
+  </header>
+  <div class="post-grid post-grid--taxonomy">
     
       
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-03-31T16:00:00.000Z" itemprop="datePublished">2025-04-01</time>
-        
-      
-    </div>
-
-
-        <span>
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_01</span>
+    <time datetime="2025-05-18T16:00:00.000Z">2025.05.19</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/offbyone-conference-when-asus-iot-devices-play-hide-and-seek-with-security.log</p>
+    <h3><a href="/offbyone-conference-when-asus-iot-devices-play-hide-and-seek-with-security.html">议题分享： When ASUS IoT Devices Play Hide-and-Seek with Security</a></h3>
     
-        <a class="" href="/Security-Equipment-Vulnerability-Research.html">议题分享： 企业设备安全设备漏洞分析与利用</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-03-06T16:00:00.000Z" itemprop="datePublished">2025-03-07</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/Vigor2960-Memoirs-Pursuit-of-the-Elusive.html">议题分享：Vigor2960 Memoirs Pursuit of the Elusive 0day &amp; 1day</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-        <h2>2024</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2024-10-15T10:23:33.000Z" itemprop="datePublished">2024-10-15</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/exploiting-file-writes-in-hardened-environments.html">Exploiting File Writes in Hardened Node.js Environments</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2024-05-29T16:00:00.000Z" itemprop="datePublished">2024-05-30</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/RWCTF-6th-Router4-Writeup.html">Real World CTF 6th Router4 writeup</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-        <h2>2023</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-06-04T16:00:00.000Z" itemprop="datePublished">2023-06-05</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/How-to-hacked-sqlite.html">从JustCTF 2023 中学到的一点关于 sqlite3 代码执行的方法</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-05-16T16:00:00.000Z" itemprop="datePublished">2023-05-17</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/RWCTF-5th-Writeup.html">Real World CTF 5th writeup</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-        <h2>2022</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2022-05-06T16:00:00.000Z" itemprop="datePublished">2022-05-07</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/Capture-The-Ether-writeup.html">Capture The Ether Writeup</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2022-01-23T16:00:00.000Z" itemprop="datePublished">2022-01-24</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/RWCTF-4th-TrustZone-challenge-Writeup.html">RWCTF-4th TrustZone challenge Writeup</a>
-    
-
-
-</span>
-      </li>
-    
-      
-      
-      
-      
-        <h2>2021</h2>
-      
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2021-07-05T16:00:00.000Z" itemprop="datePublished">2021-07-06</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2021-TCTF-RV-Writeup.html">2021 TCTF iOA and RV Writeup</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-    <div class="pagination">
-        
-        <span class="page-number">Page 1 of 6</span>
-        
-            <a href="/categories/Writeup/page/2/"><i class="fas fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-
-</div>
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2026
-    Swing
   </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
-        
-      </ul>
-    </nav>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/router/" class="chip">router</a>
+      
+        <a href="/tags/asus/" class="chip">asus</a>
+      
+    </div>
+    <a class="post-card__read" href="/offbyone-conference-when-asus-iot-devices-play-hide-and-seek-with-security.html" aria-label="阅读：议题分享： When ASUS IoT Devices Play Hide-and-Seek with Security">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_02</span>
+    <time datetime="2025-03-31T16:00:00.000Z">2025.04.01</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/security-equipment-vulnerability-research.log</p>
+    <h3><a href="/Security-Equipment-Vulnerability-Research.html">议题分享： 企业设备安全设备漏洞分析与利用</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/vpn/" class="chip">vpn</a>
+      
+        <a href="/tags/mail/" class="chip">mail</a>
+      
+    </div>
+    <a class="post-card__read" href="/Security-Equipment-Vulnerability-Research.html" aria-label="阅读：议题分享： 企业设备安全设备漏洞分析与利用">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_03</span>
+    <time datetime="2025-03-06T16:00:00.000Z">2025.03.07</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/vigor2960-memoirs-pursuit-of-the-elusive.log</p>
+    <h3><a href="/Vigor2960-Memoirs-Pursuit-of-the-Elusive.html">议题分享：Vigor2960 Memoirs Pursuit of the Elusive 0day &amp; 1day</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/draytek/" class="chip">draytek</a>
+      
+        <a href="/tags/vigor2960/" class="chip">vigor2960</a>
+      
+    </div>
+    <a class="post-card__read" href="/Vigor2960-Memoirs-Pursuit-of-the-Elusive.html" aria-label="阅读：议题分享：Vigor2960 Memoirs Pursuit of the Elusive 0day &amp; 1day">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_04</span>
+    <time datetime="2024-10-15T10:23:33.000Z">2024.10.15</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>INPROGRESS</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/exploiting-file-writes-in-hardened-environments.log</p>
+    <h3><a href="/exploiting-file-writes-in-hardened-environments.html">Exploiting File Writes in Hardened Node.js Environments</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/nodejs/" class="chip">nodejs</a>
+      
+        <a href="/tags/libuv/" class="chip">libuv</a>
+      
+    </div>
+    <a class="post-card__read" href="/exploiting-file-writes-in-hardened-environments.html" aria-label="阅读：Exploiting File Writes in Hardened Node.js Environments">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_05</span>
+    <time datetime="2024-05-29T16:00:00.000Z">2024.05.30</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/rwctf-6th-router4-writeup.log</p>
+    <h3><a href="/RWCTF-6th-Router4-Writeup.html">Real World CTF 6th Router4 writeup</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/asus/" class="chip">asus</a>
+      
+        <a href="/tags/cve-2024-3079/" class="chip">cve-2024-3079</a>
+      
+    </div>
+    <a class="post-card__read" href="/RWCTF-6th-Router4-Writeup.html" aria-label="阅读：Real World CTF 6th Router4 writeup">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_06</span>
+    <time datetime="2023-06-04T16:00:00.000Z">2023.06.05</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/how-to-hacked-sqlite.log</p>
+    <h3><a href="/How-to-hacked-sqlite.html">从JustCTF 2023 中学到的一点关于 sqlite3 代码执行的方法</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/justctf/" class="chip">justctf</a>
+      
+        <a href="/tags/sqlite/" class="chip">sqlite</a>
+      
+    </div>
+    <a class="post-card__read" href="/How-to-hacked-sqlite.html" aria-label="阅读：从JustCTF 2023 中学到的一点关于 sqlite3 代码执行的方法">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_07</span>
+    <time datetime="2023-05-16T16:00:00.000Z">2023.05.17</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/rwctf-5th-writeup.log</p>
+    <h3><a href="/RWCTF-5th-Writeup.html">Real World CTF 5th writeup</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/pwn/" class="chip">pwn</a>
+      
+        <a href="/tags/cve-2023-24805/" class="chip">cve-2023-24805</a>
+      
+    </div>
+    <a class="post-card__read" href="/RWCTF-5th-Writeup.html" aria-label="阅读：Real World CTF 5th writeup">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_08</span>
+    <time datetime="2022-05-06T16:00:00.000Z">2022.05.07</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/capture-the-ether-writeup.log</p>
+    <h3><a href="/Capture-The-Ether-writeup.html">Capture The Ether Writeup</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/ethereum/" class="chip">ethereum</a>
+      
+        <a href="/tags/contracts/" class="chip">contracts</a>
+      
+    </div>
+    <a class="post-card__read" href="/Capture-The-Ether-writeup.html" aria-label="阅读：Capture The Ether Writeup">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_09</span>
+    <time datetime="2022-01-23T16:00:00.000Z">2022.01.24</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/rwctf-4th-trustzone-challenge-writeup.log</p>
+    <h3><a href="/RWCTF-4th-TrustZone-challenge-Writeup.html">RWCTF-4th TrustZone challenge Writeup</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/pwn/" class="chip">pwn</a>
+      
+    </div>
+    <a class="post-card__read" href="/RWCTF-4th-TrustZone-challenge-Writeup.html" aria-label="阅读：RWCTF-4th TrustZone challenge Writeup">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_10</span>
+    <time datetime="2021-07-05T16:00:00.000Z">2021.07.06</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/2021-tctf-rv-writeup.log</p>
+    <h3><a href="/2021-TCTF-RV-Writeup.html">2021 TCTF iOA and RV Writeup</a></h3>
+    <p class="post-card__excerpt">CTF Writeup</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/pwn/" class="chip">pwn</a>
+      
+        <a href="/tags/cve-2021-1293/" class="chip">cve-2021-1293</a>
+      
+    </div>
+    <a class="post-card__read" href="/2021-TCTF-RV-Writeup.html" aria-label="阅读：2021 TCTF iOA and RV Writeup">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+  </div>
+  
+<nav class="pagination" aria-label="Pagination">
+  <div class="pagination__direction">
+    <span>← PREV_PACKET</span>
+  </div>
+  <div class="pagination__pages">
+    <span>PAGE</span>
+    <strong>01</strong>
+    <span>/</span>
+    <span>06</span>
+  </div>
+  <div class="pagination__direction pagination__direction--next">
+    <a href="/categories/Writeup/page/2/" rel="next">NEXT_PACKET →</a>
+  </div>
+</nav>
+
+
+
+</section>
+
+
+      </main>
+      
+<footer class="site-footer">
+  <section class="footer-signal" aria-labelledby="footer-signal-title">
+    <div class="footer-signal__copy">
+      <p class="terminal-command"><span class="prompt">$</span> contact --channel secure</p>
+      <h2 id="footer-signal-title">关于漏洞、系统与攻防，欢迎交流。</h2>
+      <p>// RESPONSE_TIME: WHEN_THE_SIGNAL_IS_CLEAR</p>
+    </div>
+    <a class="footer-email" href="mailto:ask@mail.exp.sh">
+      <span>ask@mail.exp.sh</span><span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <div class="footer-meta">
+    <p>© 2016—2026 Swing · BUILT_WITH_HEXO · SIGNAL_THEME</p>
+    <div class="footer-links">
+      
+        <a href="https://github.com/WinMin" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      
+        <a href="https://twitter.com/bestswngs" target="_blank" rel="noopener noreferrer">X</a>
+      
+        <a href="mailto:ask@mail.exp.sh">MAIL</a>
+      
+      <a href="/atom.xml">RSS</a>
+    </div>
+    <a class="back-to-top" href="#top" aria-label="回到顶部">↑ TOP</a>
   </div>
 </footer>
 
     </div>
-    <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    
+      <section id="search-panel" class="search-panel" data-search-panel hidden aria-hidden="true">
+  <button class="search-panel__backdrop" type="button" data-search-close tabindex="-1" aria-label="关闭搜索"></button>
+  <div class="search-terminal" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title">
+    <header class="search-terminal__bar">
+      <div class="window-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="search-dialog-title">SEARCH_PROTOCOL // LOCAL_INDEX</p>
+      <button type="button" data-search-close aria-label="关闭搜索">[ESC]</button>
+    </header>
+    <div class="search-terminal__body">
+      <label class="search-label" for="search-input"><span class="prompt">$</span> query --all-posts</label>
+      <div class="search-input-row">
+        <span aria-hidden="true">&gt;</span>
+        <input id="search-input" data-search-input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="输入标题、标签或关键词…" aria-describedby="search-status">
+        <span class="search-caret" aria-hidden="true"></span>
+      </div>
+      <p id="search-status" class="search-status" data-search-status aria-live="polite">TYPE_TO_SCAN_THE_ARCHIVE</p>
+      <div id="search-results" class="search-results" data-search-results></div>
+    </div>
+  </div>
+</section>
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+    
 
-
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-<!-- clipboard -->
-
-
+    
 <script src="/js/main.js"></script>
 
-<!-- lang switch -->
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-133464311-1');
-    </script>
-
-<!-- Baidu Analytics -->
-
-  <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-
-<!-- Umami Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'swing';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
+    
+<script>
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-133464311-1';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'UA-133464311-1');
+  }());
+</script>
 
 
-</body>
+<script>
+  window._hmt = window._hmt || [];
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(hm, first);
+  }());
+</script>
+
+
+  </body>
 </html>

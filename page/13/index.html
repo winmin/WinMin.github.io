@@ -1,473 +1,574 @@
-<!DOCTYPE html>
-<html lang=EN>
-<head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Know it then hack it!">
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<meta name="color-scheme" content="dark">
+<title>Swing&#39;Blog 浮生若梦</title>
+<meta name="description" content="Know it then hack it!">
+<meta name="author" content="Swing">
+<link rel="canonical" href="https://bestwing.me/page/13/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Swing&#39;Blog 浮生若梦">
-<meta property="og:url" content="https://bestwing.me/page/13/index.html">
-<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
 <meta property="og:description" content="Know it then hack it!">
-<meta property="og:locale">
-<meta property="article:author" content="Swing">
+<meta property="og:url" content="https://bestwing.me/page/13/">
+<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
 <meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>Swing&#39;Blog 浮生若梦</title>
-    <!-- styles -->
-    
+<meta name="twitter:title" content="Swing&#39;Blog 浮生若梦">
+<meta name="twitter:description" content="Know it then hack it!">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml">
+
+<script>document.documentElement.className += ' has-js';</script>
+
 <link rel="stylesheet" href="/css/style.css">
 
-    <!-- persian styles -->
-    
-      
-<link rel="stylesheet" href="/css/rtl.css">
 
+  <meta name="generator" content="Hexo 5.4.2"></head>
+  
+  <body id="top" class="page-type-page title-style-clean">
+    <a class="skip-link" href="#main-content">SKIP_TO_CONTENT</a>
+    <div class="site-noise" aria-hidden="true"></div>
     
-    <!-- rss -->
-    
-    
-      <link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml" />
-    
-<meta name="generator" content="Hexo 5.4.2"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index py4 ">
-        
-          <header id="header">
-  <a href="/">
-  
-    
-      <div id="logo" style="background-image: url(/images/logo.png);"></div>
-    
-  
-    <div id="title">
-      <h1>Swing&#39;Blog 浮生若梦</h1>
+    <div class="site-frame">
+      <header class="site-header">
+  <div class="window-bar">
+    <div class="window-lights" aria-hidden="true">
+      <span></span><span></span><span></span>
     </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
-      </li>
-       
-        <li><a href="/">Home</a></li>
-       
-        <li><a href="/about/">About</a></li>
-       
-        <li><a href="/archives/">Articles</a></li>
-       
-        <li><a href="/search">Search</a></li>
-       
-        <li><a href="/atom.xml">RSS</a></li>
-       
-        <li><a href="/categories/">Categories</a></li>
-       
-        <li><a href="/link">Links</a></li>
+    <a class="window-title" href="/" aria-label="Swing&#39;Blog 浮生若梦 — 首页">
+      <span class="window-title__system">SECURITY RESEARCH LOG</span>
+      <span class="window-title__divider">·</span>
+      <span class="window-title__name">Swing&#39;Blog 浮生若梦</span>
+    </a>
+    <div class="window-status">
+      <span class="status-led" aria-hidden="true"></span>
+      <span>BESTWING.ME</span>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <a class="site-mark" href="/">
+      <span class="site-mark__bracket">[</span><span>SWING</span><span class="site-mark__slash">/</span><span class="site-mark__bracket">]</span>
+    </a>
+
+    <button class="nav-toggle terminal-button" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle__label">MENU</span>
+      <span class="nav-toggle__glyph" aria-hidden="true">[+]</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
       
-    </ul>
+        <a href="/" data-nav-link><span class="nav-prompt">./</span>INDEX</a>
+      
+        <a href="/archives/" data-nav-link><span class="nav-prompt">./</span>ARCHIVE</a>
+      
+        <a href="/categories/" data-nav-link><span class="nav-prompt">./</span>CATEGORIES</a>
+      
+        <a href="/tags/" data-nav-link><span class="nav-prompt">./</span>TAGS</a>
+      
+        <a href="/about/" data-nav-link><span class="nav-prompt">./</span>ABOUT</a>
+      
+        <a href="/link/" data-nav-link><span class="nav-prompt">./</span>LINKS</a>
+      
+    </nav>
+
+    
+      <button class="search-trigger terminal-button" type="button" data-search-open aria-label="打开搜索">
+        <span class="search-trigger__key">⌘K</span>
+        <span>SEARCH</span>
+      </button>
+    
   </div>
 </header>
 
+
+      <main id="main-content" class="site-main" tabindex="-1">
         
-        <section id="about">
-  
-    <p>Know it then hack it!</p>
-
-  
-  
-    <p>
-      Find me on
-      
-      
-      
-        
-          <a class="icon" target="_blank" rel="noopener" href="https://github.com/WinMin">
-            <i class="fab fa-github"></i><!--
-      ---></a><!--
-    ---><!--
-    --->, 
-        
-      
-        
-          <a class="icon" target="_blank" rel="noopener" href="https://twitter.com/bestswngs">
-            <i class="fab fa-twitter"></i><!--
-      ---></a><!--
-    ---><!--
-    ---> and 
-        
-      
-        
-          <a class="icon" target="_blank" rel="noopener" href="mailto:ask@mail.exp.sh">
-            <i class="fas fa-envelope"></i><!--
-      ---></a>
-        <!--
-    --->.
-        
-      
-    </p>
-  
-</section>
-
-<section id="writing">
-  <span class="h1"><a href="/">Writing</a></span>
-  
-  <ul class="post-list">
-    
-    
-      
-    
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2026-04-27T16:17:31.000Z" itemprop="datePublished">2026-04-28</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/CVE-2026-41651-analysis.html">CVE-2026-41651 PackageKit TOCTOU 本地提权漏洞分析</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2026-03-09T12:14:21.000Z" itemprop="datePublished">2026-03-09</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/preempted-unlocking-xiaomi-via-two-unsanitized-strings.html">Preempted: From ADB Service Call to Bootloader Unlock on Xiaomi</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2026-02-07T04:00:00.000Z" itemprop="datePublished">2026-02-07</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/pickling-the-mailbox-cve-2025-20393-cn.html">Pickling the Mailbox: A Deep Dive into CVE-2025-20393</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2026-02-01T04:00:00.000Z" itemprop="datePublished">2026-02-01</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/How-to-patch-a-linux-kernel-bug-zh.html">如何给 Linux 内核提交补丁：一次真实的踩坑记录</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-12-27T23:52:47.000Z" itemprop="datePublished">2025-12-28</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/tp-link-wr841n-router-cve-analysis.html">TP-Link WR841N router  CVE-2023-50224 and CVE-2025-9377</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-07-07T19:32:43.000Z" itemprop="datePublished">2025-07-08</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/cve-2025-32023-redis-rce-via-out-of-bounds-write.html">CVE-2025-32023 Redis  漏洞分析</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-07-01T22:00:31.000Z" itemprop="datePublished">2025-07-02</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/cve-2025-36463-sudo-chroot-elevation.html">CVE-2025-36463 Sudo_chroot Elevation of Privilege 漏洞分析</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-05-18T16:00:00.000Z" itemprop="datePublished">2025-05-19</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/offbyone-conference-when-asus-iot-devices-play-hide-and-seek-with-security.html">议题分享： When ASUS IoT Devices Play Hide-and-Seek with Security</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-03-31T16:00:00.000Z" itemprop="datePublished">2025-04-01</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/Security-Equipment-Vulnerability-Research.html">议题分享： 企业设备安全设备漏洞分析与利用</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2025-03-06T16:00:00.000Z" itemprop="datePublished">2025-03-07</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/Vigor2960-Memoirs-Pursuit-of-the-Elusive.html">议题分享：Vigor2960 Memoirs Pursuit of the Elusive 0day &amp; 1day</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-</section>
-
-
-<section id="projects">
-  <span class="h1"><a href="https://github.com/WinMin">Projects</a></span>
-  <ul class="project-list">
-    
-      <li class="project-item">
-        <a href="https://github.com/FlappyPig/CTF_SPECIAL_TRAINING_CAMP">CTF 特训营</a>: <p>A primer on CTF</p>
-
-      </li>
-    
-      <li class="project-item">
-        <a href="https://ctf-wiki.github.io/ctf-wiki/">CTF WiKi</a>: <p>An Encyclopedia of CTF</p>
-
-      </li>
-    
-      <li class="project-item">
-        <a href="https://github.com/WinMin/awesome-vm-exploit">Awesome VM Exploit</a>: <p>Sharing some useful archives about vm and qemu escape exploit.</p>
-
-      </li>
-    
-      <li class="project-item">
-        <a href="https://github.com/WinMin/Protocol-Vul">Protocol-vul</a>: <p>Vulnerabilities in some protocols are collected.</p>
-
-      </li>
-    
-  </ul>
-</section>
-
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2026
-    Swing
+<section class="home-hero" aria-labelledby="home-title">
+  <div class="command-stack" aria-label="Terminal introduction">
+    <p><span class="prompt">$</span> ./swing --focus &#34;vulnerability research&#34;</p>
+    <p><span class="hash">#</span> Know it then hack it!</p>
   </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-         
-          <li><a href="/">Home</a></li>
-         
-          <li><a href="/about/">About</a></li>
-         
-          <li><a href="/archives/">Articles</a></li>
-         
-          <li><a href="/search">Search</a></li>
-         
-          <li><a href="/atom.xml">RSS</a></li>
-         
-          <li><a href="/categories/">Categories</a></li>
-         
-          <li><a href="/link">Links</a></li>
+
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">VULNERABILITY RESEARCHER · CTF PLAYER</p>
+      <h1 id="home-title">
         
-      </ul>
-    </nav>
+          <span class="accent">KNOW IT.</span>
+        
+          <span class="">HACK IT.</span>
+        
+      </h1>
+      
+    </div>
+    <div class="pixel-signal" aria-hidden="true">
+  <svg viewBox="0 0 360 300" role="img">
+    <title>Abstract pixel security signal</title>
+    <g class="pixel-signal__orbit" fill="none" stroke="currentColor" shape-rendering="crispEdges">
+      <path d="M64 149h36M260 149h36M180 33v32M180 233v34"/>
+      <rect x="91" y="61" width="178" height="176"/>
+      <rect x="111" y="81" width="138" height="136"/>
+      <path d="M91 101H63V77h24M269 197h28v24h-24"/>
+    </g>
+    <g class="pixel-signal__blocks" shape-rendering="crispEdges">
+      <rect x="134" y="105" width="20" height="20"/>
+      <rect x="154" y="105" width="20" height="20"/>
+      <rect x="194" y="105" width="20" height="20"/>
+      <rect x="214" y="105" width="20" height="20"/>
+      <rect x="114" y="125" width="20" height="20"/>
+      <rect x="234" y="125" width="20" height="20"/>
+      <rect x="114" y="145" width="20" height="20"/>
+      <rect x="154" y="145" width="60" height="20"/>
+      <rect x="234" y="145" width="20" height="20"/>
+      <rect x="134" y="165" width="20" height="20"/>
+      <rect x="214" y="165" width="20" height="20"/>
+      <rect x="154" y="185" width="60" height="20"/>
+      <rect x="174" y="205" width="20" height="20"/>
+    </g>
+    <g class="pixel-signal__noise" shape-rendering="crispEdges">
+      <rect x="42" y="115" width="12" height="12"/>
+      <rect x="305" y="173" width="8" height="8"/>
+      <rect x="280" y="66" width="8" height="8"/>
+      <rect x="72" y="222" width="8" height="8"/>
+    </g>
+    <text x="180" y="286" text-anchor="middle">TRACE // VERIFY // EXPLOIT</text>
+  </svg>
+  <span class="pixel-signal__code">0x300</span>
+</div>
+
+
+  </div>
+
+  <div class="focus-chips" aria-label="Research focus">
+    
+      <span class="chip chip--accent">PWN</span>
+    
+      <span class="chip">REVERSE</span>
+    
+      <span class="chip">KERNEL</span>
+    
+      <span class="chip">IoT</span>
+    
+      <span class="chip">CVE</span>
+    
+  </div>
+
+  <p class="hero-description">记录漏洞挖掘与分析、二进制安全、系统安全及 CTF 相关内容。</p>
+
+  
+</section>
+
+<section class="system-stats" aria-label="Site statistics">
+  <div><span>POSTS</span><strong>159</strong><small>DOCUMENTED</small></div>
+  <div><span>CATEGORIES</span><strong>11</strong><small>SURFACES</small></div>
+  <div><span>TAGS</span><strong>169</strong><small>INDICATORS</small></div>
+  <div><span>SYSTEM</span><strong class="system-online">ONLINE</strong><small>SIGNAL_CLEAR</small></div>
+</section>
+
+<section class="posts-section" aria-labelledby="recent-posts-title">
+  <header class="section-header">
+    <div>
+      <p class="section-kicker">// ./LATEST_TRANSMISSIONS</p>
+      <h2 id="recent-posts-title">最近研究日志</h2>
+    </div>
+    <a href="/archives/">SCAN_FULL_ARCHIVE →</a>
+  </header>
+  <div class="post-grid">
+    
+      
+<article class="post-card post-card--featured">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_01</span>
+    <time datetime="2017-02-01T16:00:00.000Z">2017.02.02</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/those-of-the-breakpoint.log</p>
+    <h3><a href="/Those-of-the-Breakpoint.html">断点的那些事</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Summary/" class="chip chip--accent">Summary</a>
+      
+      
+        <a href="/tags/bin/" class="chip">bin</a>
+      
+    </div>
+    <a class="post-card__read" href="/Those-of-the-Breakpoint.html" aria-label="阅读：断点的那些事">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_02</span>
+    <time datetime="2017-01-25T16:00:00.000Z">2017.01.26</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/us-git-to-develop-usage-introduction.log</p>
+    <h3><a href="/Us-Git-to-develop-usage-introduction.html">使用Git开发使用介绍</a></h3>
+    <p class="post-card__excerpt">最近和师傅们在写东西，用的了git开发，lu师傅整理了git开发的使用手册，我这稍微抄袭一下</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Summary/" class="chip chip--accent">Summary</a>
+      
+      
+        <a href="/tags/git/" class="chip">git</a>
+      
+    </div>
+    <a class="post-card__read" href="/Us-Git-to-develop-usage-introduction.html" aria-label="阅读：使用Git开发使用介绍">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_03</span>
+    <time datetime="2017-01-19T08:39:10.000Z">2017.01.19</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/windows-kernel-exploit-study-1.log</p>
+    <h3><a href="/Windows-Kernel-Exploit-Study-1.html">Windows Kernel Exploit Study(1)</a></h3>
+    
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/kernel-exploit/" class="chip">kernel,exploit</a>
+      
+    </div>
+    <a class="post-card__read" href="/Windows-Kernel-Exploit-Study-1.html" aria-label="阅读：Windows Kernel Exploit Study(1)">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_04</span>
+    <time datetime="2017-01-16T16:00:00.000Z">2017.01.17</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/pwnable-practice-notes.log</p>
+    <h3><a href="/pwnable-practice-notes.html">pwnable刷题日记 第一阶梯部分</a></h3>
+    <p class="post-card__excerpt">寒假无聊 刷刷题....</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/pwn/" class="chip">pwn</a>
+      
+        <a href="/tags/pwnable/" class="chip">pwnable</a>
+      
+    </div>
+    <a class="post-card__read" href="/pwnable-practice-notes.html" aria-label="阅读：pwnable刷题日记 第一阶梯部分">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_05</span>
+    <time datetime="2016-12-29T16:00:00.000Z">2016.12.30</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/one-gadget-rce.log</p>
+    <h3><a href="/one-gadget-rce.html">One gadget rce</a></h3>
+    <p class="post-card__excerpt">前几天做警长他们校赛的pwn 学到了一个新的东西</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/pwn/" class="chip">pwn</a>
+      
+        <a href="/tags/one-gadget/" class="chip">one-gadget</a>
+      
+    </div>
+    <a class="post-card__read" href="/one-gadget-rce.html" aria-label="阅读：One gadget rce">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_06</span>
+    <time datetime="2016-12-25T16:00:00.000Z">2016.12.26</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/checksec-and-the-protection-mechanisms-it-contains.log</p>
+    <h3><a href="/Checksec-and-the-protection-mechanisms-it-contains.html">checksec以及其包含的保护机制</a></h3>
+    <p class="post-card__excerpt">今天在编译一个题目的时候遇到了一些问题，不知道怎么关闭和开启部分保护</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Summary/" class="chip chip--accent">Summary</a>
+      
+      
+        <a href="/tags/linux/" class="chip">linux</a>
+      
+    </div>
+    <a class="post-card__read" href="/Checksec-and-the-protection-mechanisms-it-contains.html" aria-label="阅读：checksec以及其包含的保护机制">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_07</span>
+    <time datetime="2016-12-14T16:00:00.000Z">2016.12.15</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/csrf-preliminary-study.log</p>
+    <h3><a href="/CSRF-Preliminary-Study.html">CSRF初探</a></h3>
+    <p class="post-card__excerpt">今天，SeeSea协会议会，去麦香师傅家耍了一波CSRF</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Summary/" class="chip chip--accent">Summary</a>
+      
+      
+        <a href="/tags/web/" class="chip">web</a>
+      
+    </div>
+    <a class="post-card__read" href="/CSRF-Preliminary-Study.html" aria-label="阅读：CSRF初探">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_08</span>
+    <time datetime="2016-11-22T16:00:00.000Z">2016.11.23</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/ichuqiu-reverse-november.log</p>
+    <h3><a href="/ichuqiu-reverse-November.html">ichunqiu百度杯-十一月reverse专题</a></h3>
+    <p class="post-card__excerpt">好多湿敷//</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/ichunqiu-baidu/" class="chip">ichunqiu-baidu</a>
+      
+        <a href="/tags/reverse/" class="chip">reverse</a>
+      
+    </div>
+    <a class="post-card__read" href="/ichuqiu-reverse-November.html" aria-label="阅读：ichunqiu百度杯-十一月reverse专题">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_09</span>
+    <time datetime="2016-11-17T16:00:00.000Z">2016.11.18</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/second-shanghai-college-network-security-competition.log</p>
+    <h3><a href="/second-shanghai-college-network-security-competition.html">第二届上海市大学生网络安全大赛 Re400</a></h3>
+    <p class="post-card__excerpt">之前懒得做，后来发现这是一个很简单的题目 我了个去</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/reverse/" class="chip">reverse</a>
+      
+        <a href="/tags/%E4%B8%8A%E6%B5%B7%E7%9C%81%E8%B5%9B/" class="chip">上海省赛</a>
+      
+    </div>
+    <a class="post-card__read" href="/second-shanghai-college-network-security-competition.html" aria-label="阅读：第二届上海市大学生网络安全大赛 Re400">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+      
+<article class="post-card">
+  <header class="post-card__meta">
+    <span class="post-card__index">TX_10</span>
+    <time datetime="2016-11-13T06:56:42.000Z">2016.11.13</time>
+    <span class="post-card__status"><i aria-hidden="true"></i>PUBLISHED</span>
+  </header>
+  <div class="post-card__body">
+    <p class="post-card__command"><span>&gt;</span> cat ./research/2016-suctf-writeup-pwn.log</p>
+    <h3><a href="/2016-SUCTF-Writeup-pwn.html">2016-SUCTF-PWN-Writeup</a></h3>
+    <p class="post-card__excerpt">做了SUCTF的pwn 记录一下</p>
+  </div>
+  <footer class="post-card__footer">
+    <div class="post-card__taxonomies">
+      
+        <a href="/categories/Writeup/" class="chip chip--accent">Writeup</a>
+      
+      
+        <a href="/tags/pwn/" class="chip">pwn</a>
+      
+        <a href="/tags/suctf/" class="chip">suctf</a>
+      
+    </div>
+    <a class="post-card__read" href="/2016-SUCTF-Writeup-pwn.html" aria-label="阅读：2016-SUCTF-PWN-Writeup">OPEN_LOG <span>→</span></a>
+  </footer>
+</article>
+
+
+    
+  </div>
+  
+<nav class="pagination" aria-label="Pagination">
+  <div class="pagination__direction">
+    <a href="/page/12/" rel="prev">← PREV_PACKET</a>
+  </div>
+  <div class="pagination__pages">
+    <span>PAGE</span>
+    <strong>13</strong>
+    <span>/</span>
+    <span>16</span>
+  </div>
+  <div class="pagination__direction pagination__direction--next">
+    <a href="/page/14/" rel="next">NEXT_PACKET →</a>
+  </div>
+</nav>
+
+
+
+</section>
+
+      </main>
+      
+<footer class="site-footer">
+  <section class="footer-signal" aria-labelledby="footer-signal-title">
+    <div class="footer-signal__copy">
+      <p class="terminal-command"><span class="prompt">$</span> contact --channel secure</p>
+      <h2 id="footer-signal-title">关于漏洞、系统与攻防，欢迎交流。</h2>
+      <p>// RESPONSE_TIME: WHEN_THE_SIGNAL_IS_CLEAR</p>
+    </div>
+    <a class="footer-email" href="mailto:ask@mail.exp.sh">
+      <span>ask@mail.exp.sh</span><span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <div class="footer-meta">
+    <p>© 2016—2026 Swing · BUILT_WITH_HEXO · SIGNAL_THEME</p>
+    <div class="footer-links">
+      
+        <a href="https://github.com/WinMin" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      
+        <a href="https://twitter.com/bestswngs" target="_blank" rel="noopener noreferrer">X</a>
+      
+        <a href="mailto:ask@mail.exp.sh">MAIL</a>
+      
+      <a href="/atom.xml">RSS</a>
+    </div>
+    <a class="back-to-top" href="#top" aria-label="回到顶部">↑ TOP</a>
   </div>
 </footer>
 
     </div>
-    <!-- styles -->
 
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+    
+      <section id="search-panel" class="search-panel" data-search-panel hidden aria-hidden="true">
+  <button class="search-panel__backdrop" type="button" data-search-close tabindex="-1" aria-label="关闭搜索"></button>
+  <div class="search-terminal" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title">
+    <header class="search-terminal__bar">
+      <div class="window-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="search-dialog-title">SEARCH_PROTOCOL // LOCAL_INDEX</p>
+      <button type="button" data-search-close aria-label="关闭搜索">[ESC]</button>
+    </header>
+    <div class="search-terminal__body">
+      <label class="search-label" for="search-input"><span class="prompt">$</span> query --all-posts</label>
+      <div class="search-input-row">
+        <span aria-hidden="true">&gt;</span>
+        <input id="search-input" data-search-input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="输入标题、标签或关键词…" aria-describedby="search-status">
+        <span class="search-caret" aria-hidden="true"></span>
+      </div>
+      <p id="search-status" class="search-status" data-search-status aria-live="polite">TYPE_TO_SCAN_THE_ARCHIVE</p>
+      <div id="search-results" class="search-results" data-search-results></div>
+    </div>
+  </div>
+</section>
 
 
-<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+    
 
-
-    <!-- jquery -->
-
-<script src="/lib/jquery/jquery.min.js"></script>
-
-
-<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
-
-<!-- clipboard -->
-
-
+    
 <script src="/js/main.js"></script>
 
-<!-- lang switch -->
-
-<!-- search -->
-
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133464311-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'UA-133464311-1');
-    </script>
-
-<!-- Baidu Analytics -->
-
-  <script type="text/javascript">
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
-        </script>
-
-<!-- Umami Analytics -->
-
-<!-- Disqus Comments -->
-
-    <script type="text/javascript">
-        var disqus_shortname = 'swing';
-
-        (function(){
-            var dsq = document.createElement('script');
-            dsq.type = 'text/javascript';
-            dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        }());
-    </script>
+    
+<script>
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-133464311-1';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'UA-133464311-1');
+  }());
+</script>
 
 
-</body>
+<script>
+  window._hmt = window._hmt || [];
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(hm, first);
+  }());
+</script>
+
+
+  </body>
 </html>
