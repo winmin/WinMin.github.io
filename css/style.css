@@ -1662,6 +1662,11 @@ a.chip:hover,
   color-scheme: dark;
 }
 
+.comments-section--no-recommendations #disqus_recommendations,
+.comments-section--no-recommendations iframe[src*="disqus.com/recommendations"] {
+  display: none !important;
+}
+
 /* Archive and taxonomy */
 
 .taxonomy-header {
