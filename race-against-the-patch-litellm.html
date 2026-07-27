@@ -102,8 +102,8 @@
     <div class="article-meta">
       <div><span>PUBLISHED</span><time datetime="2026-05-28T16:00:00.000Z">2026.05.29</time></div>
       
-      <div><span>READ_TIME</span><strong>1 MIN</strong></div>
-      <div><span>PAYLOAD</span><strong>480 CHAR</strong></div>
+      <div><span>READ_TIME</span><strong>4 MIN</strong></div>
+      <div><span>PAYLOAD</span><strong>1,828 CHAR</strong></div>
       
         <div><span>CHANNEL</span><a href="/categories/VulnerabilityAnalysis/">VulnerabilityAnalysis</a></div>
       
@@ -143,7 +143,7 @@
       <aside class="article-sidebar">
         <div class="toc-panel">
           <p class="toc-panel__title"><span>//</span> CONTENT_MAP</p>
-          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E9%93%BE%E6%BC%94%E8%BF%9B"><span class="toc-text">利用链演进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E5%8E%9F%E6%96%87"><span class="toc-text">阅读原文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#c"><span class="toc-text">c</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E9%93%BE%E6%BC%94%E8%BF%9B"><span class="toc-text">利用链演进</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E5%8E%9F%E6%96%87"><span class="toc-text">阅读原文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2026-07-28-%E6%9B%B4%E6%96%B0"><span class="toc-text">2026&#x2F;07&#x2F;28 更新</span></a></li></ol>
           <a class="toc-panel__top" href="#main-content">↑ RETURN_TO_HEADER</a>
         </div>
       </aside>
@@ -160,7 +160,32 @@
 <p>文章重点不仅是单个漏洞，也包括补丁变化如何影响攻击链，以及研究人员如何根据新的代码路径持续调整利用策略。</p>
 <h2 id="阅读原文"><a href="#阅读原文" class="headerlink" title="阅读原文"></a>阅读原文</h2><p>完整的技术分析、代码片段、利用过程与补丁时间线请阅读 STAR Labs 原文：</p>
 <p><a href="https://starlabs.sg/blog/2026/05-race-against-the-patch-the-evolution-of-four-exploit-chains-in-litellm/">Race Against The Patch: The Evolution of Four Exploit Chains in LiteLLM ↗</a></p>
-<h2 id="c"><a href="#c" class="headerlink" title="c"></a>c</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+<h2 id="2026-07-28-更新"><a href="#2026-07-28-更新" class="headerlink" title="2026/07/28 更新"></a>2026/07/28 更新</h2><p>今天整理笔记的时候发现之前的 4 chain 文章遗漏了一个攻击点，场景是是不需要任何user key， 但是需要服务器上有可利用的 MCP server。</p>
+<p>这里简单补充一下</p>
+<h4 id="Bug-1：一个出现在查询串里的-well-known"><a href="#Bug-1：一个出现在查询串里的-well-known" class="headerlink" title="Bug 1：一个出现在查询串里的 .well-known"></a>Bug 1：一个出现在查询串里的 <code>.well-known</code></h4><p>LiteLLM 需要公开 OAuth 元数据发现端点，因此旧代码加入了下面的放行条件：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">&quot;.well-known&quot;</span> <span class="keyword">in</span> <span class="built_in">str</span>(request.url):</span><br><span class="line">    validated_user_api_key_auth = UserAPIKeyAuth()</span><br></pre></td></tr></table></figure>
+
+<p>问题在于，这不是对路由进行匹配，而是在完整 URL 中搜索一个子串。查询字符串、额外路径段甚至 Host 部分只要出现 <code>.well-known</code>，都可能被认证层误认为公开端点。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">POST /mcp/                    → 未认证请求被拒绝</span><br><span class="line">POST /mcp/?.well-known        → 进入公开路由分支</span><br><span class="line">POST /mcp/.well-known/poc     → 进入公开路由分支</span><br></pre></td></tr></table></figure>
+
+<p>攻击者实际上没有访问 OAuth 元数据路由，却得到了相同的空 <code>UserAPIKeyAuth()</code> 对象。</p>
+<h4 id="Bug-2：失败的-Bearer-Token-反而换来匿名身份"><a href="#Bug-2：失败的-Bearer-Token-反而换来匿名身份" class="headerlink" title="Bug 2：失败的 Bearer Token 反而换来匿名身份"></a>Bug 2：失败的 Bearer Token 反而换来匿名身份</h4><p>第二条路径来自 OAuth2 兼容逻辑：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> oauth2_headers:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        validated_user_api_key_auth = <span class="keyword">await</span> user_api_key_auth(...)</span><br><span class="line">    <span class="keyword">except</span> HTTPException <span class="keyword">as</span> e:</span><br><span class="line">        <span class="keyword">if</span> e.status_code <span class="keyword">in</span> (<span class="number">401</span>, <span class="number">403</span>):</span><br><span class="line">            validated_user_api_key_auth = UserAPIKeyAuth()</span><br></pre></td></tr></table></figure>
+
+<p>请求只要携带任意 <code>Authorization</code> 头，就会进入该分支。如果 Bearer Token 校验返回 401 或 403，处理器不会拒绝请求，而是将认证结果降级为空身份。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">无 Authorization 头</span><br><span class="line">    → 认证失败</span><br><span class="line"></span><br><span class="line">Authorization: Bearer junkjunkjunk</span><br><span class="line">    → LiteLLM Key 校验失败</span><br><span class="line">    → 异常被捕获</span><br><span class="line">    → 获得匿名会话</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，一个明显无效的 Token 反而成为了继续执行请求的条件。这是典型的 fail-open：系统无法确认调用者身份时，没有终止请求，而是猜测调用者可能正在使用另一套上游 OAuth2 凭据。</p>
+<h4 id="从认证绕过到工具调用"><a href="#从认证绕过到工具调用" class="headerlink" title="从认证绕过到工具调用"></a>从认证绕过到工具调用</h4><p>空身份本身并不是代理管理员，但下游 MCP Server 选择逻辑会把 <code>allow_all_keys: true</code> 的服务器加入可访问集合。完整利用路径因此非常短：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">未认证请求</span><br><span class="line">    ↓</span><br><span class="line">触发 .well-known 或 OAuth2 回退</span><br><span class="line">    ↓</span><br><span class="line">获得空 UserAPIKeyAuth()</span><br><span class="line">    ↓</span><br><span class="line">initialize 建立 MCP 会话</span><br><span class="line">    ↓</span><br><span class="line">tools/list 枚举工具</span><br><span class="line">    ↓</span><br><span class="line">tools/call 调用工具</span><br></pre></td></tr></table></figure>
+
+<p>最终影响完全由已经注册的工具决定。查询类工具可能泄露业务数据，文件或数据库工具可能读写敏感信息，内部 HTTP 工具可能形成内网访问；如果管理员注册了命令执行类工具，认证绕过才可能进一步组成 RCE。</p>
+<p>相关漏洞官方也已经修复了</p>
+<ul>
+<li><a href="https://github.com/BerriAI/litellm/security/advisories/GHSA-7488-6r32-c95q">MCP Authentication Bypass via OAuth2 Passthrough Fallback</a></li>
+<li><a href="https://github.com/BerriAI/litellm/pull/26463">PR #26463: tighten public-route detection and OAuth2 fallback gating</a></li>
+</ul>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
         };
