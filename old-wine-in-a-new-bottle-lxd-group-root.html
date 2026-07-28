@@ -103,7 +103,7 @@
       <div><span>PUBLISHED</span><time datetime="2026-06-08T16:00:00.000Z">2026.06.09</time></div>
       
       <div><span>READ_TIME</span><strong>2 MIN</strong></div>
-      <div><span>PAYLOAD</span><strong>767 CHAR</strong></div>
+      <div><span>PAYLOAD</span><strong>762 CHAR</strong></div>
       
         <div><span>CHANNEL</span><a href="/categories/VulnerabilityAnalysis/">VulnerabilityAnalysis</a></div>
       
@@ -151,7 +151,7 @@
     <div class="article-content" data-article-content>
       <div class="article-content__start"><span>BEGIN_PAYLOAD</span><span>20260609</span></div>
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="文章概览"><a href="#文章概览" class="headerlink" title="文章概览"></a>文章概览</h2><p>这篇文章记录了我们在 Ubuntu Server 上重新验证的一条 LXD 本地提权路径。系统安装时会默认把首个用户加入 <code>lxd</code> 组，而这个组实际上拥有接近 root 的权限：组成员可以控制 LXD、启动特权容器，并访问宿主机文件系统。</p>
-<p>这并不是一个新的 LXD 漏洞。真正的问题是，Ubuntu 的默认用户组配置和新版的 <code>lxd-installer</code> 机制正好拼到了一起——即使系统没有预装 LXD，<code>lxd</code> 组用户也能在不输入 sudo 密码的情况下完成安装，并继续获得宿主机 root 权限。</p>
+<p>这不是一个新发现的 LXD 漏洞。问题出在 Ubuntu 的默认用户组配置和新版 <code>lxd-installer</code> 的配合上。即使系统没有预装 LXD，<code>lxd</code> 组用户也能在不输入 sudo 密码的情况下完成安装，接着利用 LXD 获得宿主机 root 权限。</p>
 <h2 id="问题链条"><a href="#问题链条" class="headerlink" title="问题链条"></a>问题链条</h2><ul>
 <li>Ubuntu Server 安装器默认将首个用户加入 <code>lxd</code> 组。</li>
 <li>在 Ubuntu 24.04 及之后的版本中，LXD 不再预装，但系统保留了由 <code>root:lxd</code> 控制的 <code>lxd-installer</code> socket。</li>
