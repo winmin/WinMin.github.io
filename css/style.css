@@ -2042,9 +2042,33 @@ a.chip:hover,
   margin-top: 0;
 }
 
-.about-card.about-tip {
-  border-color: var(--green-dim);
+.about-note {
+  margin-top: 26px;
+  padding: 17px 19px;
+  border-left: 2px solid var(--green-dim);
   background: var(--panel);
+}
+
+.about-note p {
+  margin: 0;
+}
+
+.about-note__label {
+  margin-bottom: 7px !important;
+  color: var(--green-dim);
+  font-family: var(--font-pixel);
+  font-size: 10px;
+}
+
+.about-note__label::before {
+  margin-right: 7px;
+  content: "//";
+}
+
+.about-note p:last-child {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 .about-spacer {
