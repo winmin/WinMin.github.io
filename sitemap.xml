@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bestwing.me/old-wine-in-a-new-bottle-lxd-group-root.html</loc>
+    
+    <lastmod>2026-07-28</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://bestwing.me/about/index.html</loc>
     
     <lastmod>2026-07-28</lastmod>
@@ -2427,6 +2434,20 @@
   
   <url>
     <loc>https://bestwing.me/tags/kernel-exploit/</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bestwing.me/tags/lxd/</loc>
+    <lastmod>2026-07-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://bestwing.me/tags/privilege-escalation/</loc>
     <lastmod>2026-07-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

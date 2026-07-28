@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<meta name="color-scheme" content="dark">
+<title>Old Wine in a New Bottle: A Decade-Old lxd-Group Root, Re-Armed // Swings&#39; Blog 浮生若梦</title>
+<meta name="description" content="复盘 Ubuntu Server 默认 lxd 组成员关系如何与现代 LXD 安装机制组合，重新形成一条无需输入 sudo 密码的本地提权链。">
+<meta name="author" content="Swing">
+<link rel="canonical" href="https://bestwing.me/old-wine-in-a-new-bottle-lxd-group-root.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Old Wine in a New Bottle: A Decade-Old lxd-Group Root, Re-Armed // Swings&#39; Blog 浮生若梦">
+<meta property="og:description" content="复盘 Ubuntu Server 默认 lxd 组成员关系如何与现代 LXD 安装机制组合，重新形成一条无需输入 sudo 密码的本地提权链。">
+<meta property="og:url" content="https://bestwing.me/old-wine-in-a-new-bottle-lxd-group-root.html">
+<meta property="og:site_name" content="Swings&#39; Blog 浮生若梦">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Old Wine in a New Bottle: A Decade-Old lxd-Group Root, Re-Armed // Swings&#39; Blog 浮生若梦">
+<meta name="twitter:description" content="复盘 Ubuntu Server 默认 lxd 组成员关系如何与现代 LXD 安装机制组合，重新形成一条无需输入 sudo 密码的本地提权链。">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<link rel="alternate" href="/atom.xml" title="Swings&#39; Blog 浮生若梦" type="application/atom+xml">
+
+<script>document.documentElement.className += ' has-js';</script>
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <meta name="generator" content="Hexo 5.4.2"></head>
+  
+  <body id="top" class="page-type-post title-style-clean is-article">
+    <a class="skip-link" href="#main-content">SKIP_TO_CONTENT</a>
+    <div class="site-noise" aria-hidden="true"></div>
+    
+      <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+    
+
+    <div class="site-frame">
+      <header class="site-header">
+  <div class="window-bar">
+    <div class="window-lights" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <a class="window-title" href="/" aria-label="Swings&#39; Blog 浮生若梦 — 首页">
+      <span class="window-title__system">SECURITY RESEARCH LOG</span>
+      <span class="window-title__divider">·</span>
+      <span class="window-title__name">Swings&#39; Blog 浮生若梦</span>
+    </a>
+    <div class="window-status">
+      <span class="status-led" aria-hidden="true"></span>
+      <span>BESTWING.ME</span>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <a class="site-mark" href="/">
+      <span class="site-mark__bracket">[</span><span>SWING</span><span class="site-mark__slash">/</span><span class="site-mark__bracket">]</span>
+    </a>
+
+    <button class="nav-toggle terminal-button" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle__label">MENU</span>
+      <span class="nav-toggle__glyph" aria-hidden="true">[+]</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
+      
+        <a href="/" data-nav-link><span class="nav-prompt">./</span>INDEX</a>
+      
+        <a href="/archives/" data-nav-link><span class="nav-prompt">./</span>ARCHIVE</a>
+      
+        <a href="/categories/" data-nav-link><span class="nav-prompt">./</span>CATEGORIES</a>
+      
+        <a href="/tags/" data-nav-link><span class="nav-prompt">./</span>TAGS</a>
+      
+        <a href="/about/" data-nav-link><span class="nav-prompt">./</span>ABOUT</a>
+      
+        <a href="/link/" data-nav-link><span class="nav-prompt">./</span>LINKS</a>
+      
+    </nav>
+
+    
+      <button class="search-trigger terminal-button" type="button" data-search-open aria-label="打开搜索">
+        <span class="search-trigger__key">⌘K</span>
+        <span>SEARCH</span>
+      </button>
+    
+  </div>
+</header>
+
+
+      <main id="main-content" class="site-main" tabindex="-1">
+        
+<article class="article-page">
+  <header class="article-header">
+    <div class="article-header__protocol">
+      <span>// RESEARCH_TRANSMISSION</span>
+      <span>ID: OLD_WINE_IN_A_NEW_BOTTLE_L</span>
+    </div>
+    <h1>Old Wine in a New Bottle: A Decade-Old lxd-Group Root, Re-Armed</h1>
+    <p class="article-deck">复盘 Ubuntu Server 默认 lxd 组成员关系如何与现代 LXD 安装机制组合，重新形成一条无需输入 sudo 密码的本地提权链。</p>
+    <div class="article-meta">
+      <div><span>PUBLISHED</span><time datetime="2026-06-08T16:00:00.000Z">2026.06.09</time></div>
+      
+      <div><span>READ_TIME</span><strong>2 MIN</strong></div>
+      <div><span>PAYLOAD</span><strong>689 CHAR</strong></div>
+      
+        <div><span>CHANNEL</span><a href="/categories/VulnerabilityAnalysis/">VulnerabilityAnalysis</a></div>
+      
+    </div>
+    
+      <div class="article-tags">
+        <span class="article-tags__label">// INDICATORS</span>
+        <a class="chip" href="/tags/ubuntu/">ubuntu</a><a class="chip" href="/tags/lxd/">lxd</a><a class="chip" href="/tags/privilege-escalation/">privilege-escalation</a>
+      </div>
+    
+    
+  <aside class="article-origin" aria-label="文章原始发布信息">
+    <div class="article-origin__copy">
+      <p class="article-origin__eyebrow">
+        <span>外部发表</span>
+        <a href="https://starlabs.sg/blog/2026/06-old-wine-in-a-new-bottle-a-decade-old-lxd-group-root-re-armed/" target="_blank" rel="noopener noreferrer external">STAR Labs</a>
+        <time datetime="2026-06-09">2026.06.09</time>
+      </p>
+      <p class="article-origin__note">本文由 Shi Weiming（@swing）与特邀贡献者 n132 合作完成并首发于 STAR Labs；本站收录为外部发表记录。</p>
+      
+        <p class="article-origin__meta">
+          <span>作者：Shi Weiming (@swing) · n132</span>
+          <span>原文阅读：约 15 分钟</span>
+        </p>
+      
+    </div>
+    <a class="article-origin__open" href="https://starlabs.sg/blog/2026/06-old-wine-in-a-new-bottle-a-decade-old-lxd-group-root-re-armed/" target="_blank" rel="noopener noreferrer external">
+      查看原文 <span aria-hidden="true">↗</span>
+    </a>
+  </aside>
+
+
+  </header>
+
+  <div class="article-layout">
+    
+      <aside class="article-sidebar">
+        <div class="toc-panel">
+          <p class="toc-panel__title"><span>//</span> CONTENT_MAP</p>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E9%93%BE%E6%9D%A1"><span class="toc-text">问题链条</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E6%8A%A4%E5%BB%BA%E8%AE%AE"><span class="toc-text">防护建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%85%E8%AF%BB%E5%8E%9F%E6%96%87"><span class="toc-text">阅读原文</span></a></li></ol>
+          <a class="toc-panel__top" href="#main-content">↑ RETURN_TO_HEADER</a>
+        </div>
+      </aside>
+    
+    <div class="article-content" data-article-content>
+      <div class="article-content__start"><span>BEGIN_PAYLOAD</span><span>20260609</span></div>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="文章概览"><a href="#文章概览" class="headerlink" title="文章概览"></a>文章概览</h2><p>这项研究重新审视了一个存在多年的安全边界：<code>lxd</code> 组成员可以控制以 root 权限运行的 LXD 服务，因此该组成员关系本身就应当被视为等同于 root。</p>
+<p>问题的关键不在于某一个新的软件漏洞，而在于 Ubuntu Server 的默认配置与现代 LXD 安装机制组合后，重新闭合了一条无需输入 sudo 密码的本地提权链。</p>
+<h2 id="问题链条"><a href="#问题链条" class="headerlink" title="问题链条"></a>问题链条</h2><ul>
+<li>Ubuntu Server 安装器默认将首个用户加入 <code>lxd</code> 组。</li>
+<li>在 Ubuntu 24.04 及之后的版本中，LXD 不再预装，但系统保留了由 <code>root:lxd</code> 控制的 <code>lxd-installer</code> socket。</li>
+<li><code>lxd</code> 组成员可以通过该 socket 按需安装并控制 LXD。</li>
+<li>启动特权容器并挂载宿主机根文件系统后，容器内的 root 可以直接修改宿主机文件，最终获得宿主机 root 权限。</li>
+</ul>
+<p>研究对 Ubuntu 18.04 至 26.04 的默认镜像和交付机制进行了逐版本核对，并在 Ubuntu 20.04、22.04、24.04 与 26.04 上验证了完整利用链。厂商将这一行为认定为设计选择并决定不修复。</p>
+<h2 id="防护建议"><a href="#防护建议" class="headerlink" title="防护建议"></a>防护建议</h2><p><code>lxd</code>、<code>incus</code>、<code>docker</code> 与 <code>libvirt</code> 等高权限组都不应被当作普通的功能组。应定期审计组成员，仅向可信任的管理员授予权限；如果系统不需要按需安装 LXD，也可以移除 <code>lxd-installer</code> 或屏蔽其 socket。</p>
+<h2 id="阅读原文"><a href="#阅读原文" class="headerlink" title="阅读原文"></a>阅读原文</h2><p>完整的版本矩阵、技术分析、验证过程、披露时间线与 PoC 请阅读 STAR Labs 原文：</p>
+<p><a href="https://starlabs.sg/blog/2026/06-old-wine-in-a-new-bottle-a-decade-old-lxd-group-root-re-armed/">Old Wine in a New Bottle: A Decade-Old lxd-Group Root, Re-Armed ↗</a></p>
+<p>研究报告与自包含 PoC：</p>
+<p><a href="https://github.com/star-sg/lxd-group-privesc-report">star-sg/lxd-group-privesc-report ↗</a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      <div class="article-content__end"><span>EOF</span><span>CHECKSUM_OK</span></div>
+    </div>
+  </div>
+
+  <nav class="article-neighbors" aria-label="Adjacent posts">
+    <span class="article-neighbors__empty">← PREVIOUS_LOG // NULL</span>
+    
+      <a href="/race-against-the-patch-litellm.html" rel="next">
+        <span>NEXT_LOG →</span>
+        <strong>Race Against The Patch: The Evolution of Four Exploit Chains in LiteLLM</strong>
+      </a>
+    
+  </nav>
+
+  
+    <section class="comments-section comments-section--no-recommendations" aria-labelledby="comments-title">
+      <p class="section-kicker">// EXTERNAL_CHANNEL</p>
+      <h2 id="comments-title">评论</h2>
+      <div id="disqus_thread"></div>
+      <script>
+        (function () {
+          if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) {
+            document.getElementById('disqus_thread').textContent = 'LOCAL_PREVIEW // COMMENTS_NOT_LOADED';
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          s.src = 'https://swing.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', String(+new Date()));
+          (d.head || d.body).appendChild(s);
+        }());
+      </script>
+      <noscript>请启用 JavaScript 查看评论。</noscript>
+    </section>
+  
+</article>
+
+      </main>
+      
+<footer class="site-footer">
+  <section class="footer-signal" aria-labelledby="footer-signal-title">
+    <div class="footer-signal__copy">
+      <p class="terminal-command"><span class="prompt">$</span> contact --channel secure</p>
+      <h2 id="footer-signal-title">关于漏洞、系统与攻防，欢迎交流。</h2>
+      <p>// RESPONSE_TIME: WHEN_THE_SIGNAL_IS_CLEAR</p>
+    </div>
+    <a class="footer-email" href="mailto:ask@mail.exp.sh">
+      <span>ask@mail.exp.sh</span><span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <div class="footer-meta">
+    <p>© 2016—2026 Swing · BUILT_WITH_HEXO · SIGNAL_THEME</p>
+    <div class="footer-links">
+      
+        <a href="https://github.com/WinMin" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      
+        <a href="https://twitter.com/bestswngs" target="_blank" rel="noopener noreferrer">X</a>
+      
+        <a href="mailto:ask@mail.exp.sh">MAIL</a>
+      
+      <a href="/atom.xml">RSS</a>
+    </div>
+    <a class="back-to-top" href="#top" aria-label="回到顶部">↑ TOP</a>
+  </div>
+</footer>
+
+    </div>
+
+    
+      <section id="search-panel" class="search-panel" data-search-panel hidden aria-hidden="true">
+  <button class="search-panel__backdrop" type="button" data-search-close tabindex="-1" aria-label="关闭搜索"></button>
+  <div class="search-terminal" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title">
+    <header class="search-terminal__bar">
+      <div class="window-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="search-dialog-title">SEARCH_PROTOCOL // LOCAL_INDEX</p>
+      <button type="button" data-search-close aria-label="关闭搜索">[ESC]</button>
+    </header>
+    <div class="search-terminal__body">
+      <label class="search-label" for="search-input"><span class="prompt">$</span> query --all-posts</label>
+      <div class="search-input-row">
+        <span aria-hidden="true">&gt;</span>
+        <input id="search-input" data-search-input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="输入标题、标签或关键词…" aria-describedby="search-status">
+        <span class="search-caret" aria-hidden="true"></span>
+      </div>
+      <p id="search-status" class="search-status" data-search-status aria-live="polite">TYPE_TO_SCAN_THE_ARCHIVE</p>
+      <div id="search-results" class="search-results" data-search-results></div>
+    </div>
+  </div>
+</section>
+
+
+    
+
+    
+<script src="/js/main.js"></script>
+
+    
+<script>
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-133464311-1';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'UA-133464311-1');
+  }());
+</script>
+
+
+<script>
+  window._hmt = window._hmt || [];
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(hm, first);
+  }());
+</script>
+
+
+  </body>
+</html>
