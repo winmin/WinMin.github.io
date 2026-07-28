@@ -6,21 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#050706">
 <meta name="color-scheme" content="dark">
-<title>《程序员的自我修养》读书笔记---ELF文件结构 // Swing&#39;Blog 浮生若梦</title>
+<title>《程序员的自我修养》读书笔记---ELF文件结构 // Swings&#39; Blog 浮生若梦</title>
 <meta name="description" content="最近，买了本书《程序员的自我修养》，前天刚到的，之前看过PDF版，突然心血来潮买了一本实体书，这周二的时候又面了Keen实验室，没想象中的好，可能是紧张了（正如菜所以紧张 233）。然后今天看书的时候，看到了ELF文件结构，面试的时候也被问到了，说实话，玩Pwn也有大半年了，尤其是CTF题中的基本都是ELF文件，然而我对ELF文件的结构还不是很了解，正好看书">
 <meta name="author" content="Swing">
 <link rel="canonical" href="https://bestwing.me/a-programmer-prepares-about-elf.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《程序员的自我修养》读书笔记---ELF文件结构 // Swing&#39;Blog 浮生若梦">
+<meta property="og:title" content="《程序员的自我修养》读书笔记---ELF文件结构 // Swings&#39; Blog 浮生若梦">
 <meta property="og:description" content="最近，买了本书《程序员的自我修养》，前天刚到的，之前看过PDF版，突然心血来潮买了一本实体书，这周二的时候又面了Keen实验室，没想象中的好，可能是紧张了（正如菜所以紧张 233）。然后今天看书的时候，看到了ELF文件结构，面试的时候也被问到了，说实话，玩Pwn也有大半年了，尤其是CTF题中的基本都是ELF文件，然而我对ELF文件的结构还不是很了解，正好看书">
 <meta property="og:url" content="https://bestwing.me/a-programmer-prepares-about-elf.html">
-<meta property="og:site_name" content="Swing&#39;Blog 浮生若梦">
+<meta property="og:site_name" content="Swings&#39; Blog 浮生若梦">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《程序员的自我修养》读书笔记---ELF文件结构 // Swing&#39;Blog 浮生若梦">
+<meta name="twitter:title" content="《程序员的自我修养》读书笔记---ELF文件结构 // Swings&#39; Blog 浮生若梦">
 <meta name="twitter:description" content="最近，买了本书《程序员的自我修养》，前天刚到的，之前看过PDF版，突然心血来潮买了一本实体书，这周二的时候又面了Keen实验室，没想象中的好，可能是紧张了（正如菜所以紧张 233）。然后今天看书的时候，看到了ELF文件结构，面试的时候也被问到了，说实话，玩Pwn也有大半年了，尤其是CTF题中的基本都是ELF文件，然而我对ELF文件的结构还不是很了解，正好看书">
 <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
 
-<link rel="alternate" href="/atom.xml" title="Swing&#39;Blog 浮生若梦" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="Swings&#39; Blog 浮生若梦" type="application/atom+xml">
 
 <script>document.documentElement.className += ' has-js';</script>
 
@@ -42,10 +42,10 @@
     <div class="window-lights" aria-hidden="true">
       <span></span><span></span><span></span>
     </div>
-    <a class="window-title" href="/" aria-label="Swing&#39;Blog 浮生若梦 — 首页">
+    <a class="window-title" href="/" aria-label="Swings&#39; Blog 浮生若梦 — 首页">
       <span class="window-title__system">SECURITY RESEARCH LOG</span>
       <span class="window-title__divider">·</span>
-      <span class="window-title__name">Swing&#39;Blog 浮生若梦</span>
+      <span class="window-title__name">Swings&#39; Blog 浮生若梦</span>
     </a>
     <div class="window-status">
       <span class="status-led" aria-hidden="true"></span>
