@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050706">
+<meta name="color-scheme" content="dark">
+<title>议题分享： Pwn2OwNothing: When a KVM Full-Chain Escapes to Emptiness // Swings&#39; Blog 浮生若梦</title>
+<meta name="description" content="Know it then hack it!">
+<meta name="author" content="Swing">
+<link rel="canonical" href="https://bestwing.me/hitcon-2026-pwn2ownothing-when-a-kvm-full-chain-escapes-to-emptiness.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="议题分享： Pwn2OwNothing: When a KVM Full-Chain Escapes to Emptiness // Swings&#39; Blog 浮生若梦">
+<meta property="og:description" content="Know it then hack it!">
+<meta property="og:url" content="https://bestwing.me/hitcon-2026-pwn2ownothing-when-a-kvm-full-chain-escapes-to-emptiness.html">
+<meta property="og:site_name" content="Swings&#39; Blog 浮生若梦">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="议题分享： Pwn2OwNothing: When a KVM Full-Chain Escapes to Emptiness // Swings&#39; Blog 浮生若梦">
+<meta name="twitter:description" content="Know it then hack it!">
+<link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+
+<link rel="alternate" href="/atom.xml" title="Swings&#39; Blog 浮生若梦" type="application/atom+xml">
+
+<script>document.documentElement.className += ' has-js';</script>
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <meta name="generator" content="Hexo 5.4.2"></head>
+  
+  <body id="top" class="page-type-post title-style-clean is-article">
+    <a class="skip-link" href="#main-content">SKIP_TO_CONTENT</a>
+    <div class="site-noise" aria-hidden="true"></div>
+    
+      <div class="reading-progress" data-reading-progress aria-hidden="true"></div>
+    
+
+    <div class="site-frame">
+      <header class="site-header">
+  <div class="window-bar">
+    <div class="window-lights" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <a class="window-title" href="/" aria-label="Swings&#39; Blog 浮生若梦 — 首页">
+      <span class="window-title__system">SECURITY RESEARCH LOG</span>
+      <span class="window-title__divider">·</span>
+      <span class="window-title__name">Swings&#39; Blog 浮生若梦</span>
+    </a>
+    <div class="window-status">
+      <span class="status-led" aria-hidden="true"></span>
+      <span>BESTWING.ME</span>
+    </div>
+  </div>
+
+  <div class="nav-row">
+    <a class="site-mark" href="/">
+      <span class="site-mark__bracket">[</span><span>SWING</span><span class="site-mark__slash">/</span><span class="site-mark__bracket">]</span>
+    </a>
+
+    <button class="nav-toggle terminal-button" type="button" data-nav-toggle aria-controls="site-nav" aria-expanded="false">
+      <span class="nav-toggle__label">MENU</span>
+      <span class="nav-toggle__glyph" aria-hidden="true">[+]</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" data-site-nav aria-label="Main navigation">
+      
+        <a href="/" data-nav-link><span class="nav-prompt">./</span>INDEX</a>
+      
+        <a href="/archives/" data-nav-link><span class="nav-prompt">./</span>ARCHIVE</a>
+      
+        <a href="/categories/" data-nav-link><span class="nav-prompt">./</span>CATEGORIES</a>
+      
+        <a href="/tags/" data-nav-link><span class="nav-prompt">./</span>TAGS</a>
+      
+        <a href="/about/" data-nav-link><span class="nav-prompt">./</span>ABOUT</a>
+      
+        <a href="/link/" data-nav-link><span class="nav-prompt">./</span>LINKS</a>
+      
+    </nav>
+
+    
+      <button class="search-trigger terminal-button" type="button" data-search-open aria-label="打开搜索">
+        <span class="search-trigger__key">⌘K</span>
+        <span>SEARCH</span>
+      </button>
+    
+  </div>
+</header>
+
+
+      <main id="main-content" class="site-main" tabindex="-1">
+        
+<article class="article-page">
+  <header class="article-header">
+    <div class="article-header__protocol">
+      <span>// RESEARCH_TRANSMISSION</span>
+      <span>ID: HITCON_2026_PWN2OWNOTHING_</span>
+    </div>
+    <h1>议题分享： Pwn2OwNothing: When a KVM Full-Chain Escapes to Emptiness</h1>
+    
+    <div class="article-meta">
+      <div><span>PUBLISHED</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></div>
+      
+      <div><span>READ_TIME</span><strong>6 MIN</strong></div>
+      <div><span>PAYLOAD</span><strong>2,874 CHAR</strong></div>
+      
+        <div><span>CHANNEL</span><a href="/categories/Writeup/">Writeup</a></div>
+      
+    </div>
+    
+      <div class="article-tags">
+        <span class="article-tags__label">// INDICATORS</span>
+        <a class="chip" href="/tags/pwn2own/">pwn2own</a><a class="chip" href="/tags/hitcon/">hitcon</a><a class="chip" href="/tags/kvm/">kvm</a><a class="chip" href="/tags/qemu/">qemu</a>
+      </div>
+    
+    
+
+  </header>
+
+  <div class="article-layout">
+    
+      <aside class="article-sidebar">
+        <div class="toc-panel">
+          <p class="toc-panel__title"><span>//</span> CONTENT_MAP</p>
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-text">议题分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E9%93%BE"><span class="toc-text">漏洞链</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E8%A7%A3%E6%8E%AA%E6%96%BD%E4%B8%8E%E7%BB%95%E8%BF%87"><span class="toc-text">缓解措施与绕过</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AC%E5%BC%80-slide"><span class="toc-text">公开 slide</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference-link"><span class="toc-text">Reference link</span></a></li></ol>
+          <a class="toc-panel__top" href="#main-content">↑ RETURN_TO_HEADER</a>
+        </div>
+      </aside>
+    
+    <div class="article-content" data-article-content>
+      <div class="article-content__start"><span>BEGIN_PAYLOAD</span><span>20261013</span></div>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>…</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这个议题于2026年8月21日在 HITCON 2026 上分享，由 Bruce Chen、Peterpan0927、Weiming Shi、Jheng Bing Jhong Co-write，议题详情见官方议程<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://hitcon.org/2026/en-US/agenda/ff905983-75ff-4cc6-9082-3cb9796f070f/
+">[1]</span></a></sup>。</p>
+<p>大致的议题介绍：</p>
+<p>This year’s Pwn2Own Berlin introduced QEMU-KVM on RHEL as a target, with an additional prize awarded for achieving cross-tenant code execution during the competition. Motivated by this challenge, we began an in-depth security research of the QEMU-KVM virtualization stack, spending around one month on both vulnerability research and exploit development across the QEMU-KVM and RHEL environment.</p>
+<p>During our research, we successfully developed a full-chain exploit capable of achieving cross-tenant code execution by compromising both QEMU-KVM and the underlying host system. Although we were ultimately unable to register our entry in time due to submission limitations and the high number of participants, we believe the journey and findings are still worth sharing with the community.</p>
+<p>In this talk, we will present our research methodology, discuss the vulnerabilities used throughout the exploit chain, and explain how we bypassed modern mitigations including seccomp sandboxing, SELinux, and Intel CET. We will also share interesting stories and challenges encountered during the process, as well as how we turned individual vulnerabilities into a reliable cross-tenant attack in a real-world virtualization environment.</p>
+<p>……</p>
+<h2 id="议题分析"><a href="#议题分析" class="headerlink" title="议题分析"></a>议题分析</h2><p>Pwn2Own Berlin 2026 中 KVM 类目的奖金是 $50,000（5 个 Master of Pwn 积分），在此基础上完成 cross-tenant 代码执行还有 $50,000 的 Add-on Bonus。议题的攻击场景非常明确：宿主机是裸机 RHEL（qemu-kvm 版本 10.0.0-14.el10_1.5，RHEL 10.1，VM 由 Cockpit 拉起并默认开启沙箱），攻击者控制租户 A 的 Guest（已拿到 root），目标是三步走：</p>
+<ol>
+<li>VM escape，控制宿主机上的 qemu-kvm 进程（ring 3）</li>
+<li>LPE，进入宿主机内核（ring 0）</li>
+<li>以宿主机的控制权攻击租户 B 的 VM，完成 cross-tenant 代码执行</li>
+</ol>
+<p>整条链路一共用了 3 个漏洞，加上一连串针对缓解措施的绕过技巧。</p>
+<h3 id="漏洞链"><a href="#漏洞链" class="headerlink" title="漏洞链"></a>漏洞链</h3><ul>
+<li><strong>Bug 1 — virtio-gpu <code>calc_image_hostmem</code> 整数溢出（OOB write）</strong>：<code>hw/display/virtio-gpu.c</code> 中 <code>width</code> 可控且按 32 位有符号整数运算，取 <code>width = 0x10000001</code> 时 <code>width*bpp</code> 被截断，导致分配远小于实际需求的 buffer，最终拿到一个最大约 1 GiB 的越界写。有意思的是这其实是个 N-day（CVE-2026-3886，DEVCORE 上报），团队直到对比上游 QEMU 代码时才发现，但目标版本直到比赛当天都没修。<ul>
+<li>利用方式也很巧妙：OOB write 的目标选的是动态链接器 ld-linux.so 里的全局数据 <code>_rtld_local</code>（buffer 与它的偏移每次启动固定），覆写 <code>_ns_loaded</code>（link_map 链表头）挂上伪造的 link_map；关闭 Guest VM 触发进程退出时的 <code>_dl_fini()</code>，遍历链表调用伪造的 <code>DT_FINI_ARRAY[0]</code>，此时 RDI 就是 fake link_map 本身 —— RIP 和第一个参数同时可控。</li>
+</ul>
+</li>
+<li><strong>Bug 2 —  Buffer OOB read（信息泄露）</strong>：正式比赛环境用 VM manager 启动，SLIRP 被 ZDI 划出攻击范围（我一开始在 SLIRP 里找到的泄露洞 CVE-2026-9539 因而作废，赛后才上报）。于是换个思路：既然手里有 OOB write，就用它改掉某个”特定结构体”，之后 QEMU 会把其中一个成员当作长度，把 QEMU 进程内存拷贝进 GPA（Guest 物理地址），长度可控且无边界检查，Guest 直接从 GPA 读回泄露数据。（slide 中该漏洞组件被打码，细节等 QEMU 官方公开，见 qemu work_items/3863）</li>
+<li><strong>Bug 3 — CVE-2026-23394：unix_gc 竞争条件（LPE）</strong>：<code>__unix_gc</code> 在不持 iolock 的情况下 purge skb，而 <code>unix_stream_read_generic</code> 持锁 peek skb，两者之间存在竞争窗口；skb 被 <code>__skb_queue_purge</code> 释放后，另一侧 <code>consume_skb</code> 仍在使用，造成 UAF。用 skb_data 喷 order-0 页面占回被释放的 skb，伪造 <code>skb-&gt;destructor</code> 即可控制 RIP。</li>
+</ul>
+<h3 id="缓解措施与绕过"><a href="#缓解措施与绕过" class="headerlink" title="缓解措施与绕过"></a>缓解措施与绕过</h3><p>这部分是议题最硬核的内容，比赛环境里的三座大山：</p>
+<ul>
+<li><strong>seccomp</strong>：Cockpit 拉起 qemu-kvm 时带 <code>-sandbox on,...,spawn=deny</code>，<code>fork/execve</code> 全被禁，<code>system()</code> 直接没戏；但 <code>open/read/write/lseek/ioctl/socket</code> 还留着。</li>
+<li><strong>SELinux（sVirt）</strong>：qemu-kvm 进程域为 <code>svirt_t</code>，配合 MCS level 做租户间隔离，且 W^X —— 不能 mmap/mprotect 出可执行内存、不能 memfd_create + mmap(RX)、不能写文件再执行，常规 shellcode 落地手法全灭。</li>
+<li><strong>Intel CET</strong>：理论上 user space 有 SHSTK（挡 ROP）、kernel 有 IBT（挡 JOP/COP）。</li>
+</ul>
+<h2 id="公开-slide"><a href="#公开-slide" class="headerlink" title="公开 slide"></a>公开 slide</h2><p>这里公开 slide ， 感兴趣的同学可以自行阅读</p>
+
+
+	<div class="row">
+		<iframe src="https://drive.google.com/file/d/1IgK0ESGAAvLHXyzjvs6y-LNdJ35oIqhw/view?usp=sharing" style="width:100%; height:550px"></iframe>
+	</div>
+
+
+
+
+<h2 id="Reference-link"><a href="#Reference-link" class="headerlink" title="Reference link"></a>Reference link</h2><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://hitcon.org/2026/en-US/agenda/ff905983-75ff-4cc6-9082-3cb9796f070f/<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      <div class="article-content__end"><span>EOF</span><span>CHECKSUM_OK</span></div>
+    </div>
+  </div>
+
+  <nav class="article-neighbors" aria-label="Adjacent posts">
+    <span class="article-neighbors__empty">← PREVIOUS_LOG // NULL</span>
+    
+      <a href="/old-wine-in-a-new-bottle-lxd-group-root.html" rel="next">
+        <span>NEXT_LOG →</span>
+        <strong>Old Wine in a New Bottle: A Decade-Old lxd-Group Root, Re-Armed</strong>
+      </a>
+    
+  </nav>
+
+  
+    <section class="comments-section comments-section--no-recommendations" aria-labelledby="comments-title">
+      <p class="section-kicker">// EXTERNAL_CHANNEL</p>
+      <h2 id="comments-title">评论</h2>
+      <div id="disqus_thread"></div>
+      <script>
+        (function () {
+          if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) {
+            document.getElementById('disqus_thread').textContent = 'LOCAL_PREVIEW // COMMENTS_NOT_LOADED';
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          s.src = 'https://swing.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', String(+new Date()));
+          (d.head || d.body).appendChild(s);
+        }());
+      </script>
+      <noscript>请启用 JavaScript 查看评论。</noscript>
+    </section>
+  
+</article>
+
+      </main>
+      
+<footer class="site-footer">
+  <section class="footer-signal" aria-labelledby="footer-signal-title">
+    <div class="footer-signal__copy">
+      <p class="terminal-command"><span class="prompt">$</span> contact --channel secure</p>
+      <h2 id="footer-signal-title">关于漏洞、系统与攻防，欢迎交流。</h2>
+      <p>// RESPONSE_TIME: WHEN_THE_SIGNAL_IS_CLEAR</p>
+    </div>
+    <a class="footer-email" href="mailto:ask@mail.exp.sh">
+      <span>ask@mail.exp.sh</span><span aria-hidden="true">↗</span>
+    </a>
+  </section>
+
+  <div class="footer-meta">
+    <p>© 2016—2026 Swing · BUILT_WITH_HEXO · SIGNAL_THEME</p>
+    <div class="footer-links">
+      
+        <a href="https://github.com/WinMin" target="_blank" rel="noopener noreferrer">GITHUB</a>
+      
+        <a href="https://twitter.com/bestswngs" target="_blank" rel="noopener noreferrer">X</a>
+      
+        <a href="mailto:ask@mail.exp.sh">MAIL</a>
+      
+      <a href="/atom.xml">RSS</a>
+    </div>
+    <a class="back-to-top" href="#top" aria-label="回到顶部">↑ TOP</a>
+  </div>
+</footer>
+
+    </div>
+
+    
+      <section id="search-panel" class="search-panel" data-search-panel hidden aria-hidden="true">
+  <button class="search-panel__backdrop" type="button" data-search-close tabindex="-1" aria-label="关闭搜索"></button>
+  <div class="search-terminal" role="dialog" aria-modal="true" aria-labelledby="search-dialog-title">
+    <header class="search-terminal__bar">
+      <div class="window-lights" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p id="search-dialog-title">SEARCH_PROTOCOL // LOCAL_INDEX</p>
+      <button type="button" data-search-close aria-label="关闭搜索">[ESC]</button>
+    </header>
+    <div class="search-terminal__body">
+      <label class="search-label" for="search-input"><span class="prompt">$</span> query --all-posts</label>
+      <div class="search-input-row">
+        <span aria-hidden="true">&gt;</span>
+        <input id="search-input" data-search-input type="search" inputmode="search" autocomplete="off" spellcheck="false" placeholder="输入标题、标签或关键词…" aria-describedby="search-status">
+        <span class="search-caret" aria-hidden="true"></span>
+      </div>
+      <p id="search-status" class="search-status" data-search-status aria-live="polite">TYPE_TO_SCAN_THE_ARCHIVE</p>
+      <div id="search-results" class="search-results" data-search-results></div>
+    </div>
+  </div>
+</section>
+
+
+    
+
+    
+<script src="/js/main.js"></script>
+
+    
+<script>
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-133464311-1';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'UA-133464311-1');
+  }());
+</script>
+
+
+<script>
+  window._hmt = window._hmt || [];
+  (function () {
+    if (/^(?:localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname)) return;
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?2e6da3c375c8a87f5b664cea6d4cb29c';
+    var first = document.getElementsByTagName('script')[0];
+    first.parentNode.insertBefore(hm, first);
+  }());
+</script>
+
+
+  </body>
+</html>
