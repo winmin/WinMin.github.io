@@ -103,7 +103,7 @@
       <div><span>PUBLISHED</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></div>
       
       <div><span>READ_TIME</span><strong>6 MIN</strong></div>
-      <div><span>PAYLOAD</span><strong>2,871 CHAR</strong></div>
+      <div><span>PAYLOAD</span><strong>2,876 CHAR</strong></div>
       
         <div><span>CHANNEL</span><a href="/categories/Writeup/">Writeup</a></div>
       
@@ -138,7 +138,7 @@
 <p>During our research, we successfully developed a full-chain exploit capable of achieving cross-tenant code execution by compromising both QEMU-KVM and the underlying host system. Although we were ultimately unable to register our entry in time due to submission limitations and the high number of participants, we believe the journey and findings are still worth sharing with the community.</p>
 <p>In this talk, we will present our research methodology, discuss the vulnerabilities used throughout the exploit chain, and explain how we bypassed modern mitigations including seccomp sandboxing, SELinux, and Intel CET. We will also share interesting stories and challenges encountered during the process, as well as how we turned individual vulnerabilities into a reliable cross-tenant attack in a real-world virtualization environment.</p>
 <p>……</p>
-<h2 id="议题分析"><a href="#议题分析" class="headerlink" title="议题分析"></a>议题分析</h2><p>Pwn2Own Berlin 2026 中 KVM 类目的奖金是 $50,000（5 个 Master of Pwn 积分），在此基础上完成 cross-tenant 代码执行还有 $50,000 的 Add-on Bonus。议题的攻击场景非常明确：宿主机是裸机 RHEL（qemu-kvm 版本 10.0.0-14.el10_1.5，RHEL 10.1，VM 由 Cockpit 拉起并默认开启沙箱），攻击者控制租户 A 的 Guest（已拿到 root），目标是三步走：</p>
+<h2 id="议题分析"><a href="#议题分析" class="headerlink" title="议题分析"></a>议题分析</h2><p>Pwn2Own Berlin 2026 中 KVM 类目的奖金是 $50,000（5 个 Master of Pwn 积分），在此基础上完成 cross-tenant 代码执行还有 $50,000 的 Add-on Bonus。议题的攻击场景非常明确：宿主机是裸机 RHEL（qemu-kvm 版本 10.0.0-14.el10_1.5，RHEL 10.1，VM 由 Cockpit 拉起并默认开启沙箱），攻击者控制租户 A 的 Guest（已拿到 root）我们的目标是打穿 Qemu 并且完成跨租户攻击：</p>
 <ol>
 <li>VM escape，控制宿主机上的 qemu-kvm 进程（ring 3）</li>
 <li>LPE，进入宿主机内核（ring 0）</li>
@@ -153,7 +153,7 @@
 <li><strong>Bug 2 —  Buffer OOB read（信息泄露）</strong>：正式比赛环境用 VM manager 启动，SLIRP 被 ZDI 划出攻击范围（我一开始在 SLIRP 里找到的泄露洞 CVE-2026-9539 因而作废，赛后才上报）。于是换个思路：既然手里有 OOB write，就用它改掉某个”特定结构体”，之后 QEMU 会把其中一个成员当作长度，把 QEMU 进程内存拷贝进 GPA（Guest 物理地址），长度可控且无边界检查，Guest 直接从 GPA 读回泄露数据。（slide 中该漏洞组件被打码，细节等 QEMU 官方公开，见 qemu work_items/3863）</li>
 <li><strong>Bug 3 — CVE-2026-23394：unix_gc 竞争条件（LPE）</strong>：<code>__unix_gc</code> 在不持 iolock 的情况下 purge skb，而 <code>unix_stream_read_generic</code> 持锁 peek skb，两者之间存在竞争窗口；skb 被 <code>__skb_queue_purge</code> 释放后，另一侧 <code>consume_skb</code> 仍在使用，造成 UAF。用 skb_data 喷 order-0 页面占回被释放的 skb，伪造 <code>skb-&gt;destructor</code> 即可控制 RIP。</li>
 </ul>
-<h3 id="缓解措施与绕过"><a href="#缓解措施与绕过" class="headerlink" title="缓解措施与绕过"></a>缓解措施与绕过</h3><p>这部分是议题最硬核的内容，比赛环境里的三座大山：</p>
+<h3 id="缓解措施与绕过"><a href="#缓解措施与绕过" class="headerlink" title="缓解措施与绕过"></a>缓解措施与绕过</h3><p>这部分是议题比较有意思的地方：</p>
 <ul>
 <li><strong>seccomp</strong>：Cockpit 拉起 qemu-kvm 时带 <code>-sandbox on,...,spawn=deny</code>，<code>fork/execve</code> 全被禁，<code>system()</code> 直接没戏；但 <code>open/read/write/lseek/ioctl/socket</code> 还留着。</li>
 <li><strong>SELinux（sVirt）</strong>：qemu-kvm 进程域为 <code>svirt_t</code>，配合 MCS level 做租户间隔离，且 W^X —— 不能 mmap/mprotect 出可执行内存、不能 memfd_create + mmap(RX)、不能写文件再执行，常规 shellcode 落地手法没办法使用。</li>
