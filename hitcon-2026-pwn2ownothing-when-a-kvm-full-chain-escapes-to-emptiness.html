@@ -103,7 +103,7 @@
       <div><span>PUBLISHED</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></div>
       
       <div><span>READ_TIME</span><strong>6 MIN</strong></div>
-      <div><span>PAYLOAD</span><strong>2,874 CHAR</strong></div>
+      <div><span>PAYLOAD</span><strong>2,871 CHAR</strong></div>
       
         <div><span>CHANNEL</span><a href="/categories/Writeup/">Writeup</a></div>
       
@@ -131,7 +131,7 @@
     <div class="article-content" data-article-content>
       <div class="article-content__start"><span>BEGIN_PAYLOAD</span><span>20261013</span></div>
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>…</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这个议题于2026年8月21日在 HITCON 2026 上分享，由 Bruce Chen、Peterpan0927、Weiming Shi、Jheng Bing Jhong Co-write，议题详情见官方议程<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://hitcon.org/2026/en-US/agenda/ff905983-75ff-4cc6-9082-3cb9796f070f/
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这个议题于2026年8月21日在 HITCON 2026 上分享，由 Bruce Chen、Peterpan0927、Jheng Bing Jhong 还有我作为 Co-write，议题详情见官方议程<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="https://hitcon.org/2026/en-US/agenda/ff905983-75ff-4cc6-9082-3cb9796f070f/
 ">[1]</span></a></sup>。</p>
 <p>大致的议题介绍：</p>
 <p>This year’s Pwn2Own Berlin introduced QEMU-KVM on RHEL as a target, with an additional prize awarded for achieving cross-tenant code execution during the competition. Motivated by this challenge, we began an in-depth security research of the QEMU-KVM virtualization stack, spending around one month on both vulnerability research and exploit development across the QEMU-KVM and RHEL environment.</p>
@@ -156,7 +156,7 @@
 <h3 id="缓解措施与绕过"><a href="#缓解措施与绕过" class="headerlink" title="缓解措施与绕过"></a>缓解措施与绕过</h3><p>这部分是议题最硬核的内容，比赛环境里的三座大山：</p>
 <ul>
 <li><strong>seccomp</strong>：Cockpit 拉起 qemu-kvm 时带 <code>-sandbox on,...,spawn=deny</code>，<code>fork/execve</code> 全被禁，<code>system()</code> 直接没戏；但 <code>open/read/write/lseek/ioctl/socket</code> 还留着。</li>
-<li><strong>SELinux（sVirt）</strong>：qemu-kvm 进程域为 <code>svirt_t</code>，配合 MCS level 做租户间隔离，且 W^X —— 不能 mmap/mprotect 出可执行内存、不能 memfd_create + mmap(RX)、不能写文件再执行，常规 shellcode 落地手法全灭。</li>
+<li><strong>SELinux（sVirt）</strong>：qemu-kvm 进程域为 <code>svirt_t</code>，配合 MCS level 做租户间隔离，且 W^X —— 不能 mmap/mprotect 出可执行内存、不能 memfd_create + mmap(RX)、不能写文件再执行，常规 shellcode 落地手法没办法使用。</li>
 <li><strong>Intel CET</strong>：理论上 user space 有 SHSTK（挡 ROP）、kernel 有 IBT（挡 JOP/COP）。</li>
 </ul>
 <h2 id="公开-slide"><a href="#公开-slide" class="headerlink" title="公开 slide"></a>公开 slide</h2><p>这里公开 slide ， 感兴趣的同学可以自行阅读</p>
