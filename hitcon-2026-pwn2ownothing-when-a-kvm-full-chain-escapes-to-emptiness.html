@@ -103,7 +103,7 @@
       <div><span>PUBLISHED</span><time datetime="2026-10-12T16:00:00.000Z">2026.10.13</time></div>
       
       <div><span>READ_TIME</span><strong>6 MIN</strong></div>
-      <div><span>PAYLOAD</span><strong>2,876 CHAR</strong></div>
+      <div><span>PAYLOAD</span><strong>2,864 CHAR</strong></div>
       
         <div><span>CHANNEL</span><a href="/categories/Writeup/">Writeup</a></div>
       
@@ -159,16 +159,7 @@
 <li><strong>SELinux（sVirt）</strong>：qemu-kvm 进程域为 <code>svirt_t</code>，配合 MCS level 做租户间隔离，且 W^X —— 不能 mmap/mprotect 出可执行内存、不能 memfd_create + mmap(RX)、不能写文件再执行，常规 shellcode 落地手法没办法使用。</li>
 <li><strong>Intel CET</strong>：理论上 user space 有 SHSTK（挡 ROP）、kernel 有 IBT（挡 JOP/COP）。</li>
 </ul>
-<h2 id="公开-slide"><a href="#公开-slide" class="headerlink" title="公开 slide"></a>公开 slide</h2><p>这里公开 slide ， 感兴趣的同学可以自行阅读</p>
-
-
-	<div class="row">
-		<iframe src="https://drive.google.com/file/d/1IgK0ESGAAvLHXyzjvs6y-LNdJ35oIqhw/view?usp=sharing" style="width:100%; height:550px"></iframe>
-	</div>
-
-
-
-
+<h2 id="公开-slide"><a href="#公开-slide" class="headerlink" title="公开 slide"></a>公开 slide</h2><p>有些变故暂时不公开了</p>
 <h2 id="Reference-link"><a href="#Reference-link" class="headerlink" title="Reference link"></a>Reference link</h2><div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://hitcon.org/2026/en-US/agenda/ff905983-75ff-4cc6-9082-3cb9796f070f/<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
