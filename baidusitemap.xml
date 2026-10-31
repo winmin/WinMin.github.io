@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://bestwing.me/zeromdash-agent-native-vulnerability-mining.html</loc>
+    <lastmod>2026-10-31</lastmod>
+  </url>
+  <url>
     <loc>https://bestwing.me/hitcon-2026-pwn2ownothing-when-a-kvm-full-chain-escapes-to-emptiness.html</loc>
     <lastmod>2026-10-20</lastmod>
   </url>
